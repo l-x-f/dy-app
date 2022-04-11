@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.min.css
+tests/**
+coverage/
+index.html
+iconfont.css
+src/styles/fonts/
+static/

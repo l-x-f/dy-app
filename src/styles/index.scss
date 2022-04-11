@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+.base-style {
+  font-size: $font-base;
+  color: $font-color-base;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'SourceHanSansCN-Regular', 'Helvetica Neue', Helvetica,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, 'sans-serif';
+}
+
+/*  #ifdef  MP-TOUTIAO  */
+body {
+  background-color: $page-bg-color !important;
+  height: 100%;
+  box-sizing: border-box;
+
+  @extend .base-style;
+}
+
+/*  #endif  */
+
+page {
+  background-color: $page-bg-color;
+  height: 100%;
+  box-sizing: border-box;
+
+  @extend .base-style;
+}
+
+.no-data {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: $font-lg;
+}

@@ -1,0 +1,8 @@
+build/*.js
+src/assets 
+static
+public
+dist
+tests/ 
+index.html
+html-parser.ts
