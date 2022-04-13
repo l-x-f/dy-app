@@ -13,7 +13,7 @@ const useUserStore = defineStore('user', {
     accessToken: getToken()
   }),
   getters: {
-    hasLogin: state => state.userInfo.token
+    hasLogin: state => !!state.userInfo.token
   },
   actions: {
     // 登陆

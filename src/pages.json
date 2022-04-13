@@ -7,7 +7,7 @@
       }
     },
     {
-      "path": "pages/home/index",
+      "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "首页",
         "enablePullDownRefresh": true
@@ -40,22 +40,22 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/home/index",
+        "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/images/tabBar/home.png",
-        "selectedIconPath": "static/images/tabBar/home.png"
+        "iconPath": "static/images/tabBar/index.png",
+        "selectedIconPath": "static/images/tabBar/index.png"
       },
       {
         "pagePath": "pages/follow/index",
         "text": "关注",
-        "iconPath": "static/images/tabBar/home.png",
-        "selectedIconPath": "static/images/tabBar/home.png"
+        "iconPath": "static/images/tabBar/follow.png",
+        "selectedIconPath": "static/images/tabBar/follow.png"
       },
       {
         "pagePath": "pages/find/index",
         "text": "发现",
-        "iconPath": "static/images/tabBar/home.png",
-        "selectedIconPath": "static/images/tabBar/home.png"
+        "iconPath": "static/images/tabBar/find.png",
+        "selectedIconPath": "static/images/tabBar/find.png"
       },
       {
         "pagePath": "pages/my/index",
@@ -74,6 +74,12 @@
   },
   "app-plus": {
     "softinputNavBar": "none"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
   },
   "condition": {
     "current": 0,
