@@ -14,5 +14,8 @@ export default defineConfig({
         replacement: pathResolve('src') + '/'
       }
     ]
+  },
+  build: {
+    assetsInlineLimit: 40 * 1024
   }
 })

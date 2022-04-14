@@ -1,7 +1,7 @@
 <template>
   <view class="login-page">
     <view class="logo-container">
-      <img class="logo" src="/static/logo.png" alt="" />
+      <img class="logo" :src="logo" alt="" />
       <text class="logo-title">抖抖</text>
     </view>
 
@@ -35,7 +35,7 @@
 
     <!-- 微信登录 -->
     <view class="wechat-login-container" @click="toLogin">
-      <img class="wechat-img" src="/static/wechat.png" alt="" />
+      <img class="wechat-img" :src="wechat" alt="" />
       <view class="wechat-text">微信登录</view>
     </view>
   </view>
@@ -46,6 +46,10 @@ import { toRefs, reactive, watchEffect } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/store'
 import VerifyInput from '@/components/VerifyInput'
+
+const logo = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/logo.png'
+const wechat =
+  'https://static-1252186245.cos.ap-nanjing.myqcloud.com/wechat.png'
 
 const DefaultText = '发送验证码'
 
