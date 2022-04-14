@@ -4,7 +4,7 @@
       <text class="title">
         {{ title }}
       </text>
-      <uni-icons v-if="arrow" class="icons" type="forward" size="24" />
+      <uni-icons v-if="arrow" class="icons" type="forward" size="16" />
     </view>
 
     <slot />
@@ -16,7 +16,7 @@
 const props = defineProps({
   title: {
     type: String,
-    default: '标题'
+    default: ' '
   },
   arrow: {
     type: Boolean,
@@ -34,7 +34,7 @@ const props = defineProps({
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
-    padding-left: 10rpx;
+    padding-left: 10px;
     position: relative;
     .title {
       font-size: 32rpx;

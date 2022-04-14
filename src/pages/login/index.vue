@@ -1,17 +1,23 @@
 <template>
   <view class="login-page">
+    <view class="logo-container">
+      <img class="logo" src="/static/logo.png" alt="" />
+      <text class="logo-title">抖抖</text>
+    </view>
+
     <view class="phone-login-container">
       <uni-forms label-width="48" class="form">
         <uni-forms-item label="手机号" prefix-icon="phone" name="phone">
           <view class="phone-item">
             <uni-easyinput
               v-model="formData.phone"
+              :input-border="false"
               type="number"
               placeholder="请输入手机号"
             />
             <button
               :disabled="sendCodeDisabled"
-              class="send-code"
+              class="send-code-button"
               @click="sendCode"
             >
               {{ text }}
@@ -22,7 +28,9 @@
           <VerifyInput v-model="formData.code" />
         </uni-forms-item>
       </uni-forms>
-      <button type="primary" @click="submitForm">登录</button>
+      <button type="primary" class="submit-button" @click="submitForm">
+        登录
+      </button>
     </view>
 
     <!-- 微信登录 -->
@@ -130,29 +138,55 @@ const { formData, text, sendCodeDisabled } = toRefs(state)
   padding: 24rpx;
   overflow: hidden;
 
-  .form {
-    padding: 20rpx 0;
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      width: 80px;
+    }
+    .logo-title {
+      font-size: 28rpx;
+      margin-top: 10px;
+      color: #333;
+    }
   }
 
   .phone-login-container {
-    margin-top: 50rpx;
+    margin-top: 50px;
     .phone-item {
       display: flex;
       align-items: center;
+
+      .uni-easyinput {
+        border-bottom: 1px solid rgba(187, 187, 187, 100);
+      }
     }
-    .send-code {
+    .send-code-button {
       height: 36px;
       line-height: 36px;
       box-sizing: border-box;
       margin-left: 10rpx;
-      font-size: 20rpx;
-      border: 1px solid #ccc;
+      font-size: 28rpx;
+      font-weight: 600;
+      border: 0;
+      outline: 0;
       padding: 0 5px;
+      background-color: #fff;
+      color: #333;
+      &::after {
+        border: 0;
+      }
+    }
+    .submit-button {
+      margin-top: 10px;
     }
   }
 
   .wechat-login-container {
-    margin-top: 150px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;

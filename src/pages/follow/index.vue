@@ -14,10 +14,16 @@ import Watermark from '@/components/Watermark'
 
 const bannerList = ref([
   {
-    img: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg'
   },
   {
-    img: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg'
+  },
+  {
+    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg'
+  },
+  {
+    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg'
   }
 ])
 
