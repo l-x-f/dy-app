@@ -1,5 +1,7 @@
 /* eslint-disable no-async-promise-executor */
 import { scope } from './state'
+import permision from './permission'
+
 // 请求
 export const uniRequest = options => {
   return new Promise((resolve, reject) => {
@@ -249,23 +251,58 @@ export function wechatUploadFile(data) {
 }
 
 /**
- * 订阅消息
+ * 扫码接口Promise化
  * @returns
  */
-export function subscribeMessage() {
+const scanPromise = () => {
   return new Promise((resolve, reject) => {
-    uni.requestSubscribeMessage({
-      tmplIds: [
-        'Plc91ieEGSABFRcIfOjGZHzWvUke2NRpQDnZ9kZhVUg',
-        '0m0DH0UbTghZHtyOcdlXFU9UGg0h_AbA_Xu9LPdYZX4'
-      ],
+    uni.scanCode({
       success: res => {
-        resolve(res)
+        resolve(res.result)
       },
       fail: err => {
-        console.log(err)
-        reject('err')
+        reject(err)
       }
     })
   })
+}
+
+/**
+ * 检查权限
+ *
+ */
+// #ifdef APP-PLUS
+const checkPermission = async () => {
+  let status = permision.isIOS
+    ? await permision.requestIOS('camera')
+    : await permision.requestAndroid('android.permission.CAMERA')
+  if (status === null || status === 1) {
+    status = 1
+  } else {
+    uni.showModal({
+      content: '需要相机权限',
+      confirmText: '设置',
+      success: function (res) {
+        if (res.confirm) {
+          permision.gotoAppSetting()
+        }
+      }
+    })
+  }
+  return status
+}
+// #endif
+
+/**
+ * 扫码
+ */
+export const scanCode = async () => {
+  // #ifdef APP-PLUS
+  const status = await checkPermission()
+  if (status !== 1) {
+    return
+  }
+  // #endif
+  const res = await scanPromise()
+  return res
 }

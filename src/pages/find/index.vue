@@ -5,8 +5,8 @@
         <view
           v-for="item in utils"
           :key="item.text"
-          :index="index"
           class="utils-item"
+          @click="item.on"
         >
           <view class="grid-item-box" style="background-color: #fff">
             <uni-icons :type="item.icon" :size="30" color="#777" />
@@ -34,25 +34,45 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import AppSection from '@/components/AppSection'
+
+import { scanCode } from '@/utils/uniUtils'
+
+const state = reactive({
+  result: ''
+})
+
+/**
+ * 扫码
+ */
+const scan = async () => {
+  state.result = await scanCode()
+}
+
 const utils = [
   {
     text: '扫一扫',
-    icon: 'scan'
+    icon: 'scan',
+    on: scan
   },
   {
     text: '口令',
-    icon: 'search'
+    icon: 'search',
+    on: scan
   },
   {
     text: '发现',
-    icon: 'paperplane-filled'
+    icon: 'paperplane-filled',
+    on: scan
   }
 ]
 </script>
 
 <style lang="scss" scoped>
 .find-page {
+  height: 100%;
+  overflow: hidden;
   .utils-wrapper {
     padding: 0 20px;
     display: flex;
