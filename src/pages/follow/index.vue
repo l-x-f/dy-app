@@ -8,6 +8,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { onPullDownRefresh } from '@dcloudio/uni-app'
 import AppSwiper from '@/components/AppSwiper'
 import HtmlParse from '@/components/HtmlParse'
 import Watermark from '@/components/Watermark'
@@ -28,6 +29,20 @@ const bannerList = ref([
 ])
 
 const rich = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/a.html'
+
+onPullDownRefresh(() => {
+  uni.showToast({
+    title: '刷新成功',
+    icon: 'success'
+  })
+  uni.stopPullDownRefresh()
+})
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '@/styles/variables.scss';
+.follow-page {
+  box-sizing: border-box;
+  padding-bottom: $page-bottom;
+}
+</style>

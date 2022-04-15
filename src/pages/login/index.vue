@@ -2,7 +2,7 @@
   <view class="login-page">
     <view class="logo-container">
       <img class="logo" :src="logo" alt="" />
-      <text class="logo-title">抖抖</text>
+      <text class="logo-title">DY-App</text>
     </view>
 
     <view class="phone-login-container">
@@ -34,20 +34,25 @@
     </view>
 
     <!-- 微信登录 -->
-    <view class="wechat-login-container" @click="toLogin">
+    <button
+      class="wechat-login-container"
+      open-type="getUserProfile"
+      @click="toLogin"
+    >
       <img class="wechat-img" :src="wechat" alt="" />
       <view class="wechat-text">微信登录</view>
-    </view>
+    </button>
   </view>
 </template>
 
 <script setup>
 import { toRefs, reactive, watchEffect } from 'vue'
 import { storeToRefs } from 'pinia'
+import { promiseUnilogin, getUserInfo } from '@/utils/uniUtils'
 import { useUserStore } from '@/store'
 import VerifyInput from '@/components/VerifyInput'
 
-const logo = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/logo.png'
+const logo = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/dy.png'
 const wechat =
   'https://static-1252186245.cos.ap-nanjing.myqcloud.com/wechat.png'
 
@@ -68,7 +73,7 @@ const state = reactive({
   }
 })
 
-const submitForm = e => {
+const submitForm = () => {
   const { phone, code } = state.formData
   if (!phone) {
     uni.showToast({
@@ -86,7 +91,7 @@ const submitForm = e => {
     })
     return
   }
-  toHome(e)
+  toHome()
 }
 
 // 导航去首页
@@ -94,8 +99,19 @@ const toHome = () => {
   uni.switchTab({ url: '/pages/index/index' })
 }
 // 登录
-const toLogin = () => {
-  toHome()
+const toLogin = async () => {
+  const { authResult } = await promiseUnilogin()
+  const { userInfo } = await getUserInfo()
+  console.log(authResult, userInfo, 'toLogin')
+  const data = { ...authResult, userInfo }
+  await store.login(data)
+  uni.showToast({
+    title: '微信登录成功',
+    icon: 'success',
+    success: () => {
+      toHome()
+    }
+  })
 }
 // 发送验证码
 const sendCode = () => {
@@ -136,11 +152,11 @@ const { formData, text, sendCodeDisabled } = toRefs(state)
 
 <style lang="scss" scoped>
 .login-page {
-  height: 100%;
+  min-height: 100vh;
   background-color: #fff;
   box-sizing: border-box;
-  padding: 24rpx;
   overflow: hidden;
+  padding: 24px;
 
   .logo-container {
     display: flex;
@@ -148,24 +164,31 @@ const { formData, text, sendCodeDisabled } = toRefs(state)
     justify-content: center;
     align-items: center;
 
+    margin-top: 20px;
+
     .logo {
       width: 80px;
+      height: 80px;
     }
     .logo-title {
-      font-size: 28rpx;
+      font-size: 36rpx;
       margin-top: 10px;
       color: #333;
     }
   }
 
   .phone-login-container {
-    margin-top: 50px;
+    margin-top: 40px;
     .phone-item {
       display: flex;
       align-items: center;
 
       .uni-easyinput {
         border-bottom: 1px solid rgba(187, 187, 187, 100);
+      }
+
+      :deep(.uni-easyinput__content-input) {
+        line-height: 1.5;
       }
     }
     .send-code-button {
@@ -174,12 +197,11 @@ const { formData, text, sendCodeDisabled } = toRefs(state)
       box-sizing: border-box;
       margin-left: 10rpx;
       font-size: 28rpx;
-      font-weight: 600;
       border: 0;
       outline: 0;
       padding: 0 5px;
       background-color: #fff;
-      color: #333;
+      color: #007aff;
       &::after {
         border: 0;
       }
@@ -195,11 +217,20 @@ const { formData, text, sendCodeDisabled } = toRefs(state)
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #fff;
+    color: #333;
+    border: 0;
+    &::after {
+      border: 0;
+    }
+
     .wechat-img {
       width: 60px;
+      height: 60px;
     }
     .wechat-text {
-      padding-top: 10px;
+      padding-top: 5px;
+      font-size: 24rpx;
     }
   }
 }

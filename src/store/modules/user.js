@@ -13,16 +13,16 @@ const useUserStore = defineStore('user', {
     accessToken: getToken()
   }),
   getters: {
-    hasLogin: state => !!state.userInfo.token
+    hasLogin: state => !!state.accessToken
   },
   actions: {
     // 登陆
-    async login(loginForm) {
+    async login(data) {
       try {
-        const { data } = await login(loginForm)
-        setToken(data.accessToken)
+        // const { data } = await login(loginForm)
+        setToken(data.access_token)
         setUserInfo(data.userInfo)
-        this.$patch({ userInfo: data.userInfo, accessToken: data.accessToken })
+        this.$patch({ userInfo: data.userInfo, accessToken: data.access_token })
         return { ...data }
       } catch (error) {
         console.log(error)

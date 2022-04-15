@@ -3,40 +3,50 @@
     <!--个人信息-->
     <div class="my-wrapper">
       <div class="avatar-wrapper">
-        <img :src="userInfo.head || defaultAvatar" class="avatar" />
+        <img :src="userInfo.avatarUrl || defaultAvatar" class="avatar" />
       </div>
-      <div v-if="isLogin" class="name-wrapper">
+      <div v-if="hasLogin" class="name-wrapper">
         <span class="name">
-          {{ userInfo.nickname }}
+          {{ userInfo.nickName || defaultNickName }}
         </span>
       </div>
     </div>
+    <AppSection title="订单管理" arrow @click="handleToEdit" />
+    <AppSection title="帮助中心" arrow @click="handleToEdit" />
+    <AppSection title="联系客服" arrow @click="handleToEdit" />
+    <AppSection title="设置" arrow @click="handleToEdit" />
 
-    <AppSection title="订单管理" arrow />
-    <AppSection title="帮助中心" arrow />
-    <AppSection title="联系客服" arrow />
-    <AppSection title="设置" arrow />
-
-    <div v-if="isLogin" class="login-out">
+    <div v-if="hasLogin" class="login-out">
       <button type="primary" @click="handleLogout">退出登录</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import defaultAvatar from '@/static/defaultImage.png'
+import { storeToRefs } from 'pinia'
 import AppSection from '@/components/AppSection'
+import { useUserStore } from '@/store'
 
-const userInfo = {
-  head: 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/66211cd0-4f31-11eb-bd01-97bc1429a9ff.png',
-  nickname: '小明'
+const defaultAvatar =
+  'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/66211cd0-4f31-11eb-bd01-97bc1429a9ff.png'
+const defaultNickName = '暂无昵称'
+const store = useUserStore()
+
+const { userInfo, hasLogin } = storeToRefs(store)
+
+// 退出登录
+const handleLogout = async () => {
+  await store.logout()
+  uni.showToast({
+    title: '退出成功',
+    icon: 'success'
+  })
 }
 
-const isLogin = true
-
-const handleLogout = () => {
-  uni.navigateTo({
-    url: '/pages/login/index'
+const handleToEdit = () => {
+  uni.showToast({
+    title: '此功能正在开发，尽情期待！',
+    icon: 'none'
   })
 }
 </script>
@@ -101,6 +111,8 @@ const handleLogout = () => {
     width: 100%;
     text-align: center;
     position: absolute;
+    padding: 0 20px;
+    box-sizing: border-box;
     bottom: 50rpx;
   }
 }

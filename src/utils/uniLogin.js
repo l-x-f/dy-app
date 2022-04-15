@@ -1,31 +1,33 @@
-/* eslint-disable no-async-promise-executor */
-import store from '@/store'
-// import { getProvider, promiseUnilogin } from './uniUtils'
-import { loginState } from './state'
+import { useUserStore } from '@/store'
+import { getProvider, promiseUnilogin, wxGetUserProfile } from './uniUtils'
 
 /**
  * 登录
  * @returns {Promise<any>}
  */
-export default async function uniLogin(UserInfo) {
-  const { loginStatus } = store.getters
-  if (loginStatus === loginState.login) {
+export default async function uniLogin() {
+  const store = useUserStore()
+  if (store.hasLogin) {
     const data = { status: 1, data: '已登录' }
     return data
   }
   try {
-    // const provider = await getProvider()
-    // const { code } = await promiseUnilogin(provider)
-    const { rawData, signature, encryptedData, iv, code } = UserInfo
+    const provider = await getProvider()
+    const [{ code }, userProfile] = await Promise.all([
+      promiseUnilogin(provider),
+      wxGetUserProfile()
+    ])
+    const { rawData, signature, encryptedData, iv, userInfo } = userProfile
     const data = {
       iv,
       signature,
       encryptedData,
       rawData,
-      code
+      code,
+      userInfo
     }
     uni.showLoading({ title: '登陆中' })
-    const res = await store.dispatch('login', data)
+    const res = await store.login(data)
     uni.hideLoading()
     uni.showToast({ title: '登陆成功', duration: 2000, icon: 'success' })
     return res

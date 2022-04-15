@@ -18,10 +18,10 @@ export const uniRequest = options => {
 }
 
 // 获取服务供应商
-export const getProvider = () => {
+export const getProvider = (service = 'oauth') => {
   return new Promise((resolve, reject) => {
     uni.getProvider({
-      service: 'oauth',
+      service,
       success({ provider }) {
         const data = provider.toString()
         resolve(data)
@@ -39,7 +39,8 @@ export const promiseUnilogin = (provider = 'weixin') => {
     uni.login({
       provider,
       success(res) {
-        resolve(res.code)
+        const { authResult, code } = res
+        resolve({ authResult, code })
       },
       fail(err) {
         reject(err)
@@ -65,7 +66,7 @@ export function wxGetUserProfile() {
 }
 
 // 获取用户信息
-export const getUserInfo = provider => {
+export const getUserInfo = (provider = 'weixin') => {
   return new Promise((resolve, reject) => {
     uni.getUserProfile({
       provider,

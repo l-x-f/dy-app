@@ -64,6 +64,7 @@
 </template>
 
 <script setup>
+import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
 import AppSection from '@/components/AppSection'
@@ -80,6 +81,11 @@ const state = reactive({
  */
 const scan = async () => {
   state.result = await scanCode()
+  uni.showToast({
+    title: '扫码成功,扫码结果为: ' + state.result,
+    duration: 3000,
+    icon: 'none'
+  })
 }
 
 const data = [
@@ -108,13 +114,22 @@ const utils = [
   }
 ]
 
+onPullDownRefresh(() => {
+  uni.showToast({
+    title: '刷新成功',
+    icon: 'success'
+  })
+  uni.stopPullDownRefresh()
+})
+
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .index-page {
   box-sizing: border-box;
-  padding-bottom: 100px;
+  padding-bottom: $page-bottom;
   .utils-wrapper {
     padding: 0 20px;
     display: flex;

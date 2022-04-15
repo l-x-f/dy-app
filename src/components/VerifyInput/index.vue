@@ -136,7 +136,7 @@ $error-color: red; /* 错误颜色  */
     justify-content: start;
 
     .real-block {
-      width: 80rpx;
+      width: 16%;
       height: 60rpx;
       margin-right: 20rpx;
       &:last-child {
