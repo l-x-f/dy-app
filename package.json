@@ -1,6 +1,6 @@
 {
   "name": "dy-app",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "author": "xiaofei",
   "scripts": {
     "preinstall": "npx only-allow yarn",
