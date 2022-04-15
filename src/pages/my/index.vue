@@ -5,7 +5,7 @@
       <div class="avatar-wrapper">
         <img :src="userInfo.avatarUrl || defaultAvatar" class="avatar" />
       </div>
-      <div v-if="hasLogin" class="name-wrapper">
+      <div class="name-wrapper">
         <span class="name">
           {{ userInfo.nickName || defaultNickName }}
         </span>
@@ -16,7 +16,7 @@
     <AppSection title="联系客服" arrow @click="handleToEdit" />
     <AppSection title="设置" arrow @click="handleToEdit" />
 
-    <div v-if="hasLogin" class="login-out">
+    <div class="login-out">
       <button type="primary" @click="handleLogout">退出登录</button>
     </div>
   </div>
@@ -32,7 +32,7 @@ const defaultAvatar =
 const defaultNickName = '暂无昵称'
 const store = useUserStore()
 
-const { userInfo, hasLogin } = storeToRefs(store)
+const { userInfo } = storeToRefs(store)
 
 // 退出登录
 const handleLogout = async () => {
