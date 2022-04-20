@@ -2,6 +2,7 @@
   "name": "dy-app",
   "version": "1.0.1",
   "author": "xiaofei",
+  "license": "ISC",
   "scripts": {
     "preinstall": "npx only-allow yarn",
     "dev:app": "uni -p app",

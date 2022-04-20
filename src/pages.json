@@ -98,6 +98,31 @@
   },
   "condition": {
     "current": 0,
-    "list": []
+    "list": [
+      {
+        "name": "pages/index/index",
+        "pathName": "pages/index/index",
+        "query": "",
+        "scene": null
+      },
+      {
+        "name": "pages/find/index",
+        "pathName": "pages/find/index",
+        "query": "",
+        "scene": null
+      },
+      {
+        "name": "pages/follow/index",
+        "pathName": "pages/follow/index",
+        "query": "",
+        "scene": null
+      },
+      {
+        "name": "pages/my/index",
+        "pathName": "pages/my/index",
+        "query": "",
+        "scene": null
+      }
+    ]
   }
 }

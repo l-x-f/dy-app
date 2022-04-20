@@ -42,6 +42,12 @@
       <img class="wechat-img" :src="wechat" alt="" />
       <view class="wechat-text">微信登录</view>
     </button>
+    {{ monthData }}
+    <SelectMonth
+      v-model:visible="visible"
+      v-model="monthData"
+      :disabled-date="disabledDate"
+    />
   </view>
 </template>
 
@@ -51,6 +57,7 @@ import { storeToRefs } from 'pinia'
 import { promiseUnilogin, getUserInfo } from '@/utils/uniUtils'
 import { useUserStore } from '@/store'
 import VerifyInput from '@/components/VerifyInput'
+import SelectMonth from '@/components/SelectMonth'
 
 const logo = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/dy.png'
 const wechat =
@@ -62,6 +69,8 @@ const store = useUserStore()
 const { hasLogin } = storeToRefs(store)
 
 const state = reactive({
+  visible: true,
+  monthData: new Date(),
   sendCodeDisabled: false,
   univerifyBtnLoading: false,
   timer: null,
@@ -100,10 +109,12 @@ const toHome = () => {
 }
 // 登录
 const toLogin = async () => {
-  const { authResult } = await promiseUnilogin()
-  const { userInfo } = await getUserInfo()
-  console.log(authResult, userInfo, 'toLogin')
-  const data = { ...authResult, userInfo }
+  const [{ authResult, code }, { userInfo }] = await Promise.all([
+    promiseUnilogin(),
+    getUserInfo()
+  ])
+  console.log(authResult, code, userInfo, 'toLogin')
+  const data = { ...authResult, code, userInfo }
   await store.login(data)
   uni.showToast({
     title: '微信登录成功',
@@ -142,15 +153,27 @@ const sendCode = () => {
   }, 1000)
 }
 
+const disabledDate = (year, month) => {
+  const date = new Date()
+  if (year > date.getFullYear()) {
+    return true
+  } else {
+    if (month > date.getMonth() + 1) {
+      return true
+    }
+  }
+}
+
 // 登录拦截
 watchEffect(() => {
   hasLogin.value && toHome()
 })
 
-const { formData, text, sendCodeDisabled } = toRefs(state)
+const { formData, text, sendCodeDisabled, visible, monthData } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .login-page {
   min-height: 100vh;
   background-color: #fff;

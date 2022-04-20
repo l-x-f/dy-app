@@ -1,10 +1,9 @@
 /* 边距间距 */
-$page-spacing: 20rpx; // 页面边距
-$page-list-spacing: 30rpx; // 页面列表间距
+$page-spacing: 31rpx; // 页面间距
 $page-bottom: 100px; // 页面底部留白
 
 /* 页面颜色 */
-$page-bg-color: #f9f7f8; // 页面背景色
+$page-bg-color: #f7f9fd; // 页面背景色
 $main-color: #07c160; // 页面主色
 $page-color-light: #f8f6fc; // 页面高亮色
 $error-color: rgb(205, 0, 22); // 错误提示色
@@ -12,8 +11,8 @@ $success-color: rgb(96, 172, 8); // 正确提示色
 $navigation-bar-background-color: #0163d1;
 
 /* 文字颜色 */
-$font-color-base: #333;
-$font-color-title: #333;
+$font-color-base: #333; // 主文字颜色
+$font-color-sub: #333; // 次要文字颜色
 $font-color-green: #626262;
 $font-color-red: #fd6361;
 $font-color-tip: #b7b4b4;

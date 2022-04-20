@@ -52,6 +52,7 @@ const handleToEdit = () => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .my-center {
   height: 100%;
   background: #f5f5f5;
@@ -70,8 +71,8 @@ const handleToEdit = () => {
 
     .avatar-wrapper {
       box-sizing: border-box;
-      width: 65px;
-      height: 65px;
+      width: 94rpx;
+      height: 94rpx;
       margin: 0 auto;
       padding: 3px;
       background: #fff;
