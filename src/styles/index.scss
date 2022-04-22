@@ -4,8 +4,8 @@
 .base-style {
   font-size: $uni-font-size-base;
   color: $font-color-base;
-  font-family: 'SourceHanSansCN-Regular', 'Helvetica Neue', Helvetica,
-    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, 'sans-serif';
+  font-family: 'Source Han Sans CN', 'Helvetica Neue', Helvetica, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', Arial, 'sans-serif';
 }
 
 page {
@@ -15,9 +15,8 @@ page {
 
   @extend .base-style;
 }
-
 .no-data {
   margin-top: 20rpx;
   text-align: center;
-  font-size: $font-lg;
+  font-size: $font-large;
 }

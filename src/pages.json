@@ -3,7 +3,13 @@
     {
       "path": "pages/login/index",
       "style": {
-        "navigationBarTitleText": "登录"
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "/pages/login/code",
+      "style": {
+        "navigationStyle": "custom"
       }
     },
     {
@@ -81,8 +87,8 @@
     ]
   },
   "globalStyle": {
-    "navigationBarBackgroundColor": "#007aff",
-    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#f5f5f5",
     "navigationBarTitleText": "dy-app",
     "usingComponents": {}

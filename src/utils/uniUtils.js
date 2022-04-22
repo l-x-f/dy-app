@@ -68,7 +68,7 @@ export function wxGetUserProfile() {
 // 获取用户信息
 export const getUserInfo = (provider = 'weixin') => {
   return new Promise((resolve, reject) => {
-    uni.getUserProfile({
+    uni.getUserInfo({
       provider,
       lang: 'zh_CN',
       desc: '用于支付和订单',

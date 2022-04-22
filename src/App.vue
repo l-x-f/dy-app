@@ -13,6 +13,7 @@ export default {
     setSystemInfo() {
       const store = useAppStore()
       const systemInfo = getSystemInfo()
+      console.log(systemInfo)
       store.setSystemInfo(systemInfo)
     }
   }

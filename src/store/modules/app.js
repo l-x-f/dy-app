@@ -1,5 +1,8 @@
 import { defineStore } from 'pinia'
-import { setSystemInfo, getSystemInfo } from '@/utils/auth'
+import {
+  setSystemInfo as setSystemInfoStore,
+  getSystemInfo
+} from '@/utils/auth'
 
 const useAppStore = defineStore('app', {
   state: () => ({
@@ -8,7 +11,7 @@ const useAppStore = defineStore('app', {
   actions: {
     // 设置系统信息
     setSystemInfo(systemInfo) {
-      setSystemInfo(systemInfo)
+      setSystemInfoStore(systemInfo)
       this.$patch({ systemInfo })
     }
   }
