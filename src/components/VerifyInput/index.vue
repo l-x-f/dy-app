@@ -50,7 +50,7 @@ export default {
     // 验证码类型
     codeType: {
       type: String,
-      default: 'line'
+      default: 'block'
     }
   },
   emits: ['update:modelValue'],
@@ -58,7 +58,7 @@ export default {
     return {
       activeIndex: 0, // 激活的方块
       inputText: '', // 输入的验证码
-      isFucus: false, // 是否自动聚焦
+      isFucus: true, // 是否自动聚焦
       inputCode: '', // 输入的值
       errorType: false // 错误提示
     }
@@ -101,8 +101,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 /* stylelint-disable  */
-$main-color: blue; /* 主题色  */
 $error-color: red; /* 错误颜色  */
 .flex-row {
   display: flex;
@@ -131,20 +131,18 @@ $error-color: red; /* 错误颜色  */
   }
   .verifical-input-real {
     width: 100%;
-
     @extend .flex-row;
     justify-content: start;
 
     .real-block {
       width: 16%;
-      height: 60rpx;
+      height: 117rpx;
       margin-right: 20rpx;
+
+      @extend .flex-row;
       &:last-child {
         margin-right: 0;
       }
-
-      @extend .flex-row;
-
       .real-block-line {
         display: inline-block;
         width: 2rpx;
@@ -163,12 +161,13 @@ $error-color: red; /* 错误颜色  */
     .block-content {
       border-radius: 12rpx;
       border: 2rpx solid rgba(187, 187, 187, 100);
+      background-color: #f9fafe;
     }
     .block-active {
-      border: 4rpx solid $main-color !important;
+      border: 4rpx solid $primary-color !important;
     }
     .line-active {
-      border-bottom: 2rpx solid $main-color;
+      border-bottom: 2rpx solid $primary-color;
     }
   }
 }
@@ -177,16 +176,13 @@ $error-color: red; /* 错误颜色  */
   border-color: $error-color !important;
   animation: error 0.5s ease;
 }
-
 @keyframes line {
   0% {
     opacity: 0.9;
   }
-
   50% {
     opacity: 0;
   }
-
   100% {
     opacity: 0.9;
   }
@@ -207,7 +203,6 @@ $error-color: red; /* 错误颜色  */
   80% {
     transform: translateX(-5px);
   }
-
   100% {
     transform: translateX(0);
   }

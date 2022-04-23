@@ -7,7 +7,7 @@
       }
     },
     {
-      "path": "/pages/login/code",
+      "path": "pages/login/code",
       "style": {
         "navigationStyle": "custom"
       }

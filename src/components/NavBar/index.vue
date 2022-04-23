@@ -31,6 +31,7 @@
         </view>
       </view>
     </div>
+    <div class="nav-placeholder" />
   </view>
 </template>
 <script setup>
@@ -89,24 +90,29 @@ const handleClickRight = () => {
 @import '@/styles/variables.scss';
 
 .nav-bar-wrapper {
-  height: $nav-height;
   width: 100%;
-  position: fixed;
-  top: var(--status-bar-height);
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  padding: 0 $page-spacing;
   box-sizing: border-box;
 
   .nav-bar-body {
+    position: fixed;
+    top: var(--status-bar-height);
+    left: 0;
     width: 100%;
+    height: $nav-height;
+    padding: 0 $page-spacing;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
   }
 
+  .nav-placeholder {
+    height: $nav-height;
+    width: 100%;
+  }
   .nav-bar-left {
     flex: 1;
   }
