@@ -22,54 +22,92 @@
     </view>
 
     <AppSection title="导师专栏" sub-title="为您推荐近期高人气导师">
-      <div class="tutor-wrapper">
-        <view v-for="item in 2" :key="item" class="tutor-item">
-          <img
-            src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-            class="tutor-item-image"
-          />
-          <view class="tutor-item-cover" />
-          <view class="tutor-item-title"> 豌豆的妈妈 </view>
-          <view class="tutor-item-sub-title">
-            一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+      <scroll-view scroll-x>
+        <div class="tutor-wrapper">
+          <view v-for="item in 10" :key="item" class="tutor-item">
+            <img
+              src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+              class="tutor-item-image"
+            />
+            <view class="tutor-item-cover" />
+            <view class="tutor-item-title"> 豌豆的妈妈 </view>
+
+            <view class="tutor-item-sub-title">
+              一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+            </view>
           </view>
-        </view>
-      </div>
+        </div>
+      </scroll-view>
     </AppSection>
 
     <AppSection title="最新发现" sub-title="发现最新热门话题" has-right-refresh>
-      <div class="topic-wrapper">
-        <view v-for="item in 2" :key="item" class="topic-item">
-          <view class="topic-item-body">
-            <view class="topic-item-image-wrapper">
+      <div class="find-wrapper">
+        <view v-for="item in 4" :key="item" class="find-item">
+          <view class="find-item-body">
+            <view class="find-item-image-wrapper">
               <img
                 src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-                class="topic-item-image"
+                class="find-item-image"
               />
             </view>
 
-            <view class="topic-item-cover" />
-            <view class="topic-item-title"> 豌豆的妈妈 </view>
-            <view class="topic-item-sub-title">
-              一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+            <view class="find-item-right">
+              <view class="find-item-title"> 豌豆的妈妈 </view>
+              <view class="find-item-tag">
+                <text class="find-item-tag-item"># 热门话题</text>
+                <text class="find-item-tag-item"># 热门话题</text>
+                <text class="find-item-tag-item"># 热门</text>
+              </view>
+              <view class="find-item-sub-title">
+                一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+              </view>
             </view>
-            <view class="topic-item-footer">footer</view>
+          </view>
+          <view class="find-item-footer">
+            <view class="left">
+              <text class="label">楼主</text>
+              <text class="value">猫猫</text>
+            </view>
+            <view class="right">
+              <text class="label">热度</text>
+              <text class="value">398</text>
+            </view>
           </view>
         </view>
       </div>
     </AppSection>
 
-    <AppSection title="话题排行">
-      <uni-list :border="true">
-        <uni-list-chat
-          v-for="(item, index) in 3"
-          :key="index"
-          title="话题"
-          avatar="https://img.36krcdn.com/20200410/v2_6905947498bc4ec0af228afed409f771_img_png?x-oss-process=image/resize,m_mfit,w_520,h_300/crop,w_520,h_300,g_center"
-          note="您收到一条新的消息"
-          time="2020-02-02 20:20"
-        />
-      </uni-list>
+    <AppSection title="话题排行" sub-title="近期变现任务数据分析">
+      <div :border="true" class="topic-wrapper">
+        <view v-for="(item, index) in 3" :key="index" class="topic-item">
+          <div class="left">
+            <img
+              class="img"
+              src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+              alt=""
+            />
+          </div>
+          <div class="right">
+            <div class="title">话题</div>
+
+            <div class="tag">
+              <view class="tag-item">
+                <div class="label">热度</div>
+                <div class="value">200</div>
+              </view>
+              <view class="tag-item">
+                <div class="label">热度</div>
+                <div class="value">200</div>
+              </view>
+              <view class="tag-item">
+                <div class="label">热度</div>
+                <div class="value">200</div>
+              </view>
+            </div>
+          </div>
+          <div class="right-top">Top{{ item }}</div>
+        </view>
+      </div>
     </AppSection>
   </div>
 </template>
@@ -145,13 +183,15 @@ const bannerList = data.map(item => ({ img: item }))
 
   .tutor-wrapper {
     display: flex;
-    width: 100%;
-    height: 479rpx;
+    flex-wrap: nowrap;
+
     .tutor-item {
       position: relative;
-      flex: 1;
-      width: 50%;
-      height: 100%;
+      flex: 0 0 344rpx;
+      width: 344rpx;
+      height: 479rpx;
+      padding-right: 10px;
+      box-sizing: border-box;
       .tutor-item-image {
         width: 100%;
         height: 100%;
@@ -177,7 +217,7 @@ const bannerList = data.map(item => ({ img: item }))
         width: 100%;
         padding: 0 27rpx;
         position: absolute;
-        top: 252rpx;
+        top: 282rpx;
         left: 0;
         font-size: $font-middle-lg;
         font-weight: bold;
@@ -188,7 +228,7 @@ const bannerList = data.map(item => ({ img: item }))
       .tutor-item-sub-title {
         box-sizing: border-box;
         position: absolute;
-        top: 308rpx;
+        top: 338rpx;
         left: 0;
         padding: 0 27rpx;
         width: 100%;
@@ -199,74 +239,164 @@ const bannerList = data.map(item => ({ img: item }))
         @include multiline-text-overflow-hidden;
       }
     }
-    .tutor-item:nth-of-type(odd) {
-      .tutor-item-image {
-        padding-right: 5px;
-      }
-    }
-    .tutor-item:nth-of-type(even) {
-      .tutor-item-image {
-        padding-left: 5px;
-      }
-    }
   }
-  .topic-wrapper {
-    display: flex;
-    width: 100%;
-    height: 435rpx;
-    .topic-item {
+  .find-wrapper {
+    .find-item {
       position: relative;
-      flex: 1;
-      width: 50%;
-      height: 100%;
+      height: 415rpx;
+      background: #fff;
+      border-radius: $border-radius;
+      display: flex;
+      flex-direction: column;
+      padding: 45rpx 29rpx;
+      margin-top: 42rpx;
 
-      .topic-item-body {
-        .topic-item-image {
-          width: 100%;
-          height: 100%;
+      .find-item-body {
+        display: flex;
+        .find-item-image {
+          width: 152rpx;
+          height: 152rpx;
           box-sizing: border-box;
           background: #f7f7f7;
           border-radius: $border-radius;
           object-fit: cover;
         }
 
-        .topic-item-cover {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 247rpx;
-          background: linear-gradient(0deg, #020202 0%, rgba(1, 1, 1, 0) 100%);
-          opacity: 0.6;
+        .find-item-right {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding-left: 51rpx;
+          .find-item-title {
+            box-sizing: border-box;
+            font-size: $font-middle-lg;
+            font-weight: bold;
+            color: $font-color-base;
+            line-height: 42px;
+
+            @include text-overflow-hidden;
+          }
+          .find-item-tag {
+            margin-top: 23rpx;
+
+            .find-item-tag-item {
+              padding: 9rpx 10rpx;
+              display: inline-flex;
+              font-size: $font-sub-sm;
+              font-weight: 300;
+              color: $font-color-base;
+              background: #f7f9fd;
+              border-radius: 6rpx;
+              margin-right: 22rpx;
+            }
+          }
+
+          .find-item-tag-item:last-child {
+            margin-right: 0;
+          }
+          .find-item-sub-title {
+            margin-top: 27rpx;
+            font-size: 29rpx;
+            font-weight: 400;
+            color: $font-color-sub;
+            line-height: 44rpx;
+
+            @include multiline-text-overflow-hidden(2);
+          }
+        }
+      }
+
+      .find-item-footer {
+        margin-top: 40rpx;
+        display: flex;
+        justify-content: space-between;
+
+        .label {
+          font-size: $font-sm;
+          font-weight: 400;
+          color: $font-color-green;
+          padding-right: 5px;
+        }
+        .value {
+          font-size: 29rpx;
+          font-weight: 400;
+          color: $font-color-base;
+        }
+      }
+    }
+  }
+
+  .topic-wrapper {
+    .topic-item {
+      height: 238rpx;
+      background: #fff;
+      border-radius: $border-radius;
+      padding: 31rpx 25rpx;
+      box-sizing: border-box;
+      display: flex;
+      position: relative;
+
+      .left {
+        flex: 0 0 175rpx;
+        .img {
+          width: 175rpx;
+          height: 175rpx;
+          background: #c2c3c4;
           border-radius: $border-radius;
         }
+      }
 
-        .topic-item-title {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 0 27rpx;
-          position: absolute;
-          top: 252rpx;
-          left: 0;
-          font-size: $font-middle-lg;
+      .right {
+        flex: 1;
+        padding-left: 31rpx;
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-size: $font-large;
           font-weight: bold;
-          color: #fff;
-
-          @include text-overflow-hidden;
+          color: $font-color-base;
         }
-        .topic-item-sub-title {
-          box-sizing: border-box;
-          position: absolute;
-          top: 308rpx;
-          left: 0;
-          padding: 0 27rpx;
-          width: 100%;
-          font-size: $font-base-lg;
-          color: #fff;
-          line-height: 1.5em;
 
-          @include multiline-text-overflow-hidden;
+        .tag {
+          margin-top: 16rpx;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 88rpx;
+          background: #f7f9fd;
+          border-radius: 10rpx;
+          padding: 16rpx 20rpx;
+          .tag-item {
+            display: flex;
+            flex-direction: column;
+
+            .label {
+              font-size: $font-middle-lg;
+              font-weight: 500;
+              color: $font-color-base;
+            }
+            .value {
+              margin-top: 12rpx;
+              font-size: $font-sub-sm;
+              font-weight: 400;
+              color: $font-color-green;
+            }
+          }
         }
+      }
+      .right-top {
+        width: 135rpx;
+        height: 48rpx;
+        line-height: 48rpx;
+        background: linear-gradient(0deg, #e2a54e 0%, #fff 100%);
+        border-radius: $border-radius;
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: center;
+        font-size: $font-middle-lg;
+        font-weight: 500;
+        color: #fff;
       }
     }
   }
