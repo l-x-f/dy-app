@@ -14,7 +14,7 @@ $navigation-bar-background-color: #0163d1;
 $font-color-base: #333; // 主文字颜色
 $font-color-sub: #666; // 次要文字颜色
 $font-color-title: #111; // 标题文字颜色
-$font-color-green: #626262;
+$font-color-green: #999;
 $font-color-red: #fd6361;
 $font-color-tip: #b7b4b4;
 
@@ -27,12 +27,17 @@ $warn-color: #f57b03;
 
 /* 边框颜色 */
 $border-color: #a8b0f6;
+$border-radius: 17px;
 
 /* 文字尺寸 */
+$font-sub-sm: 21rpx; // 小字号
 $font-sm: 25rpx; // 小字号
 $font-base: 26rpx; // 主字号
+$font-base-lg: 27rpx; // 主字号
 $font-middle: 30rpx; // 中字号
+$font-middle-lg: 31rpx; // 中字号
 $font-large: 38rpx; // 大字号
+$font-large-title: 42rpx; // 大标题字号
 $font-max: 54rpx; // 最大字号
 
 // 导航栏高度

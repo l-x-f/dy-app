@@ -9,7 +9,11 @@
       :indicator-color="config.indicatorColor"
       :indicator-active-color="config.indicatorActiveColor"
     >
-      <swiper-item v-for="(item, index) in list" :key="item[imageKey]">
+      <swiper-item
+        v-for="(item, index) in list"
+        :key="item[imageKey]"
+        class="swiper-item-wrapper"
+      >
         <view class="swiper-item">
           <image
             v-if="hasErrorList[index]"
@@ -82,19 +86,28 @@ const { config, hasErrorList } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .component-swiper {
   width: 100%;
-  height: 368rpx;
+  height: 292rpx;
+  overflow: hidden;
   .swiper {
     width: 100%;
     height: 100%;
+
+    .swiper-item-wrapper {
+      border-radius: $border-radius;
+      overflow: hidden;
+    }
     .swiper-item {
       width: 100%;
       height: 100%;
       text-align: center;
+      border-radius: $border-radius;
       .image {
         width: 100%;
         height: 100%;
+        border-radius: $border-radius;
         object-fit: cover;
       }
       .error-image {

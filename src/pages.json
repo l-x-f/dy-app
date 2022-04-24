@@ -2,15 +2,11 @@
   "pages": [
     {
       "path": "pages/login/index",
-      "style": {
-        "navigationStyle": "custom"
-      }
+      "style": {}
     },
     {
       "path": "pages/login/code",
-      "style": {
-        "navigationStyle": "custom"
-      }
+      "style": {}
     },
     {
       "path": "pages/index/index",
@@ -91,7 +87,8 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f5f5f5",
     "navigationBarTitleText": "dy-app",
-    "usingComponents": {}
+    "usingComponents": {},
+    "navigationStyle": "custom"
   },
   "app-plus": {
     "softinputNavBar": "none"

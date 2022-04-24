@@ -98,6 +98,7 @@ const handleClickRight = () => {
   box-sizing: border-box;
 
   .nav-bar-body {
+    background-color: #fff;
     position: fixed;
     top: var(--status-bar-height);
     left: 0;
@@ -107,6 +108,8 @@ const handleClickRight = () => {
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    z-index: 999999;
   }
 
   .nav-placeholder {

@@ -1,10 +1,19 @@
 <template>
   <div class="components-section">
     <view class="section-body">
-      <text class="title">
-        {{ title }}
-      </text>
-      <uni-icons v-if="arrow" class="icons" type="forward" size="16" />
+      <div class="title-wrapper">
+        <text class="title">
+          {{ title }}
+        </text>
+        <text class="sub-title">
+          {{ subTitle }}
+        </text>
+      </div>
+
+      <view v-if="hasRightRefresh" class="right-content" @click="refresh">
+        <text class="right-content-text">换一批</text>
+        <img src="/static/image/refresh.png" class="refresh" alt="" />
+      </view>
     </view>
 
     <slot />
@@ -12,41 +21,74 @@
 </template>
 
 <script setup>
-/* eslint-disable  */
+/* eslint-disable  @typescript-eslint/no-unused-vars */
+/* eslint-disable  no-unused-vars */
 const props = defineProps({
   title: {
     type: String,
     default: ' '
+  },
+  subTitle: {
+    type: String,
+    default: ' '
+  },
+  hasRightRefresh: {
+    type: Boolean,
+    default: false
   },
   arrow: {
     type: Boolean,
     default: false
   }
 })
+
+const emit = defineEmits(['refresh'])
+
+// 刷新
+const refresh = () => {
+  emit('refresh')
+}
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .components-section {
-  padding: 10px 0;
-  margin-top: 20px;
-  background-color: #fff;
+  margin-top: 70rpx;
+
   .section-body {
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     height: 100%;
-    padding-left: 10px;
     position: relative;
-    .title {
-      font-size: 32rpx;
-      color: #333;
-      border-left: 2px solid #2979ff;
-      padding-left: 20rpx;
+    padding-bottom: 30rpx;
+
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: $font-large;
+        color: $font-color-title;
+        font-weight: bold;
+      }
+      .sub-title {
+        font-size: $font-base-lg;
+        color: $font-color-sub;
+      }
     }
-    .icons {
-      position: absolute;
-      top: 50%;
-      right: 10rpx;
-      transform: translateY(-50%);
+    .right-content {
+      display: flex;
+      align-items: center;
+      .right-content-text {
+        font-size: $font-sub-sm;
+        color: $font-color-green;
+        margin-right: 8rpx;
+      }
+      .refresh {
+        width: 29rpx;
+        height: 29rpx;
+      }
     }
   }
 }

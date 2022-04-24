@@ -1,0 +1,85 @@
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+@mixin pct($pct) {
+  margin: 0 auto;
+  position: relative;
+  width: #{$pct};
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+  height: 0;
+  width: 0;
+
+  $width: $width / 2;
+  $color-border-style: $height solid $color;
+  $transparent-border-style: $width solid transparent;
+
+  @if $direction == up {
+    border-bottom: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  } @else if $direction == right {
+    border-bottom: $transparent-border-style;
+    border-left: $color-border-style;
+    border-top: $transparent-border-style;
+  } @else if $direction == down {
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+    border-top: $color-border-style;
+  } @else if $direction == left {
+    border-bottom: $transparent-border-style;
+    border-right: $color-border-style;
+    border-top: $transparent-border-style;
+  }
+}
+
+@mixin text-overflow-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: -webkit-baseline-middle;
+  white-space: nowrap;
+}
+
+@mixin multiline-text-overflow-hidden($number: 3) {
+  display: -webkit-box;
+  content-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: #{$number};
+  -webkit-box-orient: vertical;
+}
+
+@mixin sidebar-transition {
+  transition: all 0.28s;
+}
+
+@mixin content-width {
+  max-width: $layout-max-width;
+  width: $layout-min-width;
+}
