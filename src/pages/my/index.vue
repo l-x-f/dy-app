@@ -57,6 +57,29 @@
       </view>
     </view>
 
+    <view class="function-wrapper">
+      <view class="title"> 常用功能</view>
+
+      <view class="function-body">
+        <view
+          v-for="(item, index) in list"
+          :key="index"
+          class="function-item"
+          :index="index"
+        >
+          <view class="grid-item-box">
+            <image
+              v-if="item.url"
+              src="https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/66211cd0-4f31-11eb-bd01-97bc1429a9ff.png"
+              class="image"
+              mode="aspectFill"
+            />
+            <view class="text">{{ item.text }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
     <div class="login-out">
       <button type="primary" @click="handleLogout">退出登录</button>
     </div>
@@ -73,6 +96,49 @@ const defaultNickName = '暂无昵称'
 const store = useUserStore()
 
 const { userInfo } = storeToRefs(store)
+
+const list = [
+  {
+    url: '/static/c1.png',
+    text: '我的喜欢',
+    badge: '0',
+    type: 'primary'
+  },
+  {
+    url: '/static/c2.png',
+    text: '我的关注',
+    badge: '1',
+    type: 'success'
+  },
+  {
+    url: '/static/c3.png',
+    text: '我的口令',
+    badge: '99',
+    type: 'warning'
+  },
+  {
+    url: '/static/c4.png',
+    text: '帮助中心',
+    badge: '2',
+    type: 'error'
+  },
+  {
+    url: '/static/c5.png',
+    text: '导师入住'
+  },
+  {
+    url: '/static/c6.png',
+    text: '联系客服'
+  },
+  {
+    url: '/static/c7.png',
+    text: '设置'
+  },
+  {
+    url: '',
+    text: ''
+  }
+]
 
 // 退出登录
 const handleLogout = async () => {
@@ -94,9 +160,7 @@ const handleToEdit = () => {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 .my-center {
-  height: 100%;
   background: #f5f5f5;
-  overflow: hidden;
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
   .my-wrapper {
@@ -202,13 +266,55 @@ const handleToEdit = () => {
     }
   }
 
+  .function-wrapper {
+    margin-top: 56rpx;
+    padding: 0 41rpx;
+    .title {
+      font-size: 29rpx;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .function-body {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 44rpx;
+      .function-item {
+        width: 25%;
+        flex: 0 0 25%;
+        height: 100rpx;
+        box-sizing: border-box;
+        margin-bottom: 41rpx;
+        display: flex;
+        justify-content: center;
+
+        .grid-item-box {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          .image {
+            width: 46rpx;
+            height: 46rpx;
+          }
+          .text {
+            margin-top: 19rpx;
+            font-size: 25rpx;
+            font-weight: 400;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+
   .login-out {
     width: 100%;
     text-align: center;
-    position: absolute;
     padding: 0 20px;
     box-sizing: border-box;
-    bottom: 50rpx;
+    bottom: 10rpx;
     left: 0;
   }
 }
