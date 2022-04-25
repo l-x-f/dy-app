@@ -1,6 +1,6 @@
 <template>
   <div class="code-page">
-    <NavBar />
+    <NavBar :has-title="false" />
 
     <view class="title"> 请输入验证码 </view>
     <view class="sub-title">
@@ -35,7 +35,7 @@ const state = reactive({
   sendCodeDisabled: false,
   univerifyBtnLoading: false,
   timer: null,
-  count: 10
+  count: 60
 })
 // 获取页面参数
 onLoad(data => {

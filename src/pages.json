@@ -2,11 +2,15 @@
   "pages": [
     {
       "path": "pages/login/index",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
     },
     {
       "path": "pages/login/code",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "获取验证码"
+      }
     },
     {
       "path": "pages/index/index",
@@ -21,9 +25,9 @@
       }
     },
     {
-      "path": "pages/follow/index",
+      "path": "pages/tutor/index",
       "style": {
-        "navigationBarTitleText": "关注",
+        "navigationBarTitleText": "导师",
         "enablePullDownRefresh": true,
         "app-plus": {
           "pullToRefresh": {
@@ -59,26 +63,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/images/tabBar/index.png",
-        "selectedIconPath": "static/images/tabBar/index-active.png"
+        "iconPath": "static/image/tabBar/index.png",
+        "selectedIconPath": "static/image/tabBar/index-active.png"
       },
       {
-        "pagePath": "pages/follow/index",
-        "text": "关注",
-        "iconPath": "static/images/tabBar/follow.png",
-        "selectedIconPath": "static/images/tabBar/follow-active.png"
+        "pagePath": "pages/tutor/index",
+        "text": "导师",
+        "iconPath": "static/image/tabBar/tutor.png",
+        "selectedIconPath": "static/image/tabBar/tutor-active.png"
       },
       {
         "pagePath": "pages/find/index",
         "text": "发现",
-        "iconPath": "static/images/tabBar/find.png",
-        "selectedIconPath": "static/images/tabBar/find-active.png"
+        "iconPath": "static/image/tabBar/find.png",
+        "selectedIconPath": "static/image/tabBar/find-active.png"
       },
       {
         "pagePath": "pages/my/index",
         "text": "我的",
-        "iconPath": "static/images/tabBar/my.png",
-        "selectedIconPath": "static/images/tabBar/my-active.png"
+        "iconPath": "static/image/tabBar/my.png",
+        "selectedIconPath": "static/image/tabBar/my-active.png"
       }
     ]
   },

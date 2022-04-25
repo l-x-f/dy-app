@@ -1,6 +1,6 @@
 <template>
   <div class="login-page-container">
-    <NavBar />
+    <NavBar :has-title="false" />
 
     <view class="title-container">
       <text class="title">欢迎来到创作者!</text>

@@ -307,3 +307,42 @@ export const scanCode = async () => {
   const res = await scanPromise()
   return res
 }
+
+function getCurrPage() {
+  try {
+    let pages = getCurrentPages()
+    if (pages.length) {
+      return pages[pages.length - 1]
+    }
+  } catch (e) {}
+  return undefined
+}
+/**
+ * 获取当前页面标题
+ * @returns
+ */
+export function getNavigationBarTitle() {
+  const page = getCurrPage()
+
+  // h5
+  if (page?.$page?.meta?.navigationBar) {
+    return page.$page.meta.navigationBar.titleText
+  }
+
+  // app-plus
+  try {
+    view = page.$getAppWebview()
+    if (view) {
+      const style = view.getStyle()
+      if (style && style.titleNView) {
+        return style.titleNView.titleText
+      }
+    }
+  } catch (e) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('getCurrentPages is not ready')
+    }
+  }
+
+  return undefined
+}

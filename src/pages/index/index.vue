@@ -13,12 +13,7 @@
     </view>
 
     <view class="search-wrapper">
-      <input
-        class="search-input"
-        placeholder="请输入创作者口令"
-        placeholder-class="search-placeholder"
-      />
-      <img class="search-image" src="/static/image/search.png" alt="" />
+      <Search />
     </view>
 
     <AppSection title="导师专栏" sub-title="为您推荐近期高人气导师">
@@ -77,7 +72,11 @@
       </div>
     </AppSection>
 
-    <AppSection title="话题排行" sub-title="近期变现任务数据分析">
+    <AppSection
+      title="话题排行"
+      sub-title="近期变现任务数据分析"
+      date="3-14 17:10"
+    >
       <div :border="true" class="topic-wrapper">
         <view v-for="(item, index) in 3" :key="index" class="topic-item">
           <div class="left">
@@ -88,24 +87,25 @@
             />
           </div>
           <div class="right">
-            <div class="title">话题</div>
-
+            <div class="title"># 星图任务</div>
             <div class="tag">
               <view class="tag-item">
-                <div class="label">热度</div>
                 <div class="value">200</div>
+                <div class="label">热度</div>
               </view>
               <view class="tag-item">
-                <div class="label">热度</div>
                 <div class="value">200</div>
+                <div class="label">热度</div>
               </view>
               <view class="tag-item">
-                <div class="label">热度</div>
                 <div class="value">200</div>
+                <div class="label">热度</div>
               </view>
             </div>
           </div>
-          <div class="right-top">Top{{ item }}</div>
+          <div class="right-top" :class="'top-' + (index + 1)">
+            <text class="right-top-text"> Top{{ item }} </text>
+          </div>
         </view>
       </div>
     </AppSection>
@@ -118,6 +118,7 @@ import { reactive } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
 import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
+import Search from '@/components/Search'
 
 const state = reactive({
   result: ''
@@ -156,35 +157,11 @@ const bannerList = data.map(item => ({ img: item }))
 
   .search-wrapper {
     margin-top: 42rpx;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    .search-input {
-      box-sizing: border-box;
-      width: 100%;
-      height: 106rpx;
-      box-shadow: 0 11px 42px 0 rgba(70, 87, 224, 0.18);
-      border-radius: $border-radius;
-      padding: 0 $page-spacing;
-    }
-    .search-image {
-      width: 42rpx;
-      height: 42rpx;
-      position: absolute;
-      top: 50%;
-      right: $page-spacing;
-      transform: translateY(-50%);
-    }
-    :deep(.search-placeholder) {
-      font-size: $font-middle;
-      color: $font-color-base;
-    }
   }
 
   .tutor-wrapper {
     display: flex;
     flex-wrap: nowrap;
-
     .tutor-item {
       position: relative;
       flex: 0 0 344rpx;
@@ -261,7 +238,6 @@ const bannerList = data.map(item => ({ img: item }))
           border-radius: $border-radius;
           object-fit: cover;
         }
-
         .find-item-right {
           flex: 1;
           display: flex;
@@ -290,7 +266,6 @@ const bannerList = data.map(item => ({ img: item }))
               margin-right: 22rpx;
             }
           }
-
           .find-item-tag-item:last-child {
             margin-right: 0;
           }
@@ -305,7 +280,6 @@ const bannerList = data.map(item => ({ img: item }))
           }
         }
       }
-
       .find-item-footer {
         margin-top: 40rpx;
         display: flex;
@@ -325,7 +299,6 @@ const bannerList = data.map(item => ({ img: item }))
       }
     }
   }
-
   .topic-wrapper {
     .topic-item {
       height: 238rpx;
@@ -335,7 +308,7 @@ const bannerList = data.map(item => ({ img: item }))
       box-sizing: border-box;
       display: flex;
       position: relative;
-
+      overflow: hidden;
       .left {
         flex: 0 0 175rpx;
         .img {
@@ -345,7 +318,6 @@ const bannerList = data.map(item => ({ img: item }))
           border-radius: $border-radius;
         }
       }
-
       .right {
         flex: 1;
         padding-left: 31rpx;
@@ -356,7 +328,6 @@ const bannerList = data.map(item => ({ img: item }))
           font-weight: bold;
           color: $font-color-base;
         }
-
         .tag {
           margin-top: 16rpx;
           display: flex;
@@ -371,32 +342,47 @@ const bannerList = data.map(item => ({ img: item }))
             flex-direction: column;
 
             .label {
-              font-size: $font-middle-lg;
-              font-weight: 500;
-              color: $font-color-base;
-            }
-            .value {
               margin-top: 12rpx;
               font-size: $font-sub-sm;
               font-weight: 400;
               color: $font-color-green;
+            }
+            .value {
+              font-size: $font-middle-lg;
+              font-weight: 500;
+              color: $font-color-base;
             }
           }
         }
       }
       .right-top {
         width: 135rpx;
-        height: 48rpx;
-        line-height: 48rpx;
+        height: 48px;
+        line-height: 48px;
         background: linear-gradient(0deg, #e2a54e 0%, #fff 100%);
-        border-radius: $border-radius;
+        border-radius: 24px;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: -24px;
+        right: -12px;
         text-align: center;
-        font-size: $font-middle-lg;
-        font-weight: 500;
-        color: #fff;
+
+        .right-top-text {
+          position: absolute;
+          bottom: -12px;
+          left: 12px;
+          font-size: $font-middle-lg;
+          font-weight: 500;
+          color: #fff;
+        }
+      }
+      .top-1 {
+        background: linear-gradient(0deg, #e2a54e 0%, #fff 100%);
+      }
+      .top-2 {
+        background: linear-gradient(0deg, #9a9fac 0%, #fff 100%);
+      }
+      .top-3 {
+        background: linear-gradient(0deg, #d88a60 0%, #fff 100%);
       }
     }
   }

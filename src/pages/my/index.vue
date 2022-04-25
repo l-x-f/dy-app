@@ -2,19 +2,60 @@
   <div class="my-center">
     <!--个人信息-->
     <div class="my-wrapper">
-      <div class="avatar-wrapper">
-        <img :src="userInfo.avatarUrl || defaultAvatar" class="avatar" />
+      <div class="user-info-wrapper">
+        <div class="avatar-wrapper">
+          <img :src="userInfo.avatarUrl || defaultAvatar" class="avatar" />
+        </div>
+
+        <div class="user-info-body">
+          <view class="name">
+            {{ userInfo.nickName || defaultNickName }}
+          </view>
+          <view class="phone"> 手机号 11315351351 </view>
+        </div>
       </div>
-      <div class="name-wrapper">
-        <span class="name">
-          {{ userInfo.nickName || defaultNickName }}
-        </span>
-      </div>
+      <div class="right">我的关注</div>
     </div>
-    <AppSection title="订单管理" arrow @click="handleToEdit" />
-    <AppSection title="帮助中心" arrow @click="handleToEdit" />
-    <AppSection title="联系客服" arrow @click="handleToEdit" />
-    <AppSection title="设置" arrow @click="handleToEdit" />
+
+    <view class="banner">
+      <text class="title">邀请会员得奖励！</text>
+      <view class="button">立即邀请</view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">财务信息</view>
+      <view class="section-body">
+        <div class="section-item">
+          <div class="value">2000</div>
+          <div class="label">今日新增</div>
+        </div>
+        <div class="section-item">
+          <div class="value">2000</div>
+          <div class="label">团队总人数</div>
+        </div>
+        <div class="section-item">
+          <div class="button" @click="handleToEdit">我的钱包</div>
+        </div>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">我的推广</view>
+      <view class="section-body">
+        <div class="section-item">
+          <div class="value">2000</div>
+          <div class="label">今日新增</div>
+        </div>
+        <div class="section-item">
+          <div class="value">2000</div>
+          <div class="label">团队总人数</div>
+        </div>
+        <div class="section-item">
+          <div class="value">2000</div>
+          <div class="label">会员总人数</div>
+        </div>
+      </view>
+    </view>
 
     <div class="login-out">
       <button type="primary" @click="handleLogout">退出登录</button>
@@ -24,7 +65,6 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import AppSection from '@/components/AppSection'
 import { useUserStore } from '@/store'
 
 const defaultAvatar =
@@ -57,54 +97,107 @@ const handleToEdit = () => {
   height: 100%;
   background: #f5f5f5;
   overflow: hidden;
-
+  box-sizing: border-box;
+  padding: 0 $page-spacing $page-bottom;
   .my-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 100%;
-    height: 150px;
-    text-align: center;
-    opacity: 0.77;
-    background: #fff;
-
-    .avatar-wrapper {
-      box-sizing: border-box;
-      width: 94rpx;
-      height: 94rpx;
-      margin: 0 auto;
-      padding: 3px;
-      background: #fff;
-      border-radius: 50%;
-
-      .avatar {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 50%;
-      }
-    }
-
-    .name-wrapper {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 74rpx;
+    .user-info-wrapper {
       display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      font-size: 28rpx;
-
-      .name {
-        padding-right: 4px;
-        color: #333;
-        line-height: 25px;
+      .avatar-wrapper {
+        .avatar {
+          width: 94rpx;
+          height: 94rpx;
+          border-radius: 50%;
+        }
       }
-
-      .iconfont {
-        line-height: 25px;
+      .user-info-body {
+        padding-left: 23rpx;
+        .name {
+          font-size: 33rpx;
+          font-weight: 500;
+          color: $font-color-base;
+        }
+        .phone {
+          font-size: $font-base-lg;
+          color: $font-color-sub;
+        }
       }
     }
+    .right {
+      font-size: $font-base-lg;
+    }
+  }
 
-    .btn-box {
-      width: 100%;
+  .banner {
+    margin-top: 31rpx;
+    width: 100%;
+    height: 114rpx;
+    background: linear-gradient(9deg, #f4431a 0%, #fca637 100%);
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    .title {
+      margin-left: 85rpx;
+      font-size: 29rpx;
+      font-weight: bold;
+      font-style: italic;
+      color: #fff1d6;
+    }
+    .button {
+      width: 144rpx;
+      height: 42rpx;
+      background: linear-gradient(0deg, #fff1d7 0%, #fee2b3 100%);
+      border-radius: 21rpx;
+      padding: 10rpx 27rpx;
+    }
+  }
+
+  .section {
+    margin-top: 31rpx;
+    background-color: #fff;
+    border-radius: $border-radius;
+    padding: 30rpx 41rpx;
+
+    .section-title {
+      font-size: 29rpx;
+      font-family: Source Han Sans CN;
+      color: $font-color-base;
+    }
+
+    .section-body {
+      margin-top: 43rpx;
+      display: flex;
+      justify-content: space-around;
+
+      .section-item {
+        padding-bottom: 6rpx;
+        .value {
+          font-size: 48rpx;
+          font-weight: bold;
+          color: $font-color-base;
+        }
+        .label {
+          font-size: 23rpx;
+          color: $font-color-sub;
+        }
+        .button {
+          width: 167rpx;
+          height: 67rpx;
+          line-height: 67rpx;
+          background: #fc2b55;
+          border-radius: 8px;
+          text-align: center;
+          font-size: 29rpx;
+          font-weight: 500;
+          color: #fff;
+        }
+      }
     }
   }
 

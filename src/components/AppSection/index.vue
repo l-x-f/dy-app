@@ -5,15 +5,17 @@
         <text class="title">
           {{ title }}
         </text>
-        <text class="sub-title">
-          {{ subTitle }}
-        </text>
+        <div class="sub-title">
+          <text class="sub-title-text"> {{ subTitle }}</text>
+        </div>
       </div>
 
       <view v-if="hasRightRefresh" class="right-content" @click="refresh">
         <text class="right-content-text">换一批</text>
         <img src="/static/image/refresh.png" class="refresh" alt="" />
       </view>
+
+      <text v-if="date" class="sub-title-date"> 更新于{{ date }}</text>
     </view>
 
     <slot />
@@ -35,6 +37,10 @@ const props = defineProps({
   hasRightRefresh: {
     type: Boolean,
     default: false
+  },
+  date: {
+    type: String,
+    default: ''
   },
   arrow: {
     type: Boolean,
@@ -73,9 +79,19 @@ const refresh = () => {
         font-weight: bold;
       }
       .sub-title {
-        font-size: $font-base-lg;
-        color: $font-color-sub;
+        margin-top: 14rpx;
+        .sub-title-text {
+          font-size: $font-base-lg;
+          color: $font-color-sub;
+        }
       }
+    }
+    .sub-title-date {
+      font-size: 23rpx;
+      color: $font-color-green;
+      position: absolute;
+      right: 0;
+      bottom: 30rpx;
     }
     .right-content {
       display: flex;

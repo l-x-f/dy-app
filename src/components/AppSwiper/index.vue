@@ -37,7 +37,7 @@
 
 <script setup>
 import { reactive, watch, toRefs } from 'vue'
-import defaultImage from '@/static/defaultImage.png'
+import defaultImage from '@/static/image/defaultImage.png'
 
 const props = defineProps({
   list: {

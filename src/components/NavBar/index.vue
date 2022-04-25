@@ -1,6 +1,6 @@
 <template>
-  <view class="nav-bar-wrapper" :style="navStyle">
-    <div class="nav-bar-body">
+  <view class="nav-bar-wrapper">
+    <div class="nav-bar-body" :style="navStyle">
       <!-- 左侧 -->
       <view v-if="hasLeftWrapper" class="nav-bar-left">
         <view v-if="hasLeft" @click="handleClickLeft">
@@ -18,7 +18,7 @@
           :style="titleStyle"
           @click="handleClickCenter"
         >
-          {{ title }}
+          {{ title || defaultTitle }}
         </view>
       </view>
 
@@ -26,7 +26,7 @@
       <view class="nav-bar-right">
         <view v-if="hasRight" @click="handleClickRight">
           <slot name="right">
-            <uni-icons type="search" size="30" />
+            <uni-icons type="search" size="24" />
           </slot>
         </view>
       </view>
@@ -35,10 +35,9 @@
   </view>
 </template>
 <script setup>
-/* eslint-disable no-unused-vars */
-/* eslint-disable  @typescript-eslint/no-unused-vars */
+import { ref, onMounted } from 'vue'
+import { getNavigationBarTitle } from '@/utils/uniUtils'
 
-import { ref, watch, nextTick, reactive } from 'vue'
 const props = defineProps({
   title: {
     type: String,
@@ -69,20 +68,25 @@ const props = defineProps({
     default: false
   }
 })
-const emit = defineEmits([
-  'handleClickLeft',
-  'handleClickCenter',
-  'handleClickRight'
-])
+const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight'])
+
+const defaultTitle = ref()
+
+onMounted(() => {
+  if (!props.title) {
+    const title = getNavigationBarTitle()
+    defaultTitle.value = title
+  }
+})
 
 const handleClickLeft = () => {
-  emit('handleClickLeft')
+  emit('clickLeft')
 }
 const handleClickCenter = () => {
-  emit('handleClickCenter')
+  emit('clickCenter')
 }
 const handleClickRight = () => {
-  emit('handleClickRight')
+  emit('clickRight')
 }
 </script>
 
@@ -94,15 +98,14 @@ const handleClickRight = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
   box-sizing: border-box;
 
   .nav-bar-body {
-    background-color: #fff;
     position: fixed;
     top: var(--status-bar-height);
     left: 0;
     width: 100%;
+    background-color: #fff;
     height: $nav-height;
     padding: 0 $page-spacing;
     box-sizing: border-box;
