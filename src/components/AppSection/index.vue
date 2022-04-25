@@ -12,7 +12,7 @@
 
       <view v-if="hasRightRefresh" class="right-content" @click="refresh">
         <text class="right-content-text">换一批</text>
-        <img src="/static/image/refresh.png" class="refresh" alt="" />
+        <img :src="refreshImage" class="refresh" alt="" />
       </view>
 
       <text v-if="date" class="sub-title-date"> 更新于{{ date }}</text>
@@ -25,6 +25,10 @@
 <script setup>
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 /* eslint-disable  no-unused-vars */
+import { getImgUrl } from '@/utils/image'
+
+const refreshImage = getImgUrl('refresh')
+
 const props = defineProps({
   title: {
     type: String,

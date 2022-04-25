@@ -7,12 +7,15 @@
       placeholder-class="search-placeholder"
       @change="handleChange"
     />
-    <img class="search-image" src="/static/image/search.png" alt="" />
+    <img class="search-image" :src="searchImage" alt="" />
   </view>
 </template>
 
 <script setup>
 import { ref, watchEffect } from 'vue'
+import { getImgUrl } from '@/utils/image'
+
+const searchImage = getImgUrl('search')
 
 const props = defineProps({
   modelValue: {

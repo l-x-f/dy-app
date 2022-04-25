@@ -33,7 +33,7 @@ yarn prettier
 ## 升级 dcloudio 包
 
 ```sh
-yarn update:uvm
+yarn  uvm
 ```
 
 ## 代码提交,校验样式，校验代码

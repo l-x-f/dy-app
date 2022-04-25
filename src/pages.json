@@ -63,26 +63,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/image/tabBar/index.png",
-        "selectedIconPath": "static/image/tabBar/index-active.png"
+        "iconPath": "static/tabBar/index.png",
+        "selectedIconPath": "static/tabBar/index-active.png"
       },
       {
         "pagePath": "pages/tutor/index",
         "text": "导师",
-        "iconPath": "static/image/tabBar/tutor.png",
-        "selectedIconPath": "static/image/tabBar/tutor-active.png"
+        "iconPath": "static/tabBar/tutor.png",
+        "selectedIconPath": "static/tabBar/tutor-active.png"
       },
       {
         "pagePath": "pages/find/index",
         "text": "发现",
-        "iconPath": "static/image/tabBar/find.png",
-        "selectedIconPath": "static/image/tabBar/find-active.png"
+        "iconPath": "static/tabBar/find.png",
+        "selectedIconPath": "static/tabBar/find-active.png"
       },
       {
         "pagePath": "pages/my/index",
         "text": "我的",
-        "iconPath": "static/image/tabBar/my.png",
-        "selectedIconPath": "static/image/tabBar/my-active.png"
+        "iconPath": "static/tabBar/my.png",
+        "selectedIconPath": "static/tabBar/my-active.png"
       }
     ]
   },

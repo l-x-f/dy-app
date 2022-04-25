@@ -150,6 +150,7 @@ const handleToEdit = () => {
       color: #fff1d6;
     }
     .button {
+      text-align: center;
       width: 144rpx;
       height: 42rpx;
       background: linear-gradient(0deg, #fff1d7 0%, #fee2b3 100%);
@@ -208,6 +209,7 @@ const handleToEdit = () => {
     padding: 0 20px;
     box-sizing: border-box;
     bottom: 50rpx;
+    left: 0;
   }
 }
 </style>

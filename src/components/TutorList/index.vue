@@ -53,15 +53,7 @@ const props = defineProps({
   },
   list: {
     type: Array,
-    default: () =>
-      [...new Array(3)].map((_, index) => ({
-        id: index,
-        title: '豌豆的妈妈',
-        subTitle: '一个精通短视频创作的',
-        image:
-          'https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000',
-        count: index
-      }))
+    default: () => []
   }
 })
 </script>

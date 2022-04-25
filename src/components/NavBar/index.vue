@@ -99,15 +99,16 @@ const handleClickRight = () => {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  background-color: #fff;
 
   .nav-bar-body {
     position: fixed;
-    top: var(--status-bar-height);
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
-    height: $nav-height;
-    padding: 0 $page-spacing;
+    background-color: inherit;
+    height: calc($nav-height + var(--status-bar-height));
+    padding: var(--status-bar-height) $page-spacing 0;
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
