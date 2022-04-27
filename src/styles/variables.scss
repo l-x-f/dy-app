@@ -1,9 +1,10 @@
 /* 边距间距 */
-$page-spacing: 31rpx; // 页面间距
+$page-spacing: 12px; // 页面左右间距
+$item-spacing: 16px; // 页面每个区块之间的间距
 $page-bottom: 100px; // 页面底部留白
 
 /* 页面颜色 */
-$page-bg-color: #f7f9fd; // 页面背景色
+$page-bg-color: #f5f5f5; // 页面背景色 #f7f9fd
 $main-color: #07c160; // 页面主色
 $page-color-light: #f8f6fc; // 页面高亮色
 $error-color: rgb(205, 0, 22); // 错误提示色
@@ -24,6 +25,7 @@ $input-color: #181717;
 /* 按钮颜色 */
 $primary-color: #485bf7;
 $warn-color: #f57b03;
+$danger-color: #fc2b55;
 
 /* 边框颜色 */
 $border-color: #a8b0f6;

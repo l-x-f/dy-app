@@ -1,13 +1,13 @@
 <template>
   <div class="tutor-page">
-    <!--  :nav-style="{ backgroundColor: 'transparent' }" -->
     <NavBar :title-style="{ fontWeight: 400 }" />
 
     <view class="search-wrapper">
       <Search />
     </view>
 
-    <TutorList :list="data.slice(0, 1)" />
+    <!-- 是导师才有 -->
+    <TutorList :list="data.slice(0, 1)" @clickRight="handleToDetails" />
 
     <AppSection
       title="你可能感兴趣"
@@ -57,6 +57,10 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
+
+const handleToDetails = item => {
+  uni.navigateTo({ url: '/pages/tutor/details?id=' + item.id })
+}
 </script>
 
 <style lang="scss" scoped>

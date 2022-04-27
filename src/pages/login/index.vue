@@ -38,7 +38,12 @@
         @click="toLogin"
       >
         <div class="wechat-img">
-          <img class="img" :src="wechat" alt="" />
+          <image
+            class="img"
+            src="@/static/image/wechat.png"
+            alt=""
+            mode="aspectFill"
+          />
         </div>
       </button>
       <view class="user-agreement">
@@ -62,9 +67,6 @@ import { promiseUnilogin, getUserInfo } from '@/utils/uniUtils'
 import { isPhone } from '@/utils'
 import { useUserStore } from '@/store'
 import NavBar from '@/components/NavBar'
-
-const wechat =
-  'https://static-1252186245.cos.ap-nanjing.myqcloud.com/wechat.png'
 
 const store = useUserStore()
 const { hasLogin } = storeToRefs(store)

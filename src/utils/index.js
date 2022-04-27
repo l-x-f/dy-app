@@ -2,20 +2,33 @@
 import accounting from 'accounting'
 import dayjs from 'dayjs'
 
-// 格式化金钱 $12,345,678.00
+/**
+ * 格式化金钱 $12,345,678.00
+ * @param {*} val
+ * @returns
+ */
 export function parseMoney(val) {
   if (!val) return ''
   return accounting.formatMoney(val, '￥')
 }
 
-// 格式化时间  YYYY/MM/DD HH:mm:ss
+/**
+ * 格式化时间  YYYY/MM/DD HH:mm:ss
+ * @param {*} val
+ * @param {*} format
+ * @returns
+ */
 export function parseDate(val, format = 'YYYY-MM-DD HH:mm') {
   if (!val) return ''
   const now = new Date(val)
   return dayjs(now).format(format)
 }
 
-// 深克隆
+/**
+ * 深克隆
+ * @param {*} obj
+ * @returns
+ */
 export const deepClone = obj => {
   if (obj === null) return null
   let clone = Object.assign({}, obj)
@@ -31,7 +44,12 @@ export const deepClone = obj => {
     : clone
 }
 
-// 节流
+/**
+ * 节流
+ * @param {*} fn
+ * @param {*} wait
+ * @returns
+ */
 export const throttle = (fn, wait) => {
   let inThrottle, lastFn, lastTime
   return function () {
@@ -53,7 +71,12 @@ export const throttle = (fn, wait) => {
   }
 }
 
-// 防抖
+/**
+ * 防抖
+ * @param {*} fn
+ * @param {*} ms
+ * @returns
+ */
 export const debounce = (fn, ms = 0) => {
   let timeoutId
   return function (...args) {
@@ -62,7 +85,11 @@ export const debounce = (fn, ms = 0) => {
   }
 }
 
-// 格式秒为标准显示时间
+/**
+ * 格式秒为标准显示时间
+ * @param {*} second
+ * @returns
+ */
 export const transformTime = (second = 0) => {
   if (isNaN(parseInt(second))) return
   second = parseInt(second)
@@ -98,12 +125,27 @@ export const transformTime = (second = 0) => {
   return res
 }
 
+/**
+ * 休眠
+ * @param {*} ms
+ * @returns
+ */
 export function sleep(ms = 1500) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+/**
+ * 判断手机号
+ * @param {*} phone
+ * @returns
+ */
 export const isPhone = phone => {
   const reg =
     /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
   return reg.test(phone)
 }
+
+/**
+ * 判断是否是web
+ */
+export const isWep = typeof globalThis && globalThis === window

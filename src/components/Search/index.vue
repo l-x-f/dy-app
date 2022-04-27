@@ -2,20 +2,25 @@
   <view class="search-components">
     <input
       v-model="inputValue"
+      type="text"
       class="search-input"
+      confirm-type="search"
       :placeholder="placeholder"
       placeholder-class="search-placeholder"
       @change="handleChange"
+      @confirm="handleConfirm"
     />
-    <img class="search-image" :src="searchImage" alt="" />
+    <image
+      class="search-image"
+      src="@/static/image/search.png"
+      alt=""
+      mode="aspectFill"
+    />
   </view>
 </template>
 
 <script setup>
 import { ref, watchEffect } from 'vue'
-import { getImgUrl } from '@/utils/image'
-
-const searchImage = getImgUrl('search')
 
 const props = defineProps({
   modelValue: {
@@ -28,7 +33,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(['update:modelValue', 'change', 'confirm'])
 
 const inputValue = ref('')
 
@@ -39,6 +44,9 @@ watchEffect(() => {
 const handleChange = () => {
   emit('update:modelValue', inputValue.value)
   emit('change', inputValue.value)
+}
+const handleConfirm = () => {
+  emit('confirm', inputValue.value)
 }
 </script>
 
@@ -52,17 +60,20 @@ const handleChange = () => {
     box-sizing: border-box;
     width: 100%;
     height: 106rpx;
+    line-height: 106rpx;
     box-shadow: 0 11px 42px 0 rgba(70, 87, 224, 0.18);
     border-radius: $border-radius;
-    padding: 0 $page-spacing;
+    padding: 0 32rpx;
   }
   .search-image {
     width: 42rpx;
     height: 42rpx;
     position: absolute;
+    z-index: 1;
     top: 50%;
-    right: $page-spacing;
+    right: 32rpx;
     transform: translateY(-50%);
+    object-fit: contain;
   }
   :deep(.search-placeholder) {
     font-size: $font-middle;

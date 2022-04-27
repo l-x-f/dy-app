@@ -20,13 +20,13 @@
       <scroll-view scroll-x>
         <div class="tutor-wrapper">
           <view v-for="item in 10" :key="item" class="tutor-item">
-            <img
+            <image
               src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
               class="tutor-item-image"
+              mode="aspectFill"
             />
             <view class="tutor-item-cover" />
             <view class="tutor-item-title"> 豌豆的妈妈 </view>
-
             <view class="tutor-item-sub-title">
               一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
             </view>

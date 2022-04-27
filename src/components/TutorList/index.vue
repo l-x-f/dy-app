@@ -1,10 +1,15 @@
 <template>
   <div class="tutor-list-component">
-    <view v-for="item in list" :key="item.id" class="tutor-list-wrapper">
+    <view
+      v-for="item in list"
+      :key="item.id"
+      class="tutor-list-item"
+      @click="handleClickItem(item)"
+    >
       <div class="tutor-list-content">
         <div class="tutor-list-body">
           <div class="image-wrapper">
-            <img :src="item.image" class="image" />
+            <image :src="item.image" class="image" mode="aspectFill" />
           </div>
           <div class="title-wrapper">
             <view class="title"> {{ item.title }} </view>
@@ -19,10 +24,14 @@
           </div>
         </div>
 
-        <div v-if="isButton" class="button-wrapper" @click="handleClickRight">
+        <div
+          v-if="isButton"
+          class="button-wrapper"
+          @click.stop="handleClickRight(item)"
+        >
           <div class="button">查看</div>
         </div>
-        <div v-else class="icons-wrapper" @click="handleClickRight">
+        <div v-else class="icons-wrapper" @click.stop="handleClickRight(item)">
           <uni-icons class="icons" type="forward" size="18" color="#999" />
         </div>
       </div>
@@ -56,6 +65,15 @@ const props = defineProps({
     default: () => []
   }
 })
+
+const emit = defineEmits(['clickItem', 'clickRight'])
+
+const handleClickItem = item => {
+  emit('clickItem', item)
+}
+const handleClickRight = item => {
+  emit('clickRight', item)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,8 +87,8 @@ const props = defineProps({
     padding: 6rpx 11rpx;
     font-size: 23rpx !important;
   }
-  .tutor-list-wrapper {
-    margin-top: 31rpx;
+  .tutor-list-item {
+    margin-top: $item-spacing;
     padding: 24rpx 35rpx;
     background-color: #fff;
     border-radius: $border-radius;
@@ -116,6 +134,8 @@ const props = defineProps({
       }
 
       .icons-wrapper {
+        padding: 30rpx;
+        padding-right: 0;
         flex: 0 0 40rpx;
       }
       .button-wrapper {

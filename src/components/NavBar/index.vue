@@ -1,11 +1,15 @@
 <template>
-  <view class="nav-bar-wrapper">
+  <view class="nav-bar-wrapper" :style="navWrapperStyle">
     <div class="nav-bar-body" :style="navStyle">
       <!-- 左侧 -->
       <view v-if="hasLeftWrapper" class="nav-bar-left">
         <view v-if="hasLeft" @click="handleClickLeft">
           <slot name="left">
-            <uni-icons type="back" size="30" />
+            <uni-icons
+              :type="leftIcon || 'back'"
+              size="30"
+              :color="titleStyle.color || '#333'"
+            />
           </slot>
         </view>
       </view>
@@ -15,10 +19,18 @@
         <view
           v-if="hasTitle"
           class="nav-bar-center-title"
-          :style="titleStyle"
           @click="handleClickCenter"
         >
-          {{ title || defaultTitle }}
+          <image
+            v-if="titleImage"
+            class="image"
+            :src="titleImage"
+            mode="aspectFill"
+          />
+
+          <text class="text" :style="titleStyle">
+            {{ title || defaultTitle }}
+          </text>
         </view>
       </view>
 
@@ -26,51 +38,88 @@
       <view class="nav-bar-right">
         <view v-if="hasRight" @click="handleClickRight">
           <slot name="right">
-            <uni-icons type="search" size="24" />
+            <uni-icons
+              :type="rightIcon || 'search'"
+              size="30"
+              :color="titleStyle.color || '#333'"
+            />
           </slot>
         </view>
       </view>
     </div>
-    <div class="nav-placeholder" />
+    <div v-if="hasPlaceholder" class="nav-placeholder" />
   </view>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getNavigationBarTitle } from '@/utils/uniUtils'
+// import { isWep } from '@/utils'
 
 const props = defineProps({
+  // 中间标题 默认是 pages.json中 pages->style->navigationBarTitleText 字段
   title: {
     type: String,
     default: ''
   },
-  titleStyle: {
-    type: Object,
-    default: () => ({})
-  },
-  navStyle: {
-    type: Object,
-    default: () => ({})
-  },
-  hasLeft: {
-    type: Boolean,
-    default: false
-  },
-  hasLeftWrapper: {
-    type: Boolean,
-    default: true
-  },
+  // 是否显示标题
   hasTitle: {
     type: Boolean,
     default: true
   },
+  // 中间标题图片
+  titleImage: {
+    type: String,
+    default: ''
+  },
+  // 标题样式
+  titleStyle: {
+    type: Object,
+    default: () => ({})
+  },
+  // 导航样式
+  navStyle: {
+    type: Object,
+    default: () => ({})
+  },
+  // 导航容器样式
+  navWrapperStyle: {
+    type: Object,
+    default: () => ({})
+  },
+  // 左侧是否显示
+  hasLeft: {
+    type: Boolean,
+    default: false
+  },
+  // 左侧容器是否显示
+  hasLeftWrapper: {
+    type: Boolean,
+    default: true
+  },
+  // 是否显示右侧
   hasRight: {
     type: Boolean,
     default: false
+  },
+  // 是否显示下面的站位栏
+  hasPlaceholder: {
+    type: Boolean,
+    default: true
+  },
+  // 左侧图标
+  leftIcon: {
+    type: String,
+    default: ''
+  },
+  // 右侧图标
+  rightIcon: {
+    type: String,
+    default: ''
   }
 })
 const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight'])
 
-const defaultTitle = ref()
+const defaultTitle = ref('')
 
 onMounted(() => {
   if (!props.title) {
@@ -80,6 +129,7 @@ onMounted(() => {
 })
 
 const handleClickLeft = () => {
+  uni.navigateBack({ delta: 1 })
   emit('clickLeft')
 }
 const handleClickCenter = () => {
@@ -100,7 +150,6 @@ const handleClickRight = () => {
   justify-content: center;
   box-sizing: border-box;
   background-color: #fff;
-
   .nav-bar-body {
     position: fixed;
     top: 0;
@@ -127,8 +176,19 @@ const handleClickRight = () => {
     flex: 1;
     text-align: center;
     .nav-bar-center-title {
-      font-size: $font-large;
-      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .image {
+        width: 48rpx;
+        height: 48rpx;
+        border-radius: 50%;
+        margin-right: 10rpx;
+      }
+      .text {
+        font-size: $font-large;
+        color: #333;
+      }
     }
   }
   .nav-bar-right {

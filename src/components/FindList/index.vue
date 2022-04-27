@@ -11,9 +11,10 @@
 
         <view class="find-item-body">
           <view class="find-item-image-wrapper">
-            <img
+            <image
               src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
               class="find-item-image"
+              mode="aspectFill"
             />
             <text v-if="hasImageTag" class="find-item-image-text"
               >{{ item % 2 === 0 ? '我的导师' : '我的关注' }}
@@ -49,17 +50,20 @@
 
 <script setup>
 const props = defineProps({
-  hasImageTag: {
-    type: Boolean,
-    default: false
+  // 数据
+  list: {
+    type: Array,
+    default: () => []
   },
+  // 是否有右上角分类标签
   hasClassification: {
     type: Boolean,
     default: false
   },
-  list: {
-    type: Array,
-    default: () => []
+  // 头像下是否有标签
+  hasImageTag: {
+    type: Boolean,
+    default: false
   }
 })
 console.log(props)
@@ -76,7 +80,7 @@ console.log(props)
     display: flex;
     flex-direction: column;
     padding: 45rpx 29rpx;
-    margin-top: 42rpx;
+    margin-top: $item-spacing;
     .classification {
       position: absolute;
       top: 0;

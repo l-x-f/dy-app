@@ -19,7 +19,7 @@
             v-if="hasErrorList[index]"
             width="150"
             class="error-image"
-            mode="aspectFit"
+            mode="aspectFill"
             :src="defaultImage"
           />
           <image
@@ -37,27 +37,30 @@
 
 <script setup>
 import { reactive, watch, toRefs } from 'vue'
-import { getImgUrl } from '@/utils/image'
-
-const defaultImage = getImgUrl('defaultImage')
+import defaultImage from '@/static/image/defaultImage.png'
 
 const props = defineProps({
+  // 列表数据
   list: {
     type: Array,
     default: () => []
   },
+  // 图片key
   imageKey: {
     type: String,
     default: 'img'
   },
+  // 是否自动播放
   autoplay: {
     type: Boolean,
     default: true
   },
+  // 自动播放时间
   interval: {
     type: Number,
     default: 5000
   },
+  // 滑动时间
   duration: {
     type: Number,
     default: 500

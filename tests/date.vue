@@ -3,7 +3,7 @@
     <NavBar />
     <view class="login-page">
       <view class="logo-container">
-        <img class="logo" :src="logo" alt="" />
+         <image class="logo" :src="logo" alt=""   mode="aspectFill"/>
         <text class="logo-title">DY-App</text>
       </view>
 
@@ -41,7 +41,7 @@
         open-type="getUserProfile"
         @click="toLogin"
       >
-        <img class="wechat-img" :src="wechat" alt="" />
+         <image class="wechat-img" :src="wechat" alt=""    mode="aspectFill"/>
         <view class="wechat-text">微信登录</view>
       </button>
       {{ monthData }}

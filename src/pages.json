@@ -37,6 +37,18 @@
       }
     },
     {
+      "path": "pages/tutor/details",
+      "style": {
+        "navigationBarTitleText": "导师详情",
+        "enablePullDownRefresh": true,
+        "app-plus": {
+          "pullToRefresh": {
+            "color": "#007aff"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/find/index",
       "style": {
         "navigationBarTitleText": "发现",
