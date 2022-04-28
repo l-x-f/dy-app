@@ -109,14 +109,11 @@ console.log(props)
         }
       }
     }
-
     .find-item-body {
       display: flex;
-
       .find-item-image-wrapper {
         display: flex;
         flex-direction: column;
-
         .find-item-image {
           width: 152rpx;
           height: 152rpx;
@@ -134,7 +131,6 @@ console.log(props)
           color: $font-color-base;
         }
       }
-
       .find-item-right {
         flex: 1;
         display: flex;
@@ -151,7 +147,6 @@ console.log(props)
         }
         .find-item-tag {
           margin-top: 23rpx;
-
           .find-item-tag-item {
             padding: 9rpx 10rpx;
             display: inline-flex;
@@ -181,7 +176,6 @@ console.log(props)
       margin-top: 40rpx;
       display: flex;
       justify-content: space-between;
-
       .label {
         font-size: $font-sm;
         font-weight: 400;

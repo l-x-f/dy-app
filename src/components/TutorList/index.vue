@@ -132,7 +132,6 @@ const handleClickRight = item => {
           }
         }
       }
-
       .icons-wrapper {
         padding: 30rpx;
         padding-right: 0;

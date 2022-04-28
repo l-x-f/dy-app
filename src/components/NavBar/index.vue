@@ -7,7 +7,7 @@
           <slot name="left">
             <uni-icons
               :type="leftIcon || 'back'"
-              size="30"
+              size="24"
               :color="titleStyle.color || '#333'"
             />
           </slot>
@@ -162,7 +162,7 @@ const handleClickRight = () => {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 999999;
+    z-index: 999;
   }
 
   .nav-placeholder {

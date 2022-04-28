@@ -23,10 +23,12 @@
 import { ref, watchEffect } from 'vue'
 
 const props = defineProps({
+  // input值
   modelValue: {
     type: String,
     default: ''
   },
+  // 占位符
   placeholder: {
     type: String,
     default: '请输入创作者口令'
@@ -45,6 +47,7 @@ const handleChange = () => {
   emit('update:modelValue', inputValue.value)
   emit('change', inputValue.value)
 }
+
 const handleConfirm = () => {
   emit('confirm', inputValue.value)
 }

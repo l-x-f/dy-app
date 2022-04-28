@@ -99,7 +99,6 @@ const { config, hasErrorList } = toRefs(state)
   .swiper {
     width: 100%;
     height: 100%;
-
     .swiper-item-wrapper {
       border-radius: $border-radius;
       overflow: hidden;

@@ -17,7 +17,6 @@
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
-
 import NavBar from '@/components/NavBar'
 import FindList from '@/components/FindList'
 
@@ -51,7 +50,6 @@ const bannerList = data.map(item => ({ img: item }))
 .find-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
-
   .swiper-wrapper {
     margin-top: 42rpx;
   }

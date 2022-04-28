@@ -62,7 +62,6 @@ const refresh = () => {
 @import '@/styles/variables.scss';
 .components-section {
   margin-top: 70rpx;
-
   .section-body {
     display: flex;
     flex-wrap: nowrap;
@@ -71,7 +70,6 @@ const refresh = () => {
     height: 100%;
     position: relative;
     padding-bottom: 30rpx;
-
     .title-wrapper {
       display: flex;
       flex-direction: column;

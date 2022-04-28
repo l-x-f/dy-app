@@ -1,6 +1,8 @@
 @import './variables.scss';
 @import '../uni.scss';
 
+/* stylelint-disable  selector-type-no-unknown */
+
 .base-style {
   font-size: $uni-font-size-base;
   color: $font-color-base;
@@ -12,6 +14,34 @@ page {
   background-color: $page-bg-color;
   height: 100%;
   box-sizing: border-box;
+
+  uni-button[type='primary'] {
+    height: 92rpx;
+    border-radius: 13rpx;
+    font-size: 35rpx;
+    font-weight: 500;
+    color: #fff;
+    background-color: #485bf7;
+    margin: 0;
+  }
+  uni-button[type='default'] {
+    height: 92rpx;
+    border-radius: 13rpx;
+    font-size: 35rpx;
+    font-weight: 500;
+    color: $font-color-base;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    margin: 0;
+    &::after {
+      display: none;
+    }
+  }
+  .uni-popup {
+    uni-view[name='mask'] {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
 
   @extend .base-style;
 }

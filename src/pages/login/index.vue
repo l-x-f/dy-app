@@ -137,7 +137,6 @@ const { phone, checked } = toRefs(state)
   box-sizing: border-box;
   padding: 0 $page-spacing;
   background-color: #fff;
-
   .title-container {
     display: flex;
     flex-direction: column;

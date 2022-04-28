@@ -118,7 +118,6 @@ export default {
   left: 0;
   top: 0;
 }
-
 .zmm-watermark-content {
   left: -10%;
   position: absolute;
@@ -128,7 +127,6 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .zmm-watermark-text {
   text-align: center;
   transform: rotate(-21deg);
@@ -141,7 +139,6 @@ export default {
   word-break: break-all;
   line-height: 1;
 }
-
 .zmm-watermark-getwh {
   position: absolute;
   left: 0;

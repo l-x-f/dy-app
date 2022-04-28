@@ -40,14 +40,17 @@
 <script setup>
 import { ref, watch, nextTick, reactive } from 'vue'
 const props = defineProps({
+  // 弹窗显示
   visible: {
     type: Boolean,
     default: false
   },
+  // 月历组件值
   modelValue: {
     type: [String, Number, Date],
     default: ''
   },
+  // 禁用的日期
   disabledDate: {
     type: Function,
     default: () => false
@@ -178,7 +181,6 @@ watch(
     top: calc(#{$page-spacing} * 0.5);
     right: $page-spacing;
   }
-
   .popup-body {
     .popup-body-content {
       display: flex;
@@ -199,7 +201,6 @@ watch(
       }
     }
   }
-
   .popup-body-month-wrapper {
     padding-top: 20px;
     display: flex;
@@ -217,7 +218,6 @@ watch(
       background-color: #ccc;
     }
   }
-
   .popup-header {
     display: flex;
     justify-content: space-between;

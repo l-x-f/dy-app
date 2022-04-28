@@ -133,7 +133,6 @@ $error-color: red; /* 错误颜色  */
     width: 100%;
     @extend .flex-row;
     justify-content: start;
-
     .real-block {
       width: 16%;
       height: 117rpx;
@@ -171,7 +170,6 @@ $error-color: red; /* 错误颜色  */
     }
   }
 }
-
 .block-error {
   border-color: $error-color !important;
   animation: error 0.5s ease;

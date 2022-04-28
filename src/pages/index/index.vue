@@ -8,18 +8,27 @@
         textAlign: 'left'
       }"
     />
+
+    <!-- l轮播图 -->
     <view class="swiper-wrapper">
       <AppSwiper :list="bannerList" />
     </view>
 
+    <!-- 搜索栏 -->
     <view class="search-wrapper">
       <Search />
     </view>
 
+    <!-- 导师专栏 -->
     <AppSection title="导师专栏" sub-title="为您推荐近期高人气导师">
       <scroll-view scroll-x>
         <div class="tutor-wrapper">
-          <view v-for="item in 10" :key="item" class="tutor-item">
+          <view
+            v-for="item in 10"
+            :key="item"
+            class="tutor-item"
+            @click="handleToDetails(item)"
+          >
             <image
               src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
               class="tutor-item-image"
@@ -35,20 +44,24 @@
       </scroll-view>
     </AppSection>
 
+    <!-- 最新发现 -->
     <AppSection title="最新发现" sub-title="发现最新热门话题" has-right-refresh>
       <FindList />
     </AppSection>
+
+    <Dialog v-model="visible"> 100 </Dialog>
   </div>
 </template>
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
 import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import FindList from '@/components/FindList'
+import Dialog from '@/components/Dialog'
 
 const state = reactive({
   result: ''
@@ -71,6 +84,10 @@ onPullDownRefresh(() => {
   uni.stopPullDownRefresh()
 })
 
+const handleToDetails = item => {
+  uni.navigateTo({ url: '/pages/tutor/details?id=' + item })
+}
+const visible = ref(true)
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
@@ -80,15 +97,12 @@ const bannerList = data.map(item => ({ img: item }))
 .index-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
-
   .swiper-wrapper {
     margin-top: 42rpx;
   }
-
   .search-wrapper {
     margin-top: 42rpx;
   }
-
   .tutor-wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -107,7 +121,6 @@ const bannerList = data.map(item => ({ img: item }))
         border-radius: $border-radius;
         object-fit: cover;
       }
-
       .tutor-item-cover {
         position: absolute;
         bottom: 0;
@@ -118,7 +131,6 @@ const bannerList = data.map(item => ({ img: item }))
         opacity: 0.6;
         border-radius: $border-radius;
       }
-
       .tutor-item-title {
         box-sizing: border-box;
         width: 100%;

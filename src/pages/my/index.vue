@@ -216,7 +216,6 @@ const list = [
       }
     }
   }
-
   .banner {
     position: relative;
     margin-top: 31rpx;
@@ -258,7 +257,6 @@ const list = [
       padding: 10rpx 27rpx;
     }
   }
-
   .section {
     margin-top: 31rpx;
     background-color: #fff;
@@ -298,7 +296,6 @@ const list = [
       }
     }
   }
-
   .function-wrapper {
     margin-top: 56rpx;
     padding: 0 41rpx;
@@ -318,7 +315,6 @@ const list = [
         margin-bottom: 41rpx;
         display: flex;
         justify-content: center;
-
         .grid-item-box {
           display: flex;
           flex-direction: column;

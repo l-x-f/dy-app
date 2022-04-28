@@ -7,7 +7,7 @@
     </view>
 
     <!-- 是导师才有 -->
-    <TutorList :list="data.slice(0, 1)" @clickRight="handleToDetails" />
+    <TutorList :list="data.slice(0, 1)" @clickItem="handleToDetails" />
 
     <AppSection
       title="你可能感兴趣"

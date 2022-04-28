@@ -9,6 +9,7 @@ import { watch, reactive } from 'vue'
 import { uniRequest } from '@/utils/uniUtils'
 
 const props = defineProps({
+  // 富文本内容，支持链接
   html: {
     type: String,
     default: ''
