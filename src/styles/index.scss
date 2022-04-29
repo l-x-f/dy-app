@@ -15,7 +15,7 @@ page {
   height: 100%;
   box-sizing: border-box;
 
-  uni-button[type='primary'] {
+  button[type='primary'] {
     height: 92rpx;
     border-radius: 13rpx;
     font-size: 35rpx;
@@ -24,7 +24,7 @@ page {
     background-color: #485bf7;
     margin: 0;
   }
-  uni-button[type='default'] {
+  button[type='default'] {
     height: 92rpx;
     border-radius: 13rpx;
     font-size: 35rpx;
@@ -35,11 +35,6 @@ page {
     margin: 0;
     &::after {
       display: none;
-    }
-  }
-  .uni-popup {
-    uni-view[name='mask'] {
-      background-color: rgba(0, 0, 0, 0.5) !important;
     }
   }
 

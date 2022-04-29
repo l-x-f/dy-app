@@ -124,6 +124,11 @@ watch(
   padding: 42rpx;
   display: flex;
   flex-direction: column;
+  .uni-popup {
+    uni-view[name='mask'] {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
   .popup-body {
     flex: 1;
     .popup-body-title {

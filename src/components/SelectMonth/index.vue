@@ -7,30 +7,37 @@
   >
     <view class="popup-wrapper">
       <view class="popup-header">
-        <view class="popup-header-item" @click="close">取消</view>
-        <view class="popup-header-item" @click="handleConfirm">确定</view>
+        <view class="popup-header-cancel" @click="close">取消</view>
+        <view class="popup-header-title">{{ title }}</view>
+        <view class="popup-header-confirm" @click="handleConfirm">确定</view>
       </view>
+
       <view class="popup-body">
-        <view class="popup-body-content">
-          <view class="popup-body-icon-left" @click="minus"> &lt; </view>
+        <view class="popup-body-year-wrapper">
+          <view class="popup-body-icon-left" @click="minus">
+            <uni-icons type="left" size="20" color="#666" />
+          </view>
           <view class="popup-body-year">
             {{ state.year }}
           </view>
-          <view class="popup-body-icon-right" @click="add">&gt;</view>
+          <view class="popup-body-icon-right" @click="add">
+            <uni-icons type="right" size="20" color="#666" />
+          </view>
         </view>
 
         <view class="popup-body-month-wrapper">
           <view
             v-for="item in MonthCount"
             :key="item"
-            class="popup-body-month-item"
             :class="{
+              'popup-body-month-item': true,
               'popup-body-month-item-active': state.month === item,
               'popup-body-month-item-disabled': disabledDate(state.year, item)
             }"
             @click="handleClickItem(item)"
           >
-            {{ item }}月
+            {{ item }}
+            <text>月</text>
           </view>
         </view>
       </view>
@@ -38,7 +45,7 @@
   </uni-popup>
 </template>
 <script setup>
-import { ref, watch, nextTick, reactive } from 'vue'
+import { ref, watch, reactive, onMounted } from 'vue'
 const props = defineProps({
   // 弹窗显示
   visible: {
@@ -80,9 +87,7 @@ const initData = () => {
  * 打开弹窗
  */
 const open = () => {
-  nextTick(() => {
-    popup.value.open()
-  })
+  popup.value?.open()
 }
 
 /**
@@ -132,16 +137,18 @@ const handleConfirm = () => {
   emit('update:visible', false)
 }
 
-// 监听 visible 显示弹窗
-watch(
-  () => props.visible,
-  val => {
-    val ? open() : close()
-  },
-  {
-    immediate: true
-  }
-)
+onMounted(() => {
+  // 监听 visible 显示弹窗
+  watch(
+    () => props.visible,
+    val => {
+      val ? open() : close()
+    },
+    {
+      immediate: true
+    }
+  )
+})
 
 // 监听 modelValue 初始化值
 watch(
@@ -171,28 +178,54 @@ watch(
 
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
+.uni-popup {
+  :deep(uni-view[name='mask']) {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+  // #ifdef H5
+  :deep(uni-view[name='content']) {
+    bottom: 50px !important;
+  }
+  // #endif
+}
 .popup-wrapper {
   background-color: #fff;
-  padding: $page-spacing;
+  padding: 32rpx 0;
   border-radius: 10px 10px 0 0;
   position: relative;
-  .popup-close {
-    position: absolute;
-    top: calc(#{$page-spacing} * 0.5);
-    right: $page-spacing;
+
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45rpx;
+    .popup-header-cancel {
+      font-size: 33rpx;
+      color: $font-color-green;
+    }
+    .popup-header-title {
+      font-size: 33rpx;
+      font-weight: 500;
+      color: $font-color-base;
+    }
+    .popup-header-confirm {
+      font-size: 33rpx;
+      color: $primary-color;
+    }
   }
   .popup-body {
-    .popup-body-content {
+    .popup-body-year-wrapper {
+      padding: 40rpx 45rpx 0;
       display: flex;
       justify-content: space-around;
       position: relative;
-      padding-top: 20px;
 
       .popup-body-icon-left {
         position: absolute;
+        padding: 0 45rpx;
         left: 0;
       }
       .popup-body-icon-right {
+        padding: 0 45rpx;
         position: absolute;
         right: 0;
       }
@@ -202,27 +235,29 @@ watch(
     }
   }
   .popup-body-month-wrapper {
-    padding-top: 20px;
+    padding-top: 40rpx;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
     .popup-body-month-item {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex: 0 0 25%;
-      box-sizing: border-box;
-      padding: 10px;
+      width: 25%;
+      height: 135rpx;
+      border-radius: 10px;
+      font-size: 29rpx;
+      color: $font-color-sub;
     }
+
     .popup-body-month-item-active {
-      background-color: $primary-color;
+      background-color: #f7f9fd;
+      color: $primary-color;
     }
     .popup-body-month-item-disabled {
-      background-color: #ccc;
-    }
-  }
-  .popup-header {
-    display: flex;
-    justify-content: space-between;
-    .popup-header-item {
-      font-size: 14px;
+      background-color: $font-color-green;
     }
   }
 }

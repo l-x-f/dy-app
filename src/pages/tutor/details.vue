@@ -407,6 +407,9 @@ const handleBuy = () => {
     left: 0;
     .notice-bar {
       margin: 0;
+      :deep(.uni-noticebar) {
+        margin: 0;
+      }
     }
     .footer-bar-content {
       background-color: #fff;

@@ -47,7 +47,7 @@ module.exports = {
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep', 'page']
+        ignorePseudoElements: ['v-deep', 'page', 'uni-view']
       }
     ],
     'function-calc-no-unspaced-operator': null,
@@ -75,7 +75,7 @@ module.exports = {
     'selector-type-no-unknown': [
       true,
       {
-        ignoreTypes: ['page']
+        ignoreTypes: ['page', 'uni-view']
       }
     ],
     'value-keyword-case': [
@@ -83,6 +83,7 @@ module.exports = {
       {
         ignoreKeywords: ['optimizeLegibility']
       }
-    ]
+    ],
+    'scss/double-slash-comment-empty-line-before': null
   }
 }

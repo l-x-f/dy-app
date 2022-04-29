@@ -48,23 +48,22 @@
     <AppSection title="最新发现" sub-title="发现最新热门话题" has-right-refresh>
       <FindList />
     </AppSection>
-
-    <Dialog v-model="visible"> 100 </Dialog>
   </div>
 </template>
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
 import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import FindList from '@/components/FindList'
-import Dialog from '@/components/Dialog'
 
 const state = reactive({
-  result: ''
+  result: '',
+  month: '',
+  visible: true
 })
 console.log(state)
 
@@ -87,7 +86,6 @@ onPullDownRefresh(() => {
 const handleToDetails = item => {
   uni.navigateTo({ url: '/pages/tutor/details?id=' + item })
 }
-const visible = ref(true)
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
