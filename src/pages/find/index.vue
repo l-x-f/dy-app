@@ -51,7 +51,7 @@ const bannerList = data.map(item => ({ img: item }))
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
   .swiper-wrapper {
-    margin-top: 42rpx;
+    margin-top: $item-spacing;
   }
 }
 </style>

@@ -57,6 +57,7 @@
     "@pansy/watermark": "^2.0.10",
     "accounting": "^0.4.1",
     "dayjs": "^1.8.33",
+    "file-saver": "^2.0.5",
     "flyio": "^0.6.2",
     "numeral": "^2.0.6",
     "pinia": "^2.0.13",

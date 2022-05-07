@@ -1,6 +1,7 @@
 /* eslint-disable no-async-promise-executor */
 import { scope } from './state'
 import permision from './permission'
+import download from './download'
 
 // 请求
 export const uniRequest = options => {
@@ -184,8 +185,9 @@ export const updateManager = () => {
  * @param filePath
  * @returns {Promise<any>}
  */
-export function wechatSaveImage(filePath) {
+export function saveImage(filePath) {
   return new Promise((resolve, reject) => {
+    // #ifndef H5
     uni.saveImageToPhotosAlbum({
       filePath, //
       success: res => {
@@ -195,6 +197,17 @@ export function wechatSaveImage(filePath) {
         reject(err)
       }
     })
+    // #endif
+
+    // #ifdef H5
+    download(filePath, 'post.png')
+      .then(res => {
+        resolve(res)
+      })
+      .catch(err => {
+        reject(err)
+      })
+    // #endif
   })
 }
 
@@ -317,17 +330,18 @@ function getCurrPage() {
   } catch (e) {}
   return undefined
 }
+
 /**
  * 获取当前页面标题
  * @returns
  */
 export function getNavigationBarTitle() {
   const page = getCurrPage()
-
-  // h5
+  // #ifdef H5
   if (page?.$page?.meta?.navigationBar) {
     return page.$page.meta.navigationBar.titleText
   }
+  // #endif
 
   // app-plus
   try {

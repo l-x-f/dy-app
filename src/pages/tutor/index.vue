@@ -58,6 +58,7 @@ onPullDownRefresh(() => {
   uni.stopPullDownRefresh()
 })
 
+// 去导师详情
 const handleToDetails = item => {
   uni.navigateTo({ url: '/pages/tutor/details?id=' + item.id })
 }
@@ -70,7 +71,7 @@ const handleToDetails = item => {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
   .search-wrapper {
-    margin-top: 33rpx;
+    margin-top: $item-padding-spacing;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 /* 边距间距 */
-$page-spacing: 15px; // 页面左右间距
-$item-spacing: 10px; // 页面每个区块之间的间距
+$page-spacing: 17px; // 页面左右间距
+$item-spacing: 14px; // 页面每个区块之间的外间距
+$item-padding-spacing: 16px; // 页面每个区块之间的内间距
 $page-bottom: 100px; // 页面底部留白
 
 /* 页面颜色 */
@@ -29,6 +30,7 @@ $danger-color: #fc2b55;
 
 /* 边框颜色 */
 $border-color: #dcdcdc;
+$border-color-sub: #555;
 $border-radius: 17px;
 
 /* 文字尺寸 */

@@ -49,6 +49,29 @@
       }
     },
     {
+      "path": "pages/tutor/content-details",
+      "style": {
+        "navigationBarTitleText": "内容详情",
+        "enablePullDownRefresh": true,
+        "app-plus": {
+          "pullToRefresh": {
+            "color": "#007aff"
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/tutor/invite",
+      "style": {
+        "navigationBarTitleText": "邀请",
+        "app-plus": {
+          "pullToRefresh": {
+            "color": "#007aff"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/find/index",
       "style": {
         "navigationBarTitleText": "发现",

@@ -89,9 +89,11 @@ const handleClickRight = item => {
   }
   .tutor-list-item {
     margin-top: $item-spacing;
-    padding: 24rpx 35rpx;
     background-color: #fff;
     border-radius: $border-radius;
+
+    @include item-padding;
+
     .tutor-list-content {
       display: flex;
       justify-content: space-between;
@@ -146,7 +148,7 @@ const handleClickRight = item => {
           height: 63rpx;
           line-height: 63rpx;
           background: #fff;
-          border: 1px solid #555;
+          border: 1px solid $border-color-sub;
           border-radius: 6px;
         }
       }

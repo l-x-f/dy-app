@@ -12,8 +12,8 @@
 
 page {
   background-color: $page-bg-color;
-  height: 100%;
   box-sizing: border-box;
+  min-height: 100vh;
 
   button[type='primary'] {
     height: 92rpx;
@@ -21,7 +21,7 @@ page {
     font-size: 35rpx;
     font-weight: 500;
     color: #fff;
-    background-color: #485bf7;
+    background-color: $primary-color;
     margin: 0;
   }
   button[type='default'] {

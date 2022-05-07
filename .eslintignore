@@ -6,3 +6,4 @@ dist
 tests/ 
 index.html
 html-parser.ts
+src/components/LimePainter

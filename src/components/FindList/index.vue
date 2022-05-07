@@ -79,8 +79,10 @@ console.log(props)
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
-    padding: 45rpx 29rpx;
     margin-top: $item-spacing;
+
+    @include item-padding;
+
     .classification {
       position: absolute;
       top: 0;

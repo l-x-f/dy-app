@@ -12,8 +12,7 @@ module.exports = {
       'declarations',
       'custom-properties',
       'dollar-variables',
-      'rules',
-      'at-rules'
+      'rules'
     ],
     'order/properties-order': [
       'position',

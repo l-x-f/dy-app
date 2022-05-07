@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @mixin clearfix {
   &::after {
     clear: both;
@@ -82,4 +84,8 @@
 @mixin content-width {
   max-width: $layout-max-width;
   width: $layout-min-width;
+}
+
+@mixin item-padding {
+  padding: $item-padding-spacing;
 }

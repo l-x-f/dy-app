@@ -4,13 +4,12 @@
       has-left
       :nav-wrapper-style="navWrapperStyle"
       :title-style="navTitleStyle"
-      :nav-style="{
-        height: '55px'
-      }"
+      :nav-style="{ height: '55px' }"
       has-right
       :has-placeholder="false"
-      right-icon="more"
+      right-icon="more-filled"
       title-image="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+      @clickRight="handleShare"
     />
 
     <!-- 导航背景 -->
@@ -57,13 +56,18 @@
 
       <div class="user-footer">
         <div class="btn">编辑资料</div>
-        <div class="btn">推广口令：123456</div>
+        <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
       </div>
     </cover-view>
 
     <!-- 列表 -->
     <div class="section">
-      <div v-for="item in 10" :key="item" class="section-item">
+      <div
+        v-for="item in 10"
+        :key="item"
+        class="section-item"
+        @click="handleToContentDetails(item)"
+      >
         <div class="section-item-title">202{{ item }}</div>
 
         <div class="content-item">
@@ -167,6 +171,20 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
+
+// 复制到剪切板
+const handleCopy = data => {
+  uni.setClipboardData({
+    data,
+    success: () => {
+      uni.showToast({
+        title: '复制成功',
+        icon: 'none'
+      })
+    }
+  })
+}
+// 购买
 const handleBuy = () => {
   uni.showToast({
     title: '购买成功',
@@ -176,6 +194,15 @@ const handleBuy = () => {
       uni.navigateBack({ delta: 1 })
     }
   })
+}
+
+// 去邀请分享页面
+const handleShare = () => {
+  uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
+}
+// 去内容详情页面
+const handleToContentDetails = () => {
+  uni.navigateTo({ url: `/pages/tutor/content-details?id=${1}` })
 }
 </script>
 

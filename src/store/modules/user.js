@@ -22,7 +22,10 @@ const useUserStore = defineStore('user', {
         // const { data } = await login(loginForm)
         setToken(data.access_token)
         setUserInfo(data.userInfo)
-        this.$patch({ userInfo: data.userInfo, accessToken: data.access_token })
+        this.$patch({
+          userInfo: data.userInfo,
+          accessToken: data.access_token
+        })
         return { ...data }
       } catch (error) {
         console.log(error)
@@ -32,14 +35,9 @@ const useUserStore = defineStore('user', {
     // 退出登陆
     async logout() {
       try {
-        this.$patch({
-          userInfo: {},
-          accessToken: ''
-        })
+        this.$patch({ userInfo: {}, accessToken: '' })
         clearStorage()
-        uni.reLaunch({
-          url: '/pages/login/index'
-        })
+        uni.reLaunch({ url: '/pages/login/index' })
         return
       } catch (error) {
         throw new Error(error)

@@ -53,19 +53,11 @@
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
-import { reactive } from 'vue'
 import AppSwiper from '@/components/AppSwiper'
 import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import FindList from '@/components/FindList'
-
-const state = reactive({
-  result: '',
-  month: '',
-  visible: true
-})
-console.log(state)
 
 const data = [
   'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
@@ -83,6 +75,7 @@ onPullDownRefresh(() => {
   uni.stopPullDownRefresh()
 })
 
+// 去导师详情页面
 const handleToDetails = item => {
   uni.navigateTo({ url: '/pages/tutor/details?id=' + item })
 }
@@ -96,10 +89,10 @@ const bannerList = data.map(item => ({ img: item }))
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
   .swiper-wrapper {
-    margin-top: 42rpx;
+    margin-top: $item-spacing;
   }
   .search-wrapper {
-    margin-top: 42rpx;
+    margin-top: $item-spacing;
   }
   .tutor-wrapper {
     display: flex;
@@ -109,7 +102,7 @@ const bannerList = data.map(item => ({ img: item }))
       flex: 0 0 344rpx;
       width: 344rpx;
       height: 479rpx;
-      padding-right: 10px;
+      margin-right: 10px;
       box-sizing: border-box;
       .tutor-item-image {
         width: 100%;
