@@ -1,5 +1,5 @@
 /* 边距间距 */
-$page-spacing: 17px; // 页面左右间距
+$page-spacing: 15px; // 页面左右间距
 $item-spacing: 14px; // 页面每个区块之间的外间距
 $item-padding-spacing: 16px; // 页面每个区块之间的内间距
 $page-bottom: 100px; // 页面底部留白
@@ -16,6 +16,7 @@ $navigation-bar-background-color: #0163d1;
 $font-color-base: #333; // 主文字颜色
 $font-color-sub: #666; // 次要文字颜色
 $font-color-title: #111; // 标题文字颜色
+$font-color-title-large: #181818; // 大标题文字颜色
 $font-color-green: #999;
 $font-color-red: #fd6361;
 $font-color-tip: #b7b4b4;
@@ -23,29 +24,29 @@ $font-color-tip: #b7b4b4;
 /** 输入颜色 */
 $input-color: #181717;
 
-/* 按钮颜色 */
+/* 主题颜色 */
 $primary-color: #485bf7;
+$disable-color: #a8b0f6;
 $warn-color: #f57b03;
 $danger-color: #fc2b55;
 
 /* 边框颜色 */
 $border-color: #dcdcdc;
-$border-color-sub: #555;
-$border-radius: 17px;
+$border-radius: 16rpx; // 边框圆角
+$divide-line-color: #e8e8e8; // 分割线颜色
 
 /* 文字尺寸 */
-$font-sub-sm: 21rpx; // 小字号
-$font-sm: 25rpx; // 小字号
-$font-base: 26rpx; // 主字号
-$font-base-lg: 27rpx; // 主字号
+$font-small: 24rpx; // 小字号
+$font-base: 28rpx; // 主字号
 $font-middle: 30rpx; // 中字号
-$font-middle-lg: 31rpx; // 中字号
-$font-large: 38rpx; // 大字号
-$font-large-title: 42rpx; // 大标题字号
+$font-large: 34rpx; // 大字号
+$font-large-title: 44rpx; // 大标题字号
 $font-max: 54rpx; // 最大字号
 
-// 导航栏高度
-$nav-height: 44px;
+// 导航栏
+$nav-height: 44px; // 导航栏高度
+$nav-font-size: 38rpx; // 导航栏字号
+$nav-font-color: #2f2f2f; // 导航栏字体颜色
 
 // 页面最小高度
 $page-height: calc(100vh- #{$nav-height});

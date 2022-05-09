@@ -11,17 +11,21 @@
     <view class="phone-login-container">
       <input
         v-model="phone"
-        class="phone-item"
+        :class="{
+          'phone-item': true,
+          'phone-item-disabled': !phone
+        }"
         :input-border="false"
         type="number"
-        placeholder-style="color: #9AA3F0;"
+        placeholder-style="color: #999;"
         placeholder="请输入手机号"
       />
       <button
-        class="submit-button"
         :class="{
+          'submit-button': true,
           'submit-button-disabled': isDisabled
         }"
+        type="primary"
         :disabled="isDisabled"
         @click="submitForm"
       >
@@ -54,7 +58,10 @@
           :localdata="checkList"
           selected-color="#485bf7"
         />
-        <view class="text"> 登录即表示同意<text>《用户协议》</text></view>
+        <view class="text">
+          登录即表示同意
+          <text class="agreement" @click="handleToAgreement">《用户协议》</text>
+        </view>
       </view>
     </div>
   </div>
@@ -124,6 +131,10 @@ watchEffect(() => {
   // hasLogin.value && toHome()
   console.log(hasLogin.value && toHome)
 })
+// 去用户协议
+const handleToAgreement = () => {
+  console.log('handleToAgreement')
+}
 // 解构
 const { phone, checked } = toRefs(state)
 </script>
@@ -142,11 +153,17 @@ const { phone, checked } = toRefs(state)
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 214rpx;
+    margin-top: 200rpx;
     .title {
-      font-size: $font-max;
+      font-size: $font-large-title;
       font-weight: 500;
       color: $font-color-title;
+    }
+
+    .sub-title {
+      margin-top: 20rpx;
+      font-size: $font-base;
+      color: $font-color-sub;
     }
     .logo {
       width: 80px;
@@ -156,57 +173,52 @@ const { phone, checked } = toRefs(state)
   .phone-login-container {
     margin-top: 70rpx;
     .phone-item {
-      height: 117rpx;
+      height: 88rpx;
       background: #f9fafe;
-      border: 2px solid $border-color;
-      border-radius: 17px;
-      text-align: center;
-      font-size: 44rpx;
+      border: 2px solid $primary-color;
+      border-radius: $border-radius;
+      text-align: left;
+      padding: 0 32rpx;
+      font-size: $font-middle;
       color: $font-color-base;
     }
+    .phone-item-disabled {
+      border: 2px solid $disable-color;
+    }
     .submit-button {
-      height: 117rpx;
-      line-height: 117rpx;
-      background-color: $primary-color;
-      border-radius: 17px;
+      height: 88rpx;
       margin-top: 32rpx;
-      font-size: 35rpx;
-      font-weight: 400;
+      font-size: $font-large;
       color: #fff;
     }
     .submit-button-disabled {
-      background-color: $border-color;
+      background-color: $disable-color;
     }
   }
   .other-login {
-    position: absolute;
-    bottom: 64rpx;
-    left: 0;
     width: 100%;
+    margin-top: 240rpx;
     .other-login-text {
       text-align: center;
-      font-size: 29rpx;
       font-weight: 300;
       color: $font-color-base;
     }
     .wechat-login-container {
-      margin-top: 28rpx;
+      margin-top: 30rpx;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background: #fff;
-      color: #333;
       border: 0;
       &::after {
         border: 0;
       }
       .wechat-img {
-        width: 94rpx;
-        height: 94rpx;
+        width: 84rpx;
+        height: 84rpx;
         background: #f0efef;
         border-radius: 50%;
-        padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -218,11 +230,11 @@ const { phone, checked } = toRefs(state)
       }
       .wechat-text {
         padding-top: 5px;
-        font-size: 24rpx;
+        font-size: $font-small;
       }
     }
     .user-agreement {
-      margin-top: 121rpx;
+      margin-top: 84rpx;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -233,9 +245,11 @@ const { phone, checked } = toRefs(state)
         margin: 0;
       }
       .text {
-        font-size: $font-sm;
-        font-weight: 300;
+        font-size: $font-small;
         color: $font-color-sub;
+      }
+      .agreement {
+        color: $primary-color;
       }
     }
   }

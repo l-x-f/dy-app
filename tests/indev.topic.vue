@@ -199,7 +199,7 @@ const bannerList = data.map(item => ({ img: item }))
         position: absolute;
         top: 282rpx;
         left: 0;
-        font-size: $font-middle-lg;
+        font-size: $font-middle;
         font-weight: bold;
         color: #fff;
 
@@ -212,7 +212,7 @@ const bannerList = data.map(item => ({ img: item }))
         left: 0;
         padding: 0 27rpx;
         width: 100%;
-        font-size: $font-base-lg;
+        font-size:$font-middle;
         color: #fff;
         line-height: 1.5em;
 
@@ -248,7 +248,7 @@ const bannerList = data.map(item => ({ img: item }))
           padding-left: 51rpx;
           .find-item-title {
             box-sizing: border-box;
-            font-size: $font-middle-lg;
+            font-size: $font-middle;
             font-weight: bold;
             color: $font-color-base;
             line-height: 42px;
@@ -261,7 +261,7 @@ const bannerList = data.map(item => ({ img: item }))
             .find-item-tag-item {
               padding: 9rpx 10rpx;
               display: inline-flex;
-              font-size: $font-sub-sm;
+              font-size: $font-small;
               font-weight: 300;
               color: $font-color-base;
               background: #f7f9fd;
@@ -289,7 +289,7 @@ const bannerList = data.map(item => ({ img: item }))
         justify-content: space-between;
 
         .label {
-          font-size: $font-sm;
+          font-size: $font-small;
           font-weight: 400;
           color: $font-color-green;
           padding-right: 5px;
@@ -346,12 +346,12 @@ const bannerList = data.map(item => ({ img: item }))
 
             .label {
               margin-top: 12rpx;
-              font-size: $font-sub-sm;
+              font-size: $font-small;
               font-weight: 400;
               color: $font-color-green;
             }
             .value {
-              font-size: $font-middle-lg;
+              font-size: $font-middle;
               font-weight: 500;
               color: $font-color-base;
             }
@@ -373,7 +373,7 @@ const bannerList = data.map(item => ({ img: item }))
           position: absolute;
           bottom: -12px;
           left: 12px;
-          font-size: $font-middle-lg;
+          font-size: $font-middle;
           font-weight: 500;
           color: #fff;
         }

@@ -9,6 +9,7 @@
     </view>
     <view class="verify-input-wrapper">
       <VerifyInput v-model="state.code" />
+      <view v-if="state.isError" class="error">验证码错误</view>
     </view>
     <view
       class="code-tip"
@@ -27,6 +28,7 @@ import VerifyInput from '@/components/VerifyInput'
 import NavBar from '@/components/NavBar'
 
 const DefaultText = '重新发送验证码'
+const CodeLength = 6
 
 const state = reactive({
   code: '',
@@ -35,7 +37,8 @@ const state = reactive({
   sendCodeDisabled: false,
   univerifyBtnLoading: false,
   timer: null,
-  count: 60
+  count: 60,
+  isError: false
 })
 // 获取页面参数
 onLoad(data => {
@@ -93,7 +96,7 @@ const sendCode = () => {
 watch(
   () => state.code,
   val => {
-    if (val.length === 6) {
+    if (val.length === CodeLength) {
       toHome()
     }
   }
@@ -111,14 +114,14 @@ console.log(toLogin, 'tologin')
   overflow: hidden;
   padding: 0 $page-spacing;
   .title {
-    font-size: $font-max;
+    font-size: $font-large-title;
     font-weight: 500;
     color: $font-color-title;
     text-align: center;
   }
   .sub-title {
     margin-top: 27rpx;
-    font-size: $font-sm;
+    font-size: $font-small;
     color: $font-color-sub;
     text-align: center;
     .phone {
@@ -129,11 +132,16 @@ console.log(toLogin, 'tologin')
   .verify-input-wrapper {
     margin-top: 59rpx;
   }
+  .error {
+    text-align: center;
+    margin-top: 20rpx;
+    color: $danger-color;
+  }
   .code-tip {
-    font-size: $font-sm;
+    font-size: $font-small;
     font-weight: 400;
     color: $font-color-sub;
-    margin-top: 61rpx;
+    margin-top: 40rpx;
     text-align: center;
   }
   .link {

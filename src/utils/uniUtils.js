@@ -358,5 +358,5 @@ export function getNavigationBarTitle() {
     }
   }
 
-  return undefined
+  return ''
 }

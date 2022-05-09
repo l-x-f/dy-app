@@ -105,7 +105,7 @@ console.log(props)
           top: 50%;
           transform: translateY(-50%);
           left: 30rpx;
-          font-size: $font-sm;
+          font-size: $font-small;
           font-weight: 500;
           color: #fff;
         }
@@ -140,7 +140,7 @@ console.log(props)
         padding-left: 51rpx;
         .find-item-title {
           box-sizing: border-box;
-          font-size: $font-middle-lg;
+          font-size: $font-middle;
           font-weight: bold;
           color: $font-color-base;
           line-height: 42px;
@@ -152,7 +152,7 @@ console.log(props)
           .find-item-tag-item {
             padding: 9rpx 10rpx;
             display: inline-flex;
-            font-size: $font-sub-sm;
+            font-size: $font-small;
             font-weight: 300;
             color: $font-color-base;
             background: #f7f9fd;
@@ -179,7 +179,7 @@ console.log(props)
       display: flex;
       justify-content: space-between;
       .label {
-        font-size: $font-sm;
+        font-size: $font-small;
         font-weight: 400;
         color: $font-color-green;
         padding-right: 5px;

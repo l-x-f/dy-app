@@ -5,8 +5,10 @@
       :has-left-wrapper="false"
       :title-style="{
         fontWeight: 500,
-        textAlign: 'left'
+        textAlign: 'left',
+        color: '#181818'
       }"
+      :title-wrapper-style="{ 'justify-content': 'flex-start' }"
     />
 
     <!-- l轮播图 -->
@@ -99,9 +101,9 @@ const bannerList = data.map(item => ({ img: item }))
     flex-wrap: nowrap;
     .tutor-item {
       position: relative;
-      flex: 0 0 344rpx;
-      width: 344rpx;
-      height: 479rpx;
+      flex: 0 0 280rpx;
+      width: 280rpx;
+      height: 378rpx;
       margin-right: 10px;
       box-sizing: border-box;
       .tutor-item-image {
@@ -117,8 +119,8 @@ const bannerList = data.map(item => ({ img: item }))
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 247rpx;
-        background: linear-gradient(0deg, #020202 0%, rgba(1, 1, 1, 0) 100%);
+        height: 200rpx;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
         opacity: 0.6;
         border-radius: $border-radius;
       }
@@ -129,7 +131,7 @@ const bannerList = data.map(item => ({ img: item }))
         position: absolute;
         top: 282rpx;
         left: 0;
-        font-size: $font-middle-lg;
+        font-size: $font-base;
         font-weight: bold;
         color: #fff;
 
@@ -142,7 +144,7 @@ const bannerList = data.map(item => ({ img: item }))
         left: 0;
         padding: 0 27rpx;
         width: 100%;
-        font-size: $font-base-lg;
+        font-size: $font-small;
         color: #fff;
         line-height: 1.5em;
 

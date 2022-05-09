@@ -129,7 +129,7 @@ const handleClickRight = item => {
             color: $font-color-base;
           }
           .sub-title {
-            font-size: $font-base-lg;
+            font-size: $font-middle;
             color: $font-color-sub;
           }
         }
@@ -148,7 +148,7 @@ const handleClickRight = item => {
           height: 63rpx;
           line-height: 63rpx;
           background: #fff;
-          border: 1px solid $border-color-sub;
+          border: 1px solid $border-color;
           border-radius: 6px;
         }
       }

@@ -16,71 +16,41 @@
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "首页",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/tutor/index",
       "style": {
         "navigationBarTitleText": "导师",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/tutor/details",
       "style": {
         "navigationBarTitleText": "导师详情",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/tutor/content-details",
       "style": {
         "navigationBarTitleText": "内容详情",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/tutor/invite",
       "style": {
-        "navigationBarTitleText": "邀请",
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "navigationBarTitleText": "邀请"
       }
     },
     {
       "path": "pages/find/index",
       "style": {
         "navigationBarTitleText": "发现",
-        "enablePullDownRefresh": true,
-        "app-plus": {
-          "pullToRefresh": {
-            "color": "#007aff"
-          }
-        }
+        "enablePullDownRefresh": true
       }
     },
     {
@@ -127,7 +97,12 @@
     "backgroundColor": "#f5f5f5",
     "navigationBarTitleText": "dy-app",
     "usingComponents": {},
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "app-plus": {
+      "pullToRefresh": {
+        "color": "#485bf7"
+      }
+    }
   },
   "app-plus": {
     "softinputNavBar": "none"

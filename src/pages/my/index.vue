@@ -196,7 +196,7 @@ const list = [
           color: $font-color-base;
         }
         .phone {
-          font-size: $font-base-lg;
+          font-size: $font-middle;
           color: $font-color-sub;
         }
       }
@@ -211,7 +211,7 @@ const list = [
         height: 42px;
       }
       .text {
-        font-size: $font-base-lg;
+        font-size: $font-middle;
         color: $font-color-sub;
       }
     }

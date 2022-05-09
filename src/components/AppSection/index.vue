@@ -81,7 +81,7 @@ const refresh = () => {
       .sub-title {
         margin-top: 14rpx;
         .sub-title-text {
-          font-size: $font-base-lg;
+          font-size: $font-middle;
           color: $font-color-sub;
         }
       }
@@ -97,7 +97,7 @@ const refresh = () => {
       display: flex;
       align-items: center;
       .right-content-text {
-        font-size: $font-sub-sm;
+        font-size: $font-small;
         color: $font-color-green;
         margin-right: 8rpx;
       }

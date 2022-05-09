@@ -111,7 +111,7 @@ const handleShare = () => {
           color: #f3730b;
         }
         .unit {
-          font-size: $font-sm;
+          font-size: $font-small;
           color: $font-color-base;
         }
       }

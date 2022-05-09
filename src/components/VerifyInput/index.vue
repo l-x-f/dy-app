@@ -103,7 +103,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 /* stylelint-disable  */
-$error-color: red; /* 错误颜色  */
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -135,8 +134,8 @@ $error-color: red; /* 错误颜色  */
     justify-content: start;
     .real-block {
       width: 16%;
-      height: 117rpx;
-      margin-right: 20rpx;
+      height: 112rpx;
+      margin-right: 9rpx;
 
       @extend .flex-row;
       &:last-child {
@@ -146,20 +145,19 @@ $error-color: red; /* 错误颜色  */
         display: inline-block;
         width: 2rpx;
         height: 46rpx;
-        background: #333333;
+        background: $font-base;
         animation: line 1s infinite ease;
       }
       .real-block-number {
-        font-size: 38rpx;
-        font-weight: 400;
+        font-size: $font-large;
       }
     }
     .line-content {
-      border-bottom: 2rpx solid rgba(187, 187, 187, 100);
+      border-bottom: 2rpx solid $disable-color;
     }
     .block-content {
       border-radius: 12rpx;
-      border: 2rpx solid rgba(187, 187, 187, 100);
+      border: 2rpx solid $disable-color;
       background-color: #f9fafe;
     }
     .block-active {
@@ -171,7 +169,7 @@ $error-color: red; /* 错误颜色  */
   }
 }
 .block-error {
-  border-color: $error-color !important;
+  border-color: $danger-color !important;
   animation: error 0.5s ease;
 }
 @keyframes line {

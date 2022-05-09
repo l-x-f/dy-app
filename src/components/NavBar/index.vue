@@ -8,7 +8,7 @@
             <uni-icons
               :type="leftIcon || 'back'"
               size="24"
-              :color="titleStyle.color || '#333'"
+              :color="titleStyle.color || '#070F26'"
             />
           </slot>
         </view>
@@ -19,6 +19,7 @@
         <view
           v-if="hasTitle"
           class="nav-bar-center-title"
+          :style="titleWrapperStyle"
           @click="handleClickCenter"
         >
           <image
@@ -41,7 +42,7 @@
             <uni-icons
               :type="rightIcon || 'search'"
               size="30"
-              :color="titleStyle.color || '#333'"
+              :color="titleStyle.color || '#070F26'"
             />
           </slot>
         </view>
@@ -73,6 +74,11 @@ const props = defineProps({
   },
   // 标题样式
   titleStyle: {
+    type: Object,
+    default: () => ({})
+  },
+  // 标题容器样式
+  titleWrapperStyle: {
     type: Object,
     default: () => ({})
   },
@@ -186,8 +192,8 @@ const handleClickRight = () => {
         margin-right: 10rpx;
       }
       .text {
-        font-size: $font-large;
-        color: #333;
+        font-size: $nav-font-size;
+        color: $nav-font-color;
       }
     }
   }

@@ -15,6 +15,7 @@
       src="@/static/image/search.png"
       alt=""
       mode="aspectFill"
+      @click="handleConfirm"
     />
   </view>
 </template>
@@ -31,7 +32,7 @@ const props = defineProps({
   // 占位符
   placeholder: {
     type: String,
-    default: '请输入创作者口令'
+    default: '请输入关键字'
   }
 })
 
@@ -62,15 +63,17 @@ const handleConfirm = () => {
   .search-input {
     box-sizing: border-box;
     width: 100%;
-    height: 106rpx;
+    height: 88rpx;
     line-height: 106rpx;
-    box-shadow: 0 11px 42px 0 rgba(70, 87, 224, 0.18);
-    border-radius: $border-radius;
-    padding: 0 32rpx;
+    box-shadow: 7px 11px 8px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 12rpx;
+    padding: 0 30rpx;
+    background: #fff;
+    font-size: $font-base;
   }
   .search-image {
-    width: 42rpx;
-    height: 42rpx;
+    width: 48rpx;
+    height: 48rpx;
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -79,8 +82,8 @@ const handleConfirm = () => {
     object-fit: contain;
   }
   :deep(.search-placeholder) {
-    font-size: $font-middle;
-    color: $font-color-base;
+    font-size: $font-base;
+    color: #acacac;
   }
 }
 </style>
