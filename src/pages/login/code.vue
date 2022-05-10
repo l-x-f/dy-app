@@ -116,7 +116,7 @@ console.log(toLogin, 'tologin')
   .title {
     font-size: $font-large-title;
     font-weight: 500;
-    color: $font-color-title;
+    color: $font-color-main;
     text-align: center;
   }
   .sub-title {

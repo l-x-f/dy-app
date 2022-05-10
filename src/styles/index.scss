@@ -5,7 +5,7 @@
 
 .base-style {
   font-size: $font-base;
-  color: $font-color-base;
+  color: $font-color-main;
   font-family: 'Source Han Sans CN', 'Helvetica Neue', Helvetica, 'PingFang SC',
     'Hiragino Sans GB', 'Microsoft YaHei', Arial, 'sans-serif';
 }
@@ -29,7 +29,7 @@ page {
     border-radius: 13rpx;
     font-size: 35rpx;
     font-weight: 500;
-    color: $font-color-base;
+    color: $font-color-main;
     background-color: #fff;
     border: 1px solid $border-color;
     margin: 0;

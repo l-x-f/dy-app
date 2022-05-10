@@ -1,11 +1,6 @@
 <template>
   <div class="find-page">
-    <NavBar
-      :title-style="{
-        fontWeight: 500
-      }"
-      has-right
-    />
+    <NavBar has-right />
     <view class="swiper-wrapper">
       <AppSwiper :list="bannerList" />
     </view>

@@ -112,7 +112,7 @@ const handleShare = () => {
         }
         .unit {
           font-size: $font-small;
-          color: $font-color-base;
+          color: $font-color-main;
         }
       }
       .button {

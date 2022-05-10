@@ -80,8 +80,7 @@ console.log(props)
     display: flex;
     flex-direction: column;
     margin-top: $item-spacing;
-
-    @include item-padding;
+    padding: 28rpx 24rpx;
 
     .classification {
       position: absolute;
@@ -130,7 +129,7 @@ console.log(props)
           padding: 7rpx 14rpx;
           background: #f0f0f2;
           border-radius: 6px;
-          color: $font-color-base;
+          color: $font-color-main;
         }
       }
       .find-item-right {
@@ -142,7 +141,7 @@ console.log(props)
           box-sizing: border-box;
           font-size: $font-middle;
           font-weight: bold;
-          color: $font-color-base;
+          color: $font-color-main;
           line-height: 42px;
 
           @include text-overflow-hidden;
@@ -150,23 +149,22 @@ console.log(props)
         .find-item-tag {
           margin-top: 23rpx;
           .find-item-tag-item {
-            padding: 9rpx 10rpx;
+            padding: 13rpx 15rpx;
             display: inline-flex;
             font-size: $font-small;
             font-weight: 300;
-            color: $font-color-base;
-            background: #f7f9fd;
+            color: $font-color-sub;
+            background-color: #f3f3f3;
             border-radius: 6rpx;
-            margin-right: 22rpx;
+            margin-right: 16rpx;
           }
         }
         .find-item-tag-item:last-child {
           margin-right: 0;
         }
         .find-item-sub-title {
-          margin-top: 27rpx;
-          font-size: 29rpx;
-          font-weight: 400;
+          margin-top: 32rpx;
+          font-size: $font-base;
           color: $font-color-sub;
           line-height: 44rpx;
 
@@ -180,14 +178,18 @@ console.log(props)
       justify-content: space-between;
       .label {
         font-size: $font-small;
-        font-weight: 400;
-        color: $font-color-green;
-        padding-right: 5px;
+        color: $font-color-sub;
+        padding-right: 8rpx;
       }
       .value {
-        font-size: 29rpx;
-        font-weight: 400;
-        color: $font-color-base;
+        font-size: $font-small;
+        color: $font-color-main;
+        font-weight: bolder;
+      }
+      .right {
+        .value {
+          color: $font-color-main;
+        }
       }
     }
   }

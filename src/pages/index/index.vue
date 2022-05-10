@@ -1,12 +1,11 @@
 <template>
-  <div class="index-page">
+  <view class="index-page">
     <NavBar
       title="欢迎使用创作者!"
       :has-left-wrapper="false"
       :title-style="{
-        fontWeight: 500,
-        textAlign: 'left',
-        color: '#181818'
+        fontWeight: 600,
+        textAlign: 'left'
       }"
       :title-wrapper-style="{ 'justify-content': 'flex-start' }"
     />
@@ -23,7 +22,7 @@
 
     <!-- 导师专栏 -->
     <AppSection title="导师专栏" sub-title="为您推荐近期高人气导师">
-      <scroll-view scroll-x>
+      <SwiperScrollX>
         <div class="tutor-wrapper">
           <view
             v-for="item in 10"
@@ -37,20 +36,23 @@
               mode="aspectFill"
             />
             <view class="tutor-item-cover" />
-            <view class="tutor-item-title"> 豌豆的妈妈 </view>
-            <view class="tutor-item-sub-title">
-              一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+
+            <view class="title-wrapper">
+              <view class="tutor-item-title"> 豌豆的妈妈 </view>
+              <view class="tutor-item-sub-title">
+                一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
+              </view>
             </view>
           </view>
         </div>
-      </scroll-view>
+      </SwiperScrollX>
     </AppSection>
 
     <!-- 最新发现 -->
     <AppSection title="最新发现" sub-title="发现最新热门话题" has-right-refresh>
       <FindList />
     </AppSection>
-  </div>
+  </view>
 </template>
 
 <script setup>
@@ -60,6 +62,7 @@ import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import FindList from '@/components/FindList'
+import SwiperScrollX from '@/components/SwiperScrollX'
 
 const data = [
   'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
@@ -87,6 +90,7 @@ const bannerList = data.map(item => ({ img: item }))
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 @import '@/styles/mixin.scss';
+
 .index-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
@@ -95,6 +99,10 @@ const bannerList = data.map(item => ({ img: item }))
   }
   .search-wrapper {
     margin-top: $item-spacing;
+  }
+
+  :deep(.uni-scroll-view-content) {
+    -webkit-overflow-scrolling: touch;
   }
   .tutor-wrapper {
     display: flex;
@@ -124,31 +132,30 @@ const bannerList = data.map(item => ({ img: item }))
         opacity: 0.6;
         border-radius: $border-radius;
       }
-      .tutor-item-title {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 0 27rpx;
+      .title-wrapper {
         position: absolute;
-        top: 282rpx;
+        top: 200rpx;
         left: 0;
-        font-size: $font-base;
-        font-weight: bold;
-        color: #fff;
+        padding: 0 17rpx;
+        .tutor-item-title {
+          box-sizing: border-box;
+          width: 100%;
+          font-size: $font-base;
+          font-weight: bold;
+          color: #fff;
 
-        @include text-overflow-hidden;
-      }
-      .tutor-item-sub-title {
-        box-sizing: border-box;
-        position: absolute;
-        top: 338rpx;
-        left: 0;
-        padding: 0 27rpx;
-        width: 100%;
-        font-size: $font-small;
-        color: #fff;
-        line-height: 1.5em;
+          @include text-overflow-hidden;
+        }
+        .tutor-item-sub-title {
+          box-sizing: border-box;
+          width: 100%;
+          font-size: $font-small;
+          color: #fff;
+          line-height: 1.5em;
+          margin-top: 18rpx;
 
-        @include multiline-text-overflow-hidden;
+          @include multiline-text-overflow-hidden;
+        }
       }
     }
   }

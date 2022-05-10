@@ -339,7 +339,7 @@ const handleCopy = () => {
         border-radius: $border-radius;
         padding: $item-padding-spacing;
         font-size: 28rpx;
-        color: $font-color-base;
+        color: $font-color-main;
         line-height: 46rpx;
         margin-top: $item-spacing;
       }

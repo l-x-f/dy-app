@@ -268,13 +268,13 @@ const handleToContentDetails = () => {
           .label {
             font-size: $font-small;
             font-weight: 300;
-            color: $font-color-base;
+            color: $font-color-main;
           }
           .value {
             margin-top: 10rpx;
             font-size: 33rpx;
             font-weight: bold;
-            color: $font-color-base;
+            color: $font-color-main;
           }
         }
         .content-item:last-child {
@@ -289,7 +289,7 @@ const handleToContentDetails = () => {
       .title {
         font-size: $font-large;
         font-weight: 500;
-        color: $font-color-base;
+        color: $font-color-main;
       }
       .sub-title {
         margin-top: 17rpx;
@@ -336,7 +336,7 @@ const handleToContentDetails = () => {
       .section-item-title {
         font-size: 46rpx;
         font-weight: bold;
-        color: $font-color-title;
+        color: $font-color-main;
         margin: 30rpx 0;
       }
       .content-item {
@@ -376,7 +376,7 @@ const handleToContentDetails = () => {
             .content-title {
               font-size: $font-middle;
               font-weight: bold;
-              color: $font-color-base;
+              color: $font-color-main;
 
               @include multiline-text-overflow-hidden(2);
             }
@@ -393,7 +393,7 @@ const handleToContentDetails = () => {
                 border-radius: 6px;
                 font-size: $font-small;
                 font-weight: 300;
-                color: $font-color-base;
+                color: $font-color-main;
               }
             }
             .content-info {
@@ -410,16 +410,16 @@ const handleToContentDetails = () => {
           justify-content: space-between;
           .date {
             font-size: $font-small;
-            color: $font-color-green;
+            color: $font-color-sub;
           }
           .hot {
             .hot-label {
               font-size: $font-small;
-              color: $font-color-green;
+              color: $font-color-sub;
             }
             .hot-value {
               font-size: $font-small;
-              color: $font-color-base;
+              color: $font-color-main;
             }
           }
         }
@@ -453,7 +453,7 @@ const handleToContentDetails = () => {
         }
         .unit {
           font-size: $font-small;
-          color: $font-color-base;
+          color: $font-color-main;
         }
       }
       .button {

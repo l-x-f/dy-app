@@ -200,12 +200,12 @@ watch(
     padding: 0 45rpx;
     .popup-header-cancel {
       font-size: 33rpx;
-      color: $font-color-green;
+      color: $font-color-sub;
     }
     .popup-header-title {
       font-size: 33rpx;
       font-weight: 500;
-      color: $font-color-base;
+      color: $font-color-main;
     }
     .popup-header-confirm {
       font-size: 33rpx;
@@ -257,7 +257,7 @@ watch(
       color: $primary-color;
     }
     .popup-body-month-item-disabled {
-      background-color: $font-color-green;
+      background-color: $font-color-sub;
     }
   }
 }

@@ -157,7 +157,7 @@ const { phone, checked } = toRefs(state)
     .title {
       font-size: $font-large-title;
       font-weight: 500;
-      color: $font-color-title;
+      color: $font-color-main;
     }
 
     .sub-title {
@@ -180,7 +180,7 @@ const { phone, checked } = toRefs(state)
       text-align: left;
       padding: 0 32rpx;
       font-size: $font-middle;
-      color: $font-color-base;
+      color: $font-color-main;
     }
     .phone-item-disabled {
       border: 2px solid $disable-color;
@@ -201,7 +201,7 @@ const { phone, checked } = toRefs(state)
     .other-login-text {
       text-align: center;
       font-weight: 300;
-      color: $font-color-base;
+      color: $font-color-main;
     }
     .wechat-login-container {
       margin-top: 30rpx;
@@ -217,7 +217,6 @@ const { phone, checked } = toRefs(state)
       .wechat-img {
         width: 84rpx;
         height: 84rpx;
-        background: #f0efef;
         border-radius: 50%;
         display: flex;
         justify-content: center;

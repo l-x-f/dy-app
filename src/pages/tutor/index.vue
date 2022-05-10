@@ -9,21 +9,12 @@
     <!-- 是导师才有 -->
     <TutorList :list="data.slice(0, 1)" @clickItem="handleToDetails" />
 
-    <AppSection
-      title="你可能感兴趣"
-      sub-title="向您推荐你可能感兴趣的导师"
-      has-right-refresh
-    >
-      <TutorList
-        :list="data"
-        class="interested"
-        sub-title-has-background
-        is-button
-      />
+    <AppSection title="你可能感兴趣" has-right-refresh>
+      <TutorList :list="data" class="interested" />
     </AppSection>
 
-    <AppSection title="导师" sub-title="你关注的导师">
-      <TutorList :list="data" has-footer sub-title-has-background is-button />
+    <AppSection title="导师">
+      <TutorList :list="data" />
     </AppSection>
   </div>
 </template>
@@ -70,8 +61,27 @@ const handleToDetails = item => {
 .tutor-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
+  background: #fff;
   .search-wrapper {
     margin-top: $item-padding-spacing;
+    margin-bottom: 23rpx;
+
+    :deep(.search-input) {
+      box-shadow: none !important;
+      background-color: $page-bg-color !important;
+    }
+  }
+
+  :deep(.components-section) {
+    .title-wrapper {
+      .title {
+        font-size: $font-small !important;
+        color: $font-color-sub;
+      }
+    }
+    .section-body {
+      padding-bottom: 0;
+    }
   }
 }
 </style>

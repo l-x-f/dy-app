@@ -23,16 +23,8 @@
             </view>
           </div>
         </div>
-
-        <div
-          v-if="isButton"
-          class="button-wrapper"
-          @click.stop="handleClickRight(item)"
-        >
-          <div class="button">查看</div>
-        </div>
-        <div v-else class="icons-wrapper" @click.stop="handleClickRight(item)">
-          <uni-icons class="icons" type="forward" size="18" color="#999" />
+        <div class="icons-wrapper" @click.stop="handleClickRight(item)">
+          <uni-icons class="icons" type="forward" size="20" color="#9A9A9A" />
         </div>
       </div>
 
@@ -88,11 +80,9 @@ const handleClickRight = item => {
     font-size: 23rpx !important;
   }
   .tutor-list-item {
-    margin-top: $item-spacing;
     background-color: #fff;
-    border-radius: $border-radius;
-
-    @include item-padding;
+    border-bottom: 1px solid $divide-line-color;
+    padding: 23rpx 0;
 
     .tutor-list-content {
       display: flex;
@@ -106,9 +96,9 @@ const handleClickRight = item => {
         justify-content: flex-start;
         flex: 1;
         .image-wrapper {
-          width: 94rpx;
-          height: 94rpx;
-          flex: 0 0 94rpx;
+          width: 84rpx;
+          height: 84rpx;
+          flex: 0 0 84rpx;
           .image {
             width: 100%;
             height: 100%;
@@ -120,15 +110,16 @@ const handleClickRight = item => {
         .title-wrapper {
           display: flex;
           flex-direction: column;
-          margin-left: 16rpx;
+          margin-left: 20rpx;
           margin-top: -12rpx;
 
           .title {
-            font-size: 33rpx;
+            font-size: $font-middle;
             font-weight: 500;
-            color: $font-color-base;
+            color: $font-color-main;
           }
           .sub-title {
+            margin-top: 16rpx;
             font-size: $font-middle;
             color: $font-color-sub;
           }

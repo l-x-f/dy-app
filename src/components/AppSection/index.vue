@@ -31,12 +31,13 @@ const props = defineProps({
   // 标题
   title: {
     type: String,
-    default: ' '
+    default: ''
   },
+
   // 副标题
   subTitle: {
     type: String,
-    default: ' '
+    default: ''
   },
   // 是否显示刷新按钮
   hasRightRefresh: {
@@ -61,7 +62,7 @@ const refresh = () => {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 .components-section {
-  margin-top: 70rpx;
+  margin-top: 54rpx;
   .section-body {
     display: flex;
     flex-wrap: nowrap;
@@ -75,7 +76,7 @@ const refresh = () => {
       flex-direction: column;
       .title {
         font-size: $font-large;
-        color: $font-color-title;
+        color: $font-color-main;
         font-weight: bold;
       }
       .sub-title {
@@ -88,7 +89,7 @@ const refresh = () => {
     }
     .sub-title-date {
       font-size: 23rpx;
-      color: $font-color-green;
+      color: $font-color-sub;
       position: absolute;
       right: 0;
       bottom: 30rpx;
@@ -98,7 +99,7 @@ const refresh = () => {
       align-items: center;
       .right-content-text {
         font-size: $font-small;
-        color: $font-color-green;
+        color: $font-color-sub;
         margin-right: 8rpx;
       }
       .refresh {

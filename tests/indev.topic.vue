@@ -250,7 +250,7 @@ const bannerList = data.map(item => ({ img: item }))
             box-sizing: border-box;
             font-size: $font-middle;
             font-weight: bold;
-            color: $font-color-base;
+            color: $font-color-main;
             line-height: 42px;
 
             @include text-overflow-hidden;
@@ -263,7 +263,7 @@ const bannerList = data.map(item => ({ img: item }))
               display: inline-flex;
               font-size: $font-small;
               font-weight: 300;
-              color: $font-color-base;
+              color: $font-color-main;
               background: #f7f9fd;
               border-radius: 6rpx;
               margin-right: 22rpx;
@@ -291,13 +291,13 @@ const bannerList = data.map(item => ({ img: item }))
         .label {
           font-size: $font-small;
           font-weight: 400;
-          color: $font-color-green;
+          color: $font-color-sub;
           padding-right: 5px;
         }
         .value {
           font-size: 29rpx;
           font-weight: 400;
-          color: $font-color-base;
+          color: $font-color-main;
         }
       }
     }
@@ -329,7 +329,7 @@ const bannerList = data.map(item => ({ img: item }))
         .title {
           font-size: $font-large;
           font-weight: bold;
-          color: $font-color-base;
+          color: $font-color-main;
         }
         .tag {
           margin-top: 16rpx;
@@ -348,12 +348,12 @@ const bannerList = data.map(item => ({ img: item }))
               margin-top: 12rpx;
               font-size: $font-small;
               font-weight: 400;
-              color: $font-color-green;
+              color: $font-color-sub;
             }
             .value {
               font-size: $font-middle;
               font-weight: 500;
-              color: $font-color-base;
+              color: $font-color-main;
             }
           }
         }

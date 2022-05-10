@@ -134,7 +134,7 @@ watch(
     .popup-body-title {
       font-size: 35rpx;
       font-weight: bold;
-      color: $font-color-title;
+      color: $font-color-main;
     }
     .popup-content {
       margin-top: 31rpx;

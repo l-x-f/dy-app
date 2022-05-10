@@ -6,7 +6,7 @@
       <div class="user-info-wrapper">
         <div class="avatar-wrapper">
           <image
-            :src="userInfo.avatarUrl || defaultAvatar"
+            :src="userInfo.avatarUrl || '/static/image/my/team.png'"
             class="avatar"
             mode="aspectFill"
           />
@@ -14,9 +14,11 @@
 
         <div class="user-info-body">
           <view class="name">
-            {{ userInfo.nickName || defaultNickName }}
+            {{ userInfo.nickName || '这是我自己' }}
           </view>
-          <view class="phone"> 手机号 11315351351 </view>
+          <view class="phone">
+            手机号 {{ userInfo.phone || '11315351351' }}
+          </view>
         </div>
       </div>
       <div class="right">
@@ -25,10 +27,23 @@
           src="@/static/image/my/qrcode.png"
           mode="aspectFill"
         />
-        <text class="text">我的关注</text>
+        <text class="text"> 关注公众号</text>
       </div>
     </div>
 
+    <!-- 微信号和邀请码栏 -->
+    <view class="wechat-invite-code">
+      <view class="wechat-invite-code-item">
+        <text class="text"> 微信号：123456</text>
+        <image class="image" src="@/static/image/edit.png" mode="aspectFill" />
+      </view>
+      <view class="wechat-invite-code-item">
+        <text class="text">邀请码：123456</text>
+        <image class="image" src="@/static/image/copy.png" mode="aspectFill" />
+      </view>
+    </view>
+
+    <!-- 邀请海报 -->
     <view class="banner">
       <image
         class="member-bg"
@@ -39,60 +54,63 @@
       <view class="button">立即邀请</view>
     </view>
 
-    <view class="section">
-      <view class="section-title">财务信息</view>
+    <!-- 我的团队 -->
+    <view class="team-section">
       <view class="section-body">
         <div class="section-item">
-          <div class="value">2000</div>
           <div class="label">今日新增</div>
+          <div class="value">2000</div>
         </div>
         <div class="section-item">
-          <div class="value">2000</div>
           <div class="label">团队总人数</div>
-        </div>
-        <div class="section-item">
-          <div class="button" @click="handleToEdit">我的钱包</div>
-        </div>
-      </view>
-    </view>
-
-    <view class="section">
-      <view class="section-title">我的推广</view>
-      <view class="section-body">
-        <div class="section-item">
           <div class="value">2000</div>
-          <div class="label">今日新增</div>
         </div>
         <div class="section-item">
-          <div class="value">2000</div>
-          <div class="label">团队总人数</div>
-        </div>
-        <div class="section-item">
-          <div class="value">2000</div>
           <div class="label">会员总人数</div>
+          <div class="value">2000</div>
         </div>
       </view>
     </view>
 
-    <view class="function-wrapper">
-      <view class="title"> 常用功能</view>
+    <!-- 我的钱包 -->
+    <view class="my-wallet-section">
+      <view class="my-wallet-section-body">
+        <div
+          v-for="item in myWalletList"
+          :key="item.text"
+          class="my-wallet-section-item"
+          @click="item.click"
+        >
+          <image
+            class="image"
+            :src="'/static/image/my/' + item.icon + '.png'"
+            mode="aspectFill"
+          />
+          <div class="title">{{ item.text }}</div>
+        </div>
+      </view>
+    </view>
 
+    <!-- 常用功能 -->
+    <view class="function-wrapper">
       <view class="function-body">
         <view
-          v-for="(item, index) in list"
+          v-for="(item, index) in functionList"
           :key="index"
           class="function-item"
           :index="index"
+          :title="item.text"
+          @click="item.click"
         >
-          <view class="grid-item-box" @click="item.click">
-            <image
-              v-if="item.icon"
-              :src="'/static/image/my/' + item.icon + '.png'"
-              class="image"
-              mode="aspectFill"
-            />
-            <view class="text">{{ item.text }}</view>
-          </view>
+          <image
+            class="image"
+            :src="'/static/image/my/' + item.icon + '.png'"
+            mode="aspectFill"
+          />
+          <view class="title">{{ item.text }}</view>
+          <div class="icons-wrapper">
+            <uni-icons class="icons" type="forward" size="20" color="#999" />
+          </div>
         </view>
       </view>
     </view>
@@ -103,9 +121,7 @@
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/store'
 import NavBar from '@/components/NavBar'
-import defaultAvatar from '@/static/image/avatar.png'
 
-const defaultNickName = '暂无昵称'
 const store = useUserStore()
 const { userInfo } = storeToRefs(store)
 
@@ -125,10 +141,39 @@ const handleToEdit = () => {
   })
 }
 
-const list = [
+// 常用功能
+const functionList = [
   {
-    icon: 'like',
-    text: '我的喜欢',
+    icon: 'tutor',
+    text: '导师入住',
+    click: handleToEdit
+  },
+  {
+    icon: 'help',
+    text: '帮助中心',
+    click: () => {
+      uni.navigateTo({ url: '/pages/my/help/index' })
+    }
+  },
+  {
+    icon: 'customer-service',
+    text: '联系客服',
+    click: handleLogout
+  },
+  {
+    icon: 'setting',
+    text: '设置',
+    click: () => {
+      uni.navigateTo({ url: '/pages/my/setting/index' })
+    }
+  }
+]
+
+// 我的钱包
+const myWalletList = [
+  {
+    icon: 'wallet',
+    text: '我的钱包',
     click: handleToEdit
   },
   {
@@ -139,31 +184,14 @@ const list = [
   {
     icon: 'word',
     text: '我的口令',
+    click: () => {
+      uni.navigateTo({ url: '/pages/my/word/index' })
+    }
+  },
+  {
+    icon: 'team',
+    text: '我的团队',
     click: handleToEdit
-  },
-  {
-    icon: 'help',
-    text: '帮助中心',
-    click: handleToEdit
-  },
-  {
-    icon: 'tutor-in',
-    text: '导师入住',
-    click: handleToEdit
-  },
-  {
-    icon: 'customer-service',
-    text: '联系客服',
-    click: handleToEdit
-  },
-  {
-    icon: 'setting',
-    text: '设置',
-    click: handleLogout
-  },
-  {
-    icon: '',
-    text: ''
   }
 ]
 </script>
@@ -177,26 +205,27 @@ const list = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 74rpx;
+    padding: 40rpx 0;
+    border-bottom: 1px solid $divide-line-color;
     .user-info-wrapper {
       display: flex;
       .avatar-wrapper {
         .avatar {
-          width: 94rpx;
-          height: 94rpx;
+          width: 90rpx;
+          height: 90rpx;
           border-radius: 50%;
           background: #fff;
         }
       }
       .user-info-body {
-        padding-left: 23rpx;
+        padding-left: 20rpx;
         .name {
-          font-size: 33rpx;
+          font-size: $font-large-title;
           font-weight: 500;
-          color: $font-color-base;
+          color: $font-color-main;
         }
         .phone {
-          font-size: $font-middle;
+          font-size: $font-base;
           color: $font-color-sub;
         }
       }
@@ -207,18 +236,36 @@ const list = [
       justify-content: center;
       align-items: center;
       .qr-code {
-        width: 42px;
-        height: 42px;
+        width: 40rpx;
+        height: 40rpx;
       }
       .text {
-        font-size: $font-middle;
+        font-size: $font-small;
         color: $font-color-sub;
+        margin-top: 12rpx;
+      }
+    }
+  }
+
+  .wechat-invite-code {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32rpx 0;
+    .wechat-invite-code-item {
+      .text {
+        margin-right: 10rpx;
+        vertical-align: top;
+      }
+      .image {
+        width: 40rpx;
+        height: 40rpx;
       }
     }
   }
   .banner {
     position: relative;
-    margin-top: 31rpx;
+    margin-top: 20rpx;
     width: 100%;
     height: 114rpx;
     border-radius: $border-radius;
@@ -257,80 +304,100 @@ const list = [
       padding: 10rpx 27rpx;
     }
   }
-  .section {
-    margin-top: 31rpx;
+  .team-section {
+    margin-top: 20rpx;
     background-color: #fff;
     border-radius: $border-radius;
-    padding: 30rpx 41rpx;
-    .section-title {
-      font-size: 29rpx;
-      font-family: Source Han Sans CN;
-      color: $font-color-base;
-    }
+    padding: 32rpx 62rpx;
+    box-sizing: border-box;
     .section-body {
-      margin-top: 43rpx;
       display: flex;
       justify-content: space-around;
+      text-align: center;
       .section-item {
         padding-bottom: 6rpx;
-        .value {
-          font-size: 48rpx;
-          font-weight: bold;
-          color: $font-color-base;
-        }
         .label {
-          font-size: 23rpx;
+          font-size: $font-base;
           color: $font-color-sub;
         }
-        .button {
-          width: 167rpx;
-          height: 67rpx;
-          line-height: 67rpx;
-          background-color: $danger-color;
-          border-radius: 8px;
-          text-align: center;
-          font-size: 29rpx;
-          font-weight: 500;
-          color: #fff;
+        .value {
+          font-size: 36rpx;
+          font-weight: bold;
+          color: $font-color-main;
+          margin-top: 24rpx;
+        }
+      }
+    }
+  }
+
+  .my-wallet-section {
+    margin-top: 20rpx;
+    background-color: #fff;
+    border-radius: $border-radius;
+    padding: 32rpx 40rpx;
+    box-sizing: border-box;
+    .my-wallet-section-body {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      .my-wallet-section-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .image {
+          width: 68rpx;
+          height: 68rpx;
+        }
+        .title {
+          font-size: $font-small;
+          color: $font-color-sub;
+          margin-top: 16rpx;
         }
       }
     }
   }
   .function-wrapper {
-    margin-top: 56rpx;
-    padding: 0 41rpx;
-    .title {
-      font-size: 29rpx;
-      font-weight: 500;
-      color: #333;
-    }
+    background-color: #fff;
+    border-radius: $border-radius;
+    margin-top: 20rpx;
+    padding: 0 32rpx;
     .function-body {
-      display: flex;
       flex-wrap: wrap;
-      margin-top: 44rpx;
       .function-item {
-        width: 25%;
-        flex: 0 0 25%;
-        box-sizing: border-box;
-        margin-bottom: 41rpx;
+        padding: 23rpx 0;
         display: flex;
-        justify-content: center;
-        .grid-item-box {
-          display: flex;
-          flex-direction: column;
-          text-align: center;
-          justify-content: center;
-          align-items: center;
-          .image {
-            width: 60rpx;
-            height: 60rpx;
-          }
-          .text {
-            margin-top: 19rpx;
-            font-size: 25rpx;
-            font-weight: 400;
-            color: $font-color-base;
-          }
+        align-items: center;
+        box-sizing: border-box;
+        position: relative;
+        .image {
+          width: 60rpx;
+          height: 60rpx;
+        }
+        .title {
+          padding-left: 30rpx;
+        }
+        .icons-wrapper {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 85rpx;
+          width: 82%;
+          height: 1px;
+          background-color: $divide-line-color;
+        }
+      }
+      .function-item:last-child {
+        &::after {
+          display: none;
         }
       }
     }

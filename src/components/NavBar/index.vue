@@ -193,7 +193,7 @@ const handleClickRight = () => {
       }
       .text {
         font-size: $nav-font-size;
-        color: $nav-font-color;
+        color: $font-color-main;
       }
     }
   }
