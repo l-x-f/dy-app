@@ -1,7 +1,16 @@
 <template>
   <div class="content-details-page">
-    <NavBar has-left has-right right-icon="more" @clickRight="handleShare" />
+    <NavBar has-left has-right right-icon="more" @clickRight="handleShare">
+      <template #right>
+        <image
+          class="nav-image"
+          src="/static/image/share.png"
+          mode="aspectFill"
+        />
+      </template>
+    </NavBar>
 
+    <!-- 主内容区 -->
     <view class="content-header">
       <view class="content-header-title">
         今天教大家一个新小程序，大家赶快认真学起来， 觉得好的话一定要点赞收藏
@@ -12,14 +21,12 @@
           src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
           mode="aspectFill"
         />
-
         <view class="name"> 短发发发发 </view>
         <button type="danger" class="btn">
           <span class="icon">+</span>
           <span>关注</span>
         </button>
       </view>
-
       <view class="content-header-tag">
         <text class="tag-text"># 热门话题</text>
         <text class="tag-text"># 热门话题</text>
@@ -27,14 +34,27 @@
         <text class="tag-text"># 热门话题</text>
         <text class="tag-text"># 热门话题</text>
       </view>
-
       <view class="content-header-details">
         <view class="content-details-title">内容详情</view>
-        <view class="content">
+        <view
+          :class="{
+            content: true,
+            'content-hidden': state.contentHidden
+          }"
+        >
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
+          在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
           在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
         </view>
       </view>
-
       <view class="content-header-footer">
         <view class="left">
           <text class="label">热度</text>
@@ -67,6 +87,7 @@
       />
     </view>
 
+    <!-- 博主 -->
     <div class="find-wrapper">
       <view class="find-item">
         <view class="find-item-body">
@@ -78,11 +99,9 @@
             />
             <text class="find-item-image-text"> 398人已加入 </text>
           </view>
-
           <view class="find-item-right">
             <view class="find-item-title">
               豌豆的妈妈
-
               <div class="icons-wrapper">
                 <uni-icons
                   class="icons"
@@ -92,7 +111,6 @@
                 />
               </div>
             </view>
-
             <view class="find-item-sub-title">
               一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
             </view>
@@ -101,14 +119,14 @@
       </view>
     </div>
 
-    <!-- 底部购买通知模块 -->
+    <!-- 底部分享模块 -->
     <div class="footer-bar">
       <div class="footer-bar-content">
-        <div class="price-wrapper">
-          <text class="price">169</text>
-          <text class="unit">元/年</text>
+        <div class="like-wrapper">
+          <image class="image" src="/static/image/like.png" mode="aspectFill" />
+          <text class="value">230</text>
         </div>
-        <button type="primary" class="button" @click="handleBuy">
+        <button type="primary" class="button" @click="handleShare">
           立即分享
         </button>
       </div>
@@ -121,7 +139,10 @@ import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
 import NavBar from '@/components/NavBar'
 
-const state = reactive({ result: '' })
+const state = reactive({
+  result: '',
+  contentHidden: true
+})
 
 console.log(state)
 
@@ -133,18 +154,6 @@ onPullDownRefresh(() => {
   uni.stopPullDownRefresh()
 })
 
-// 购买
-const handleBuy = () => {
-  uni.showToast({
-    title: '购买成功',
-    icon: 'success',
-    mask: true,
-    success: () => {
-      uni.navigateBack({ delta: 1 })
-    }
-  })
-}
-
 // 去邀请分享页面
 const handleShare = () => {
   uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
@@ -154,19 +163,23 @@ const handleShare = () => {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 @import '@/styles/mixin.scss';
+
+.nav-image {
+  width: 36rpx;
+  height: 36rpx;
+}
 .content-details-page {
   box-sizing: border-box;
   padding-bottom: 80px;
-
   .video {
     object-fit: cover;
     width: 100%;
+    height: 386rpx;
     :deep(.uni-video-video) {
       width: 100%;
       object-fit: cover !important;
     }
   }
-
   .content-header {
     background-color: #fff;
     padding-top: $item-spacing;
@@ -232,6 +245,38 @@ const handleShare = () => {
         border-bottom: 1px solid $divide-line-color;
         line-height: 56rpx;
       }
+      .content-hidden {
+        height: 282rpx;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 0;
+        &::before {
+          content: '';
+          height: 282rpx;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: linear-gradient(
+            0deg,
+            #fff 0%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(255, 255, 255, 0.5) 80%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+        &::after {
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          bottom: 24rpx;
+          left: 0;
+          content: '部分内容已隐藏';
+          font-size: $font-middle;
+          font-weight: 500;
+          color: #485bf7;
+        }
+      }
     }
     .content-header-footer {
       padding: 32rpx $page-spacing;
@@ -258,7 +303,6 @@ const handleShare = () => {
     flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
-
     .image-item {
       width: 30%;
       height: 216rpx;
@@ -294,7 +338,6 @@ const handleShare = () => {
       flex-direction: column;
       margin-top: $item-spacing;
       padding: 28rpx 24rpx;
-
       .find-item-body {
         display: flex;
         .find-item-image-wrapper {
@@ -337,7 +380,6 @@ const handleShare = () => {
               transform: translateY(-50%);
             }
           }
-
           .find-item-sub-title {
             margin-top: $item-spacing;
             font-size: $font-base;
@@ -350,18 +392,12 @@ const handleShare = () => {
       }
     }
   }
-
   .footer-bar {
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
-    .notice-bar {
-      margin: 0;
-      :deep(.uni-noticebar) {
-        margin: 0;
-      }
-    }
+    z-index: 99;
     .footer-bar-content {
       background-color: #fff;
       height: 113rpx;
@@ -369,20 +405,25 @@ const handleShare = () => {
       justify-content: space-between;
       align-items: center;
       padding: 0 25rpx;
-      .price-wrapper {
-        .price {
-          font-size: 61rpx;
-          font-weight: 500;
-          color: #f3730b;
+      .like-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 63rpx;
+        .image {
+          width: 47rpx;
+          height: 44rpx;
         }
-        .unit {
+        .value {
+          display: inline-block;
           font-size: $font-small;
-          color: $font-color-main;
+          color: $font-color-sub;
+          margin-top: 10rpx;
         }
       }
       .button {
-        flex: 0 0 288rpx;
-        width: 288rpx;
+        flex: 0 0 548rpx;
+        width: 548rpx;
         margin: 0;
       }
     }
