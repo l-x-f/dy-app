@@ -5,6 +5,8 @@
       <AppSwiper :list="bannerList" />
     </view>
     <FindList />
+
+    <view class="fab-button" @click="handleToSendNote">+</view>
   </div>
 </template>
 
@@ -35,7 +37,10 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
-
+// 去发布笔记
+const handleToSendNote = () => {
+  uni.navigateTo({ url: '/pages/find/send-note/index' })
+}
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
@@ -47,6 +52,21 @@ const bannerList = data.map(item => ({ img: item }))
   padding: 0 $page-spacing $page-bottom;
   .swiper-wrapper {
     margin-top: $item-spacing;
+  }
+  .fab-button {
+    position: fixed;
+    z-index: 99;
+    right: $page-spacing;
+    bottom: calc(50px + $page-spacing);
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60rpx;
+    color: #fff;
   }
 }
 </style>

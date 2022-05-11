@@ -43,6 +43,10 @@ page {
     }
   }
 
+  :deep(.placeholder-class) {
+    color: $font-color-sub;
+  }
+
   @extend .base-style;
 }
 .no-data {

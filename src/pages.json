@@ -54,6 +54,13 @@
       }
     },
     {
+      "path": "pages/find/send-note/index",
+      "style": {
+        "navigationBarTitleText": "笔记发布",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
       "path": "pages/my/index",
       "style": {
         "navigationBarTitleText": "我的"

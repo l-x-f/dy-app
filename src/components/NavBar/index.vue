@@ -37,7 +37,11 @@
 
       <!--  右侧 -->
       <view class="nav-bar-right">
-        <view v-if="hasRight" @click="handleClickRight">
+        <view
+          v-if="hasRight"
+          class="nav-bar-right-content"
+          @click="handleClickRight"
+        >
           <slot name="right">
             <uni-icons
               :type="rightIcon || 'search'"
@@ -177,6 +181,7 @@ const handleClickRight = () => {
   }
   .nav-bar-left {
     flex: 1;
+    margin-left: -6px;
   }
   .nav-bar-center {
     flex: 1;
