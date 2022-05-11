@@ -214,7 +214,7 @@ const { formData, text, sendCodeDisabled, visible, monthData } = toRefs(state)
       height: 80px;
     }
     .logo-title {
-      font-size: 36rpx;
+      font-size:  $font-title;
       margin-top: 10px;
       color: #333;
     }

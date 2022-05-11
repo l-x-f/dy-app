@@ -251,7 +251,7 @@ const myWalletList = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 32rpx 0;
+    margin: $item-spacing 0;
     .wechat-invite-code-item {
       .text {
         margin-right: 10rpx;
@@ -265,7 +265,7 @@ const myWalletList = [
   }
   .banner {
     position: relative;
-    margin-top: 20rpx;
+    margin-top: $item-spacing;
     width: 100%;
     height: 114rpx;
     border-radius: $border-radius;
@@ -305,10 +305,10 @@ const myWalletList = [
     }
   }
   .team-section {
-    margin-top: 20rpx;
+    margin-top: $item-spacing;
     background-color: #fff;
     border-radius: $border-radius;
-    padding: 32rpx 62rpx;
+    padding: $item-spacing 62rpx;
     box-sizing: border-box;
     .section-body {
       display: flex;
@@ -321,7 +321,7 @@ const myWalletList = [
           color: $font-color-sub;
         }
         .value {
-          font-size: 36rpx;
+          font-size: $font-title;
           font-weight: bold;
           color: $font-color-main;
           margin-top: 24rpx;
@@ -331,10 +331,10 @@ const myWalletList = [
   }
 
   .my-wallet-section {
-    margin-top: 20rpx;
+    margin-top: $item-spacing;
     background-color: #fff;
     border-radius: $border-radius;
-    padding: 32rpx 40rpx;
+    padding: $item-spacing 40rpx;
     box-sizing: border-box;
     .my-wallet-section-body {
       display: flex;
@@ -361,8 +361,8 @@ const myWalletList = [
   .function-wrapper {
     background-color: #fff;
     border-radius: $border-radius;
-    margin-top: 20rpx;
-    padding: 0 32rpx;
+    margin-top: $item-spacing;
+    padding: 0 $item-spacing;
     .function-body {
       flex-wrap: wrap;
       .function-item {

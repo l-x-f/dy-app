@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["easyinput", "getstatus", "getwh", "longpress", "verifical"],
+  "cSpell.words": [
+    "easyinput",
+    "getstatus",
+    "getwh",
+    "longpress",
+    "plusempty",
+    "verifical"
+  ],
   "commentTranslate.multiLineMerge": false
 }

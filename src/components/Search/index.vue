@@ -77,7 +77,7 @@ const handleConfirm = () => {
     position: absolute;
     z-index: 1;
     top: 50%;
-    right: 32rpx;
+    right: $item-spacing;
     transform: translateY(-50%);
     object-fit: contain;
   }

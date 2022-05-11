@@ -134,7 +134,7 @@ console.log(toLogin, 'tologin')
   }
   .error {
     text-align: center;
-    margin-top: 20rpx;
+    margin-top: $item-spacing;
     color: $danger-color;
   }
   .code-tip {

@@ -161,7 +161,7 @@ const { phone, checked } = toRefs(state)
     }
 
     .sub-title {
-      margin-top: 20rpx;
+      margin-top: $item-spacing;
       font-size: $font-base;
       color: $font-color-sub;
     }
@@ -178,7 +178,7 @@ const { phone, checked } = toRefs(state)
       border: 2px solid $primary-color;
       border-radius: $border-radius;
       text-align: left;
-      padding: 0 32rpx;
+      padding: 0 $item-spacing;
       font-size: $font-middle;
       color: $font-color-main;
     }
@@ -187,7 +187,7 @@ const { phone, checked } = toRefs(state)
     }
     .submit-button {
       height: 88rpx;
-      margin-top: 32rpx;
+      margin-top: $item-spacing;
       font-size: $font-large;
       color: #fff;
     }

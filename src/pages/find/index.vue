@@ -4,7 +4,7 @@
     <view class="swiper-wrapper">
       <AppSwiper :list="bannerList" />
     </view>
-    <FindList has-image-tag has-classification />
+    <FindList />
   </div>
 </template>
 

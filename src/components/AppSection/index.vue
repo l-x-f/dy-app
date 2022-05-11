@@ -25,7 +25,7 @@
 <script setup>
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 /* eslint-disable  no-unused-vars */
-import refreshImage from '@/static/image/refresh.png'
+import refreshImage from '@/static/image/refresh.svg'
 
 const props = defineProps({
   // 标题
@@ -73,14 +73,15 @@ const refresh = () => {
     padding-bottom: 30rpx;
     .title-wrapper {
       display: flex;
-      flex-direction: column;
       .title {
-        font-size: $font-large;
+        font-size: $font-title;
         color: $font-color-main;
         font-weight: bold;
+        vertical-align: baseline;
       }
       .sub-title {
-        margin-top: 14rpx;
+        margin-left: 20rpx;
+        margin-top: 8rpx;
         .sub-title-text {
           font-size: $font-middle;
           color: $font-color-sub;
@@ -100,7 +101,7 @@ const refresh = () => {
       .right-content-text {
         font-size: $font-small;
         color: $font-color-sub;
-        margin-right: 8rpx;
+        margin-right: 6rpx;
       }
       .refresh {
         width: 29rpx;

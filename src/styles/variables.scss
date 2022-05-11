@@ -1,6 +1,6 @@
 /* 边距间距 */
-$page-spacing: 15px; // 页面左右间距
-$item-spacing: 14px; // 页面每个区块之间的外间距
+$page-spacing: 16px; // 页面左右间距
+$item-spacing: 10px; // 页面每个区块之间的上下间距
 $item-padding-spacing: 16px; // 页面每个区块之间的内间距
 $page-bottom: 20px; // 页面底部留白
 
@@ -36,6 +36,7 @@ $font-small: 24rpx; // 小字号
 $font-base: 28rpx; // 主字号
 $font-middle: 30rpx; // 中字号
 $font-large: 34rpx; // 大字号
+$font-title: 36rpx; // 大标题字号
 $font-large-title: 44rpx; // 大标题字号
 $font-max: 54rpx; // 最大字号
 

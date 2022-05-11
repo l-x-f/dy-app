@@ -115,7 +115,7 @@ const handleDelete = (item, index) => {
   padding: 0 $page-spacing $page-bottom;
 
   .desc {
-    margin-top: 32rpx;
+    margin-top: $item-spacing;
     padding: 24rpx;
     height: 166rpx;
     background-color: #fff;
@@ -131,11 +131,11 @@ const handleDelete = (item, index) => {
   }
 
   .word-wrapper {
-    margin-top: 20rpx;
+    margin-top: $item-spacing;
     .word-body {
       .word-item {
-        margin-top: 20rpx;
-        padding: 24rpx 32rpx;
+        margin-top: $item-spacing;
+        padding: 24rpx $item-spacing;
         border-radius: $border-radius;
         background-color: #fff;
         box-sizing: border-box;

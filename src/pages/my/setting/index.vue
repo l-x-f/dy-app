@@ -72,8 +72,8 @@ const settingList = [
 
   .setting-wrapper {
     border-radius: $border-radius;
-    margin-top: 20rpx;
-    padding: 0 32rpx;
+    margin-top: $item-spacing;
+    padding: 0 $item-spacing;
     .setting-body {
       flex-wrap: wrap;
       border-top: 1px solid $divide-line-color;

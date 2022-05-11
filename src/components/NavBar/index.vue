@@ -41,7 +41,7 @@
           <slot name="right">
             <uni-icons
               :type="rightIcon || 'search'"
-              size="30"
+              size="24"
               :color="titleStyle.color || '#070F26'"
             />
           </slot>

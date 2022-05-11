@@ -190,7 +190,7 @@ watch(
 }
 .popup-wrapper {
   background-color: #fff;
-  padding: 32rpx 0;
+  padding: $item-spacing 0;
   border-radius: 10px 10px 0 0;
   position: relative;
 
@@ -198,17 +198,15 @@ watch(
     display: flex;
     justify-content: space-between;
     padding: 0 45rpx;
+    font*size: $font-large;
     .popup-header-cancel {
-      font-size: 33rpx;
       color: $font-color-sub;
     }
     .popup-header-title {
-      font-size: 33rpx;
       font-weight: 500;
       color: $font-color-main;
     }
     .popup-header-confirm {
-      font-size: 33rpx;
       color: $primary-color;
     }
   }

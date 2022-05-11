@@ -340,7 +340,7 @@ const handleToContentDetails = () => {
         margin: 30rpx 0;
       }
       .content-item {
-        margin-top: 32rpx;
+        margin-top: $item-spacing;
         background-color: #fff;
         border-radius: $border-radius;
         padding: 33rpx 36rpx;
@@ -372,7 +372,7 @@ const handleToContentDetails = () => {
           .content {
             display: flex;
             flex-direction: column;
-            margin-left: 32rpx;
+            margin-left: $item-spacing;
             .content-title {
               font-size: $font-middle;
               font-weight: bold;

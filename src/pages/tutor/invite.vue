@@ -90,7 +90,7 @@ onMounted(() => {
               display: 'block',
               paddingBottom: '10rpx',
               color: '#333',
-              fontSize: '32rpx',
+              fontSize: '$item-spacing',
               fontWeight: 'bold'
             }
           },
@@ -108,7 +108,7 @@ onMounted(() => {
         css: {
           marginLeft: '40rpx',
           marginTop: '30rpx',
-          padding: '32rpx',
+          padding: '$item-spacing',
           boxSizing: 'border-box',
           background: '#fff',
           borderRadius: '16rpx',
@@ -127,7 +127,7 @@ onMounted(() => {
           },
           {
             css: {
-              marginTop: '32rpx',
+              marginTop: '$item-spacing',
               color: '#FF0000',
               fontWeight: 'bold',
               fontSize: '28rpx',
@@ -173,7 +173,7 @@ onMounted(() => {
           },
           {
             css: {
-              marginTop: '32rpx',
+              marginTop: '$item-spacing',
               fontSize: '26rpx',
               color: '#8c5400'
             },
@@ -224,7 +224,7 @@ onMounted(() => {
                 text: '课程',
                 type: 'text',
                 css: {
-                  paddingRight: '32rpx',
+                  paddingRight: '$item-spacing',
                   boxSizing: 'border-box',
                   lineClamp: 2,
                   color: '#333333',
