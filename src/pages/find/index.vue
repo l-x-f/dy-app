@@ -58,8 +58,8 @@ const bannerList = data.map(item => ({ img: item }))
     z-index: 99;
     right: $page-spacing;
     bottom: calc(50px + $page-spacing);
-    width: 60rpx;
-    height: 60rpx;
+    width: 90rpx;
+    height: 90rpx;
     border-radius: 50%;
     background-color: #000;
     display: flex;

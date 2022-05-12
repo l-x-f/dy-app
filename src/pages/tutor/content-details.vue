@@ -26,22 +26,18 @@
           <span class="icon">+</span>
           <span>关注</span>
         </button>
+        <!-- <button disabled class="btn">
+          <span>已关注</span>
+        </button> -->
       </view>
-      <view class="content-header-tag">
-        <text class="tag-text"># 热门话题</text>
-        <text class="tag-text"># 热门话题</text>
-        <text class="tag-text"># 热门话题</text>
-        <text class="tag-text"># 热门话题</text>
-        <text class="tag-text"># 热门话题</text>
+
+      <view class="tag-wrapper">
+        <TagList :tag-list="tagList" />
       </view>
+
       <view class="content-header-details">
         <view class="content-details-title">内容详情</view>
-        <view
-          :class="{
-            content: true,
-            'content-hidden': state.contentHidden
-          }"
-        >
+        <view :class="{ content: true, 'content-hidden': state.contentHidden }">
           在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
           在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
           在东京奥运会上，中国跳水队夺得了7金5银的好成绩圆满完成了赛前制定的夺金任务。这些荣誉的背后，是中国跳水队全体运动员努力拼搏的
@@ -67,24 +63,23 @@
       </view>
     </view>
 
-    <!-- 图片区域 -->
-    <view class="content-image-list">
-      <view v-for="item in 4" :key="item" class="image-item">
-        <image
-          class="image"
-          src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-          mode="aspectFill"
-        />
+    <!-- 加入会员 -->
+    <view class="join-member">
+      <view class="join-member-content">
+        <view class="title-wrapper">
+          <text class="title">加入导师会员</text>
+          <text class="sub-title">可查看全部内容</text>
+        </view>
+        <button class="join-button">立即加入</button>
       </view>
     </view>
 
-    <!-- 视频区域 -->
-    <view class="content-video">
-      <video
-        class="video"
-        src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20200317.mp4"
-        controls
-      />
+    <view class="media-wrapper">
+      <!-- 图片区域 -->
+      <ImageList :image-list="imageList" />
+
+      <!-- 视频区域 -->
+      <AppVideo />
     </view>
 
     <!-- 博主 -->
@@ -136,12 +131,26 @@
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
-import { reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
 import NavBar from '@/components/NavBar'
+import TagList from '@/components/TagList'
+import ImageList from '@/components/ImageList'
+import AppVideo from '@/components/AppVideo'
 
 const state = reactive({
   result: '',
-  contentHidden: true
+  contentHidden: true,
+  imageList: [...new Array(4)],
+  tagList: [
+    '热门话题',
+    '热门话题',
+    '热门话题',
+    '热门话题',
+    '热门话题',
+    '热门话题',
+    '热门话题',
+    '热门话题'
+  ]
 })
 
 console.log(state)
@@ -158,6 +167,7 @@ onPullDownRefresh(() => {
 const handleShare = () => {
   uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
 }
+const { tagList, imageList } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
@@ -223,16 +233,7 @@ const handleShare = () => {
         }
       }
     }
-    .content-header-tag {
-      margin: $page-spacing;
-      padding: 28rpx $page-spacing 0;
-      background-color: #f8f8fa;
-      .tag-text {
-        display: inline-block;
-        margin-right: $item-spacing;
-        margin-bottom: 26rpx;
-      }
-    }
+
     .content-header-details {
       padding: 28rpx $page-spacing 0;
       .content-details-title {
@@ -294,39 +295,57 @@ const handleShare = () => {
       }
     }
   }
-  .content-image-list {
+  .tag-wrapper {
+    margin: $page-spacing;
+    background-color: #fff;
+  }
+  .join-member {
     margin-top: $item-spacing;
     background-color: #fff;
     padding: $page-spacing;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
+    height: 264rpx;
     box-sizing: border-box;
-    .image-item {
-      width: 30%;
-      height: 216rpx;
-      background: #dcdcdc;
-      margin-right: 20rpx;
-      margin-bottom: 20rpx;
+
+    .join-member-content {
+      height: 100%;
+      background: linear-gradient(-86deg, #e5bb97 0%, #fae3cd 100%);
       border-radius: $border-radius;
-      .image {
-        width: 100%;
-        height: 100%;
-        border-radius: $border-radius;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 $page-spacing;
+      box-sizing: border-box;
+      .title-wrapper {
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-size: $font-large;
+          color: $font-color-main;
+          font-weight: 700;
+        }
+        .sub-title {
+          font-size: $font-middle;
+          color: $font-color-sub;
+        }
+      }
+      .join-button {
+        width: 185rpx;
+        height: 65rpx;
+        line-height: 65rpx;
+        background: linear-gradient(90deg, #544b47 0%, #291d0f 100%);
+        border-radius: 65rpx;
+        font-size: $font-base;
+        color: #f5dac1;
+        &::after {
+          display: none;
+        }
       }
     }
-    .image-item:nth-child(3n) {
-      margin-right: 0;
-    }
   }
-  .content-video {
-    padding: 0 $page-spacing $page-spacing;
+  .media-wrapper {
+    margin-top: $item-spacing;
     background-color: #fff;
-    .video {
-      border-radius: $border-radius;
-      border: 1px solid $divide-line-color;
-    }
+    padding: $page-spacing;
   }
   .find-wrapper {
     padding: 0 $page-spacing;

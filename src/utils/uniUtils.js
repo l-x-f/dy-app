@@ -360,3 +360,36 @@ export function getNavigationBarTitle() {
 
   return ''
 }
+
+/**
+ * 选择图片
+ * @param {*} options
+ * @returns
+ */
+export const chooseImage = async (
+  options = {
+    count: 9
+  }
+) => {
+  const params = {
+    count: options?.count || 9,
+    sizeType: options?.sizeType || ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: options?.sourceType || ['album', 'camera '] // 从相册选择
+  }
+  const data = await uni.chooseImage({ ...params })
+  return data
+}
+
+/**
+ * 选择视频
+ * @param {*} options
+ * @returns
+ */
+export const chooseVideo = async (options = {}) => {
+  const params = {
+    compressed: true, // 压缩
+    sourceType: options?.sourceType || ['album', 'camera '] // 从相册选择
+  }
+  const data = await uni.chooseVideo({ ...params })
+  return data
+}

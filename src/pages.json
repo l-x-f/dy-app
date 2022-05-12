@@ -126,7 +126,8 @@
     "app-plus": {
       "pullToRefresh": {
         "color": "#485bf7"
-      }
+      },
+      "softinputNavBar": "none"
     }
   },
   "app-plus": {
