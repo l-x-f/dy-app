@@ -67,6 +67,12 @@
       }
     },
     {
+      "path": "pages/my/team/index",
+      "style": {
+        "navigationBarTitleText": "我的团队"
+      }
+    },
+    {
       "path": "pages/my/setting/index",
       "style": {
         "navigationBarTitleText": "设置"

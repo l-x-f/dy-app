@@ -191,7 +191,9 @@ const myWalletList = [
   {
     icon: 'team',
     text: '我的团队',
-    click: handleToEdit
+    click: () => {
+      uni.navigateTo({ url: '/pages/my/team/index' })
+    }
   }
 ]
 </script>

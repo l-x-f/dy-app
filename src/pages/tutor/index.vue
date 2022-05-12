@@ -10,11 +10,11 @@
     <TutorList :list="data.slice(0, 1)" @clickItem="handleToDetails" />
 
     <AppSection title="你可能感兴趣" has-right-refresh>
-      <TutorList :list="data" class="interested" />
+      <TutorList :list="data" class="interested" @clickItem="handleToDetails" />
     </AppSection>
 
     <AppSection title="导师">
-      <TutorList :list="data" />
+      <TutorList :list="data" @clickItem="handleToDetails" />
     </AppSection>
   </div>
 </template>

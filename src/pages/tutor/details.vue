@@ -144,11 +144,9 @@ const FixedNavWrapperStyle = {
   backgroundColor: '#fff'
 }
 const DefaultNavTitleStyle = {
-  fontWeight: 400,
   color: '#fff'
 }
 const FixedNavTitleStyle = {
-  fontWeight: 400,
   color: '#333'
 }
 
