@@ -73,6 +73,30 @@
       }
     },
     {
+      "path": "pages/my/bank-card/index",
+      "style": {
+        "navigationBarTitleText": "我的银行卡"
+      }
+    },
+    {
+      "path": "pages/my/member/index",
+      "style": {
+        "navigationBarTitleText": "我的学员"
+      }
+    },
+    {
+      "path": "pages/my/word/index",
+      "style": {
+        "navigationBarTitleText": "我的口令"
+      }
+    },
+    {
+      "path": "pages/my/wallet/index",
+      "style": {
+        "navigationBarTitleText": "我的钱包"
+      }
+    },
+    {
       "path": "pages/my/setting/index",
       "style": {
         "navigationBarTitleText": "设置"
@@ -85,9 +109,15 @@
       }
     },
     {
-      "path": "pages/my/word/index",
+      "path": "pages/my/income/recommend-income",
       "style": {
-        "navigationBarTitleText": "我的口令"
+        "navigationBarTitleText": "推广收益"
+      }
+    },
+    {
+      "path": "pages/my/income/member-income",
+      "style": {
+        "navigationBarTitleText": "成员收益"
       }
     }
   ],

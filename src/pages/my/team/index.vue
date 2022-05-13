@@ -91,6 +91,7 @@
           class="team-member-item"
           :index="index"
           :title="item.text"
+          @click="handleClickMemberItem(item)"
         >
           <view class="team-member-item-body">
             <image class="image" :src="item.avatar" mode="aspectFill" />
@@ -126,15 +127,11 @@
 </template>
 
 <script setup>
-import {
-  onPullDownRefresh,
-  onPageScroll,
-  onReachBottom
-} from '@dcloudio/uni-app'
+import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { reactive, ref, onMounted } from 'vue'
 import NavBar from '@/components/NavBar'
-import { emitPageScrollEvent } from '@/utils/emitEvent'
 import { getBoundingClientRect } from '@/utils/uniUtils'
+import { usePageScroll } from '@/hooks'
 
 const state = reactive({ result: '', tabIndex: 0, loadMoreStatus: 'more' })
 
@@ -153,8 +150,9 @@ onMounted(async () => {
   tabTop.value = top
   teamFooterHeight.value = teamHeight
 })
-onPageScroll(data => {
-  emitPageScrollEvent(data)
+
+// 添加页面滚动监听
+usePageScroll(data => {
   const height =
     state.tabIndex === 0 ? tabTop.value : tabTop.value - teamFooterHeight.value
   if (data.scrollTop > height) {
@@ -165,6 +163,7 @@ onPageScroll(data => {
     tabPlaceholderStyle.value = { height: '0' }
   }
 })
+
 // 列表
 const memberList = ref(
   [...new Array(15)].map((_, index) => ({
@@ -200,6 +199,11 @@ onReachBottom(e => {
   }, 1000)
   console.log(e)
 })
+const handleClickMemberItem = item => {
+  uni.navigateTo({
+    url: `/pages/my/member/index?id=${item}`
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -364,7 +368,7 @@ onReachBottom(e => {
             color: $font-color-sub;
             position: absolute;
             top: 50%;
-            right: 24rpx;
+            right: $page-spacing;
             transform: translateY(-50%);
           }
         }

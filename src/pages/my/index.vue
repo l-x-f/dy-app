@@ -79,7 +79,7 @@
           v-for="item in myWalletList"
           :key="item.text"
           class="my-wallet-section-item"
-          @click="item.click"
+          @click="handleNavigateTo(item.page)"
         >
           <image
             class="image"
@@ -100,7 +100,7 @@
           class="function-item"
           :index="index"
           :title="item.text"
-          @click="item.click"
+          @click="handleNavigateTo(item.page)"
         >
           <image
             class="image"
@@ -133,12 +133,10 @@ const handleLogout = async () => {
     icon: 'success'
   })
 }
+console.log(handleLogout)
 
-const handleToEdit = () => {
-  uni.showToast({
-    title: '此功能正在开发，敬请期待！',
-    icon: 'none'
-  })
+const handleNavigateTo = page => {
+  uni.navigateTo({ url: `/pages/my/${page}/index` })
 }
 
 // 常用功能
@@ -146,26 +144,22 @@ const functionList = [
   {
     icon: 'tutor',
     text: '导师入住',
-    click: handleToEdit
+    page: 'help'
   },
   {
     icon: 'help',
     text: '帮助中心',
-    click: () => {
-      uni.navigateTo({ url: '/pages/my/help/index' })
-    }
+    page: 'help'
   },
   {
     icon: 'customer-service',
     text: '联系客服',
-    click: handleLogout
+    page: 'help'
   },
   {
     icon: 'setting',
     text: '设置',
-    click: () => {
-      uni.navigateTo({ url: '/pages/my/setting/index' })
-    }
+    page: 'setting'
   }
 ]
 
@@ -174,26 +168,22 @@ const myWalletList = [
   {
     icon: 'wallet',
     text: '我的钱包',
-    click: handleToEdit
+    page: 'wallet'
   },
   {
     icon: 'focus',
     text: '我的关注',
-    click: handleToEdit
+    page: 'focus'
   },
   {
     icon: 'word',
     text: '我的口令',
-    click: () => {
-      uni.navigateTo({ url: '/pages/my/word/index' })
-    }
+    page: 'word'
   },
   {
     icon: 'team',
     text: '我的团队',
-    click: () => {
-      uni.navigateTo({ url: '/pages/my/team/index' })
-    }
+    page: 'team'
   }
 ]
 </script>

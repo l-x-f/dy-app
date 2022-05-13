@@ -1,5 +1,5 @@
 <template>
-  <view class="search-components">
+  <view :class="['search-components', searchPosition]">
     <input
       v-model="inputValue"
       type="text"
@@ -33,6 +33,11 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: '请输入关键字'
+  },
+  // 搜索图标位置
+  searchPosition: {
+    type: String,
+    default: 'right'
   }
 })
 
@@ -64,7 +69,7 @@ const handleConfirm = () => {
     box-sizing: border-box;
     width: 100%;
     height: 88rpx;
-    line-height: 106rpx;
+    line-height: 88rpx;
     box-shadow: 7px 11px 8px 0 rgba(0, 0, 0, 0.08);
     border-radius: 12rpx;
     padding: 0 30rpx;
@@ -81,9 +86,23 @@ const handleConfirm = () => {
     transform: translateY(-50%);
     object-fit: contain;
   }
+
   :deep(.search-placeholder) {
     font-size: $font-base;
     color: #acacac;
+  }
+}
+.left {
+  .search-image {
+    left: $item-spacing;
+  }
+  .search-input {
+    padding-left: calc(48rpx + 30rpx);
+  }
+}
+.right {
+  .search-image {
+    right: $item-spacing;
   }
 }
 </style>

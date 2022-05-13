@@ -15,3 +15,11 @@ export function onPageScrollEvent(callback) {
 export function emitPageScrollEvent(data) {
   uni.$emit(key, data)
 }
+
+/**
+ * 移除页面滚动
+ *
+ */
+export function offPageScrollEvent() {
+  uni.$off(key)
+}

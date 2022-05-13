@@ -48,13 +48,12 @@
 </template>
 
 <script setup>
-import { onPageScroll } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 import NavBar from '@/components/NavBar'
-import { emitPageScrollEvent } from '@/utils/emitEvent'
+import { usePageScroll } from '@/hooks'
 
 // 触发页面滚动
-onPageScroll(emitPageScrollEvent)
+usePageScroll()
 
 // 描述
 const descList = [
@@ -65,7 +64,7 @@ const descList = [
 
 // 口令列表
 const wordList = ref(
-  [...new Array(5)].map((_, index) => ({
+  [...new Array(15)].map((_, index) => ({
     id: index,
     avatar:
       'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
@@ -122,7 +121,7 @@ const handleDelete = (item, index) => {
     .word-body {
       .word-item {
         margin-top: $item-spacing;
-        padding: 24rpx $item-spacing;
+        padding: 24rpx $page-spacing;
         border-radius: $border-radius;
         background-color: #fff;
         box-sizing: border-box;
@@ -153,7 +152,7 @@ const handleDelete = (item, index) => {
             color: $font-color-sub;
             position: absolute;
             top: 50%;
-            right: 24rpx;
+            right: $page-spacing;
             transform: translateY(-50%);
           }
         }
