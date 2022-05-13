@@ -2,9 +2,8 @@
   <div class="word-page">
     <NavBar
       has-left
-      :nav-wrapper-style="{
-        backgroundColor
-      }"
+      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
+      :fixed-nav-wrapper-style="{ backgroundColor: '#fff' }"
     />
 
     <!-- 描述 -->
@@ -51,23 +50,11 @@
 <script setup>
 import { onPageScroll } from '@dcloudio/uni-app'
 import { ref } from 'vue'
-import { storeToRefs } from 'pinia'
 import NavBar from '@/components/NavBar'
-import { useAppStore } from '@/store'
+import { emitPageScrollEvent } from '@/utils/emitEvent'
 
-const store = useAppStore()
-const { systemInfo } = storeToRefs(store)
-const DefaultColor = 'transparent'
-const FixedColor = '#fff'
-const navHeight = systemInfo.value.statusBarHeight
-const backgroundColor = ref(DefaultColor)
-onPageScroll(data => {
-  if (data.scrollTop > navHeight) {
-    backgroundColor.value = FixedColor
-  } else {
-    backgroundColor.value = DefaultColor
-  }
-})
+// 触发页面滚动
+onPageScroll(emitPageScrollEvent)
 
 // 描述
 const descList = [

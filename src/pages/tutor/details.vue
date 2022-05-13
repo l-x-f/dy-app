@@ -2,9 +2,10 @@
   <div class="tutor-details-page">
     <NavBar
       has-left
-      :nav-wrapper-style="navWrapperStyle"
-      :title-style="navTitleStyle"
-      :nav-style="{ height: '55px' }"
+      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
+      :fixed-nav-wrapper-style="{ backgroundColor: '#fff' }"
+      :title-style="{ color: '#fff' }"
+      :fixed-title-style="{ color: 'rgba(0,0,0,0.9)' }"
       has-right
       :has-placeholder="false"
       right-icon="more-filled"
@@ -32,11 +33,11 @@
             <div class="value">100</div>
           </div>
           <div class="content-item">
-            <div class="label">获赞</div>
+            <div class="label">笔记</div>
             <div class="value">100</div>
           </div>
           <div class="content-item">
-            <div class="label">获赞</div>
+            <div class="label">学员</div>
             <div class="value">100</div>
           </div>
         </div>
@@ -126,42 +127,15 @@
 
 <script setup>
 import { onPullDownRefresh, onPageScroll } from '@dcloudio/uni-app'
-import { reactive, ref } from 'vue'
-import { storeToRefs } from 'pinia'
+import { reactive } from 'vue'
 import NavBar from '@/components/NavBar'
-import { useAppStore } from '@/store'
-
-const store = useAppStore()
-const { systemInfo } = storeToRefs(store)
-
+import { emitPageScrollEvent } from '@/utils/emitEvent'
 const state = reactive({ result: '' })
 console.log(state)
 
-const DefaultNavWrapperStyle = {
-  backgroundColor: 'transparent'
-}
-const FixedNavWrapperStyle = {
-  backgroundColor: '#fff'
-}
-const DefaultNavTitleStyle = {
-  color: '#fff'
-}
-const FixedNavTitleStyle = {
-  color: '#333'
-}
+// 触发页面滚动
+onPageScroll(emitPageScrollEvent)
 
-const navHeight = systemInfo.value.statusBarHeight
-const navWrapperStyle = ref({ ...DefaultNavWrapperStyle })
-const navTitleStyle = ref({ ...DefaultNavTitleStyle })
-onPageScroll(data => {
-  if (data.scrollTop > navHeight) {
-    navWrapperStyle.value = FixedNavWrapperStyle
-    navTitleStyle.value = FixedNavTitleStyle
-  } else {
-    navWrapperStyle.value = DefaultNavWrapperStyle
-    navTitleStyle.value = DefaultNavTitleStyle
-  }
-})
 onPullDownRefresh(() => {
   uni.showToast({
     title: '刷新成功',
@@ -193,7 +167,6 @@ const handleBuy = () => {
     }
   })
 }
-
 // 去邀请分享页面
 const handleShare = () => {
   uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })

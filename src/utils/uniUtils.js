@@ -393,3 +393,19 @@ export const chooseVideo = async (options = {}) => {
   const data = await uni.chooseVideo({ ...params })
   return data
 }
+/**
+ * 获取元素节点位置大小信息
+ * @param {*} options
+ * @returns
+ */
+export const getBoundingClientRect = select => {
+  return new Promise(resolve => {
+    const query = uni.createSelectorQuery()
+    query
+      .select(select)
+      .boundingClientRect(position => {
+        resolve(position)
+      })
+      .exec()
+  })
+}

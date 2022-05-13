@@ -1,5 +1,5 @@
 <template>
-  <view class="nav-bar-wrapper" :style="navWrapperStyle">
+  <view class="nav-bar-wrapper" :style="subNavWrapperStyle">
     <div class="nav-bar-body" :style="navStyle">
       <!-- 左侧 -->
       <view v-if="hasLeftWrapper" class="nav-bar-left">
@@ -8,7 +8,7 @@
             <uni-icons
               :type="leftIcon || 'back'"
               size="24"
-              :color="titleStyle.color || '#070F26'"
+              :color="subTitleStyle.color || '#070F26'"
             />
           </slot>
         </view>
@@ -29,7 +29,7 @@
             mode="aspectFill"
           />
 
-          <text class="text" :style="titleStyle">
+          <text class="text" :style="subTitleStyle">
             {{ title || defaultTitle }}
           </text>
         </view>
@@ -46,7 +46,7 @@
             <uni-icons
               :type="rightIcon || 'search'"
               size="24"
-              :color="titleStyle.color || '#070F26'"
+              :color="subTitleStyle.color || '#070F26'"
             />
           </slot>
         </view>
@@ -57,7 +57,10 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { onPageScrollEvent } from '@/utils/emitEvent'
 import { getNavigationBarTitle } from '@/utils/uniUtils'
+import { useAppStore } from '@/store'
 // import { isWep } from '@/utils'
 
 const props = defineProps({
@@ -81,6 +84,11 @@ const props = defineProps({
     type: Object,
     default: () => ({})
   },
+  // 固定标题样式
+  fixedTitleStyle: {
+    type: Object,
+    default: () => ({})
+  },
   // 标题容器样式
   titleWrapperStyle: {
     type: Object,
@@ -93,6 +101,11 @@ const props = defineProps({
   },
   // 导航容器样式
   navWrapperStyle: {
+    type: Object,
+    default: () => ({})
+  },
+  // 固定导航容器样式
+  fixedNavWrapperStyle: {
     type: Object,
     default: () => ({})
   },
@@ -111,7 +124,7 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  // 是否显示下面的站位栏
+  // 是否显示下面的占位栏
   hasPlaceholder: {
     type: Boolean,
     default: true
@@ -128,23 +141,41 @@ const props = defineProps({
   }
 })
 const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight'])
-
+// 默认标题
 const defaultTitle = ref('')
-
+// 导航变色处理
+const store = useAppStore()
+const { systemInfo } = storeToRefs(store)
+const navHeight = systemInfo.value.statusBarHeight
+const subNavWrapperStyle = ref({ ...props.navWrapperStyle })
+const subTitleStyle = ref({ ...props.titleStyle })
+// 监听页面滚动
+onPageScrollEvent(data => {
+  if (data.scrollTop > navHeight) {
+    subNavWrapperStyle.value = props.fixedNavWrapperStyle
+    subTitleStyle.value = props.fixedTitleStyle
+  } else {
+    subNavWrapperStyle.value = props.navWrapperStyle
+    subTitleStyle.value = props.titleStyle
+  }
+})
+// 挂载时拿标题
 onMounted(() => {
   if (!props.title) {
     const title = getNavigationBarTitle()
     defaultTitle.value = title
   }
 })
-
+// 分发点击事件
 const handleClickLeft = () => {
   uni.navigateBack({ delta: 1 })
   emit('clickLeft')
 }
+// 分发点击事件
 const handleClickCenter = () => {
   emit('clickCenter')
 }
+// 分发点击事件
 const handleClickRight = () => {
   emit('clickRight')
 }
@@ -174,7 +205,6 @@ const handleClickRight = () => {
     align-items: center;
     z-index: 999;
   }
-
   .nav-placeholder {
     height: $nav-height;
     width: 100%;
