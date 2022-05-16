@@ -167,7 +167,7 @@ const handleToEdit = data => {
 }
 const bindBankCard = data => {
   console.log(data)
-  uni.navigateTo({ url: `/pages/my/wallet/bind-bank-card` })
+  uni.navigateTo({ url: `/pages/my/wallet/bank-card` })
 }
 
 const list = [
