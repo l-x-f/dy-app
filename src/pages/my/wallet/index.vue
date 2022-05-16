@@ -1,125 +1,90 @@
 <template>
-  <div class="tutor-details-page">
+  <div class="my-wallet-page">
     <NavBar
       has-left
       :nav-wrapper-style="{ backgroundColor: 'transparent' }"
-      :fixed-nav-wrapper-style="{ backgroundColor: '#fff' }"
+      :fixed-nav-wrapper-style="{
+        backgroundColor: '#580CE5'
+      }"
       :title-style="{ color: '#fff' }"
-      :fixed-title-style="{ color: 'rgba(0,0,0,0.9)' }"
-      has-right
+      :fixed-title-style="{ color: '#fff' }"
       :has-placeholder="false"
-      right-icon="more-filled"
-      title-image="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-      @clickRight="handleShare"
     />
 
     <!-- 导航背景 -->
-    <div class="nav-bar-image" />
-
-    <!-- 用户信息模块 -->
-    <cover-view class="user-wrapper">
-      <div class="user-header">
-        <div class="avatar">
-          <image
-            class="image"
-            src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-            mode="aspectFill"
-          />
+    <div class="nav-bar-image">
+      <div class="card-content">
+        <div class="title-wrapper">
+          <text class="label">余额</text>
+          <text class="value">￥600</text>
         </div>
-
-        <div class="content">
-          <div class="content-item">
-            <div class="label">获赞</div>
-            <div class="value">100</div>
+        <div class="sub-wrapper">
+          <div class="left">
+            <text class="label">待结算</text>
+            <text class="value">￥600</text>
           </div>
-          <div class="content-item">
-            <div class="label">笔记</div>
-            <div class="value">100</div>
-          </div>
-          <div class="content-item">
-            <div class="label">学员</div>
-            <div class="value">100</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="user-desc">
-        <div class="title">短发发发发</div>
-        <div class="sub-title">ID：12345678</div>
-      </div>
-
-      <div class="user-info">
-        <text class="content">
-          擅长热门话题，爆款视频，星图变现等一些列抖音赚钱渠道，资深抖音达人，全网粉丝300多万，其中抖音超过230多万，擅长热门话题款视频，星图变现等一些列抖音赚钱渠道
-        </text>
-        <text class="more"> 更多</text>
-      </div>
-
-      <div class="user-footer">
-        <div class="btn">编辑资料</div>
-        <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
-      </div>
-    </cover-view>
-
-    <!-- 列表 -->
-    <div class="section">
-      <div
-        v-for="item in 10"
-        :key="item"
-        class="section-item"
-        @click="handleToContentDetails(item)"
-      >
-        <div class="section-item-title">202{{ item }}</div>
-
-        <div class="content-item">
-          <div class="content-item-body">
-            <div class="date-wrapper">
-              <text class="day">12</text>
-              <text class="month"> 3月</text>
-            </div>
-            <div class="content">
-              <div class="content-title">
-                视频播放量几乎不过百，是视频质量 问题还是标签没选好
-              </div>
-              <div class="tag">
-                <div class="tag-item"># 爆款视频</div>
-                <div class="tag-item"># 爆款视频</div>
-                <div class="tag-item"># 爆款视频</div>
-              </div>
-              <div class="content-info">
-                你知道最近的热门话题是什么吗？快打 开看看，别忘记点赞...
-              </div>
-            </div>
-          </div>
-
-          <div class="content-footer">
-            <div class="date">2022-15-22 144:44</div>
-            <div class="hot">
-              <text class="hot-label">热度</text>
-              <text class="hot-value">100</text>
-            </div>
-          </div>
+          <div class="right">提现</div>
         </div>
       </div>
     </div>
+    <!--绑定银行卡  -->
+    <div v-if="true" class="card-footer">
+      <div class="left">您尚未绑定银行卡</div>
+      <div class="right">
+        <text>立即绑定</text>
+        <uni-icons class="icons" type="forward" size="20" color="#fff" />
+      </div>
+    </div>
 
-    <!-- 底部购买通知模块 -->
-    <div class="footer-bar">
-      <uni-notice-bar
-        show-icon
-        scrollable
-        class="notice-bar"
-        text="购买说明购买说明购买说明购买说明购买说明购买说"
-      />
-
-      <div class="footer-bar-content">
-        <div class="price-wrapper">
-          <text class="price">169</text>
-          <text class="unit">元/年</text>
+    <div class="main">
+      <div class="main-container">
+        <div class="title-wrapper">
+          <text class="label">总收益</text>
+          <text class="value">￥600</text>
         </div>
-        <button type="primary" class="button" @click="handleBuy">
-          立即购买
-        </button>
+
+        <view class="sub-title-wrapper">
+          <view class="sub-title-item">
+            <text class="label">今日收益</text>
+            <text class="value today">+ 200</text>
+          </view>
+          <view class="sub-title-item">
+            <text class="label">昨日收益</text>
+            <text class="value">+ 200</text>
+          </view>
+        </view>
+
+        <view class="item-wrapper">
+          <view class="item-body">
+            <view
+              v-for="(item, index) in settingList"
+              :key="index"
+              class="item-item"
+              :index="index"
+              :title="item.text"
+              @click="item.click"
+            >
+              <image
+                :src="'/static/image/wallet/' + item.icon + '.png'"
+                mode="aspectFill"
+                class="icon-image"
+              />
+              <view class="title">{{ item.text }}</view>
+              <div class="icons-wrapper">
+                <view class="value">
+                  {{ item.count }}
+                  <text v-if="item.add" class="add"> +{{ item.add }}</text>
+                </view>
+                <uni-icons
+                  class="icons"
+                  type="forward"
+                  size="20"
+                  color="rgba(0,0,0,0.5)"
+                />
+              </div>
+            </view>
+          </view>
+        </view>
       </div>
     </div>
   </div>
@@ -144,294 +109,222 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
+const handleToEdit = data => {
+  console.log(data)
+}
 
-// 复制到剪切板
-const handleCopy = data => {
-  uni.setClipboardData({
-    data,
-    success: () => {
-      uni.showToast({
-        title: '复制成功',
-        icon: 'none'
-      })
+const settingList = [
+  {
+    text: '推广收益',
+    icon: 'recommend-income',
+    count: 200,
+    add: '70.0',
+    click: () => {
+      uni.navigateTo({ url: `/pages/my/wallet/recommend-income` })
     }
-  })
-}
-// 购买
-const handleBuy = () => {
-  uni.showToast({
-    title: '购买成功',
-    icon: 'success',
-    mask: true,
-    success: () => {
-      uni.navigateBack({ delta: 1 })
+  },
+  {
+    text: '课程收益',
+    icon: 'course',
+    count: 200,
+    add: '10.0',
+    click: () => {
+      uni.navigateTo({ url: `/pages/my/wallet/member-income` })
     }
-  })
-}
-// 去邀请分享页面
-const handleShare = () => {
-  uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
-}
-// 去内容详情页面
-const handleToContentDetails = () => {
-  uni.navigateTo({ url: `/pages/tutor/content-details?id=${1}` })
-}
+  },
+  {
+    text: '提现记录',
+    icon: 'withdrawal-record',
+    click: handleToEdit
+  },
+  {
+    text: '银行卡/支付宝',
+    icon: 'pay',
+    click: () => {
+      uni.navigateTo({ url: `/pages/my/wallet/bank-card` })
+    }
+  }
+]
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 @import '@/styles/mixin.scss';
-.tutor-details-page {
+.my-wallet-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;
+  min-height: 120vh;
   .nav-bar-image {
     width: 100%;
-    height: 253rpx;
-    background-image: url('https://tse1-mm.cn.bing.net/th/id/R-C.d042a67e2697965d3fc92dcc2dd442cb?rik=gNLpj0wl9CcKRQ&riu=http%3a%2f%2fup.bizhizu.com%2fpic%2fba%2f03%2f2a%2fba032adbaf5967418e74177c7d37fc2d.jpg&ehk=dc9BFzyrx0FoPcMNXt6wnMFilhT1LxT5ACCL4y2taR4%3d&risl=&pid=ImgRaw&r=0');
-    background-size: cover;
+    // height: 380rpx;
+    background-image: url('/static/image/wallet.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-top: calc($nav-height + var(--status-bar-height));
   }
-  .user-wrapper {
-    background-color: #fff;
-    padding: $page-spacing;
-    border-radius: 33rpx 33rpx 0 0;
-    box-sizing: border-box;
-    width: 100%;
-    margin-top: -20px;
-    overflow: visible;
-    .user-header {
+
+  .card-content {
+    padding: 0 $page-spacing 70rpx;
+    color: #fff;
+    .title-wrapper {
       display: flex;
-      overflow: visible;
-      .avatar {
-        flex: 0 0 146rpx;
-        width: 146rpx;
-        height: 146rpx;
-        border-radius: 50%;
-        padding: 10rpx;
-        background-color: #fff;
-        overflow: visible;
-        margin-top: -30px;
-        .image {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-        }
+      flex-direction: column;
+      .label {
+        font-size: $font-base;
       }
-      .content {
-        flex: 1;
-        display: flex;
-        justify-content: space-around;
-        .content-item {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 0 28rpx;
-          position: relative;
-          &::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -28rpx;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 61rpx;
-            background-color: $border-color;
-          }
-          .label {
-            font-size: $font-small;
-            font-weight: 300;
-            color: $font-color-main;
-          }
-          .value {
-            margin-top: 10rpx;
-            font-size: 33rpx;
-            font-weight: bold;
-            color: $font-color-main;
-          }
-        }
-        .content-item:last-child {
-          &::after {
-            display: none;
-          }
-        }
-      }
-    }
-    .user-desc {
-      margin-top: 29rpx;
-      .title {
-        font-size: $font-large;
-        font-weight: 500;
-        color: $font-color-main;
-      }
-      .sub-title {
-        margin-top: 17rpx;
-        font-size: 33rpx;
-        font-weight: 400;
-        color: $font-color-sub;
-      }
-    }
-    .user-info {
-      margin-top: 35rpx;
-      padding-top: 35rpx;
-      border-top: 1px solid $border-color;
-      white-space: normal;
-      height: 256rpx;
-      overflow: hidden;
-      .content {
-        font-size: $font-middle;
-        font-weight: 400;
-        color: $font-color-sub;
-        line-height: 58rpx;
-        white-space: normal;
-      }
-      .more {
-        color: #485bf7;
-      }
-    }
-    .user-footer {
-      display: flex;
-      justify-content: space-around;
-      margin-top: $page-spacing;
-      .btn {
-        width: 333rpx;
-        height: 79rpx;
-        line-height: 79rpx;
-        text-align: center;
-        background: #eff0f3;
-        border-radius: 6px;
-      }
-    }
-  }
-  .section {
-    padding: 0 $page-spacing $page-bottom;
-    .section-item {
-      .section-item-title {
-        font-size: 46rpx;
+      .value {
+        margin-top: 24rpx;
+        font-size: 58rpx;
         font-weight: bold;
-        color: $font-color-main;
-        margin: 30rpx 0;
       }
-      .content-item {
-        margin-top: $item-spacing;
-        background-color: #fff;
-        border-radius: $border-radius;
-        padding: 33rpx 36rpx;
-        display: flex;
-        flex-direction: column;
-        .content-item-body {
-          display: flex;
-          .date-wrapper {
-            flex: 0 0 102rpx;
-            width: 102rpx;
-            height: 102rpx;
-            background: #f5f5f6;
-            border-radius: $border-radius;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            .day {
-              font-size: 48rpx;
-              font-weight: bold;
-              color: $font-color-sub;
-            }
-            .month {
-              font-size: $font-small;
-              font-weight: bold;
-              color: $font-color-sub;
-            }
-          }
-          .content {
-            display: flex;
-            flex-direction: column;
-            margin-left: $item-spacing;
-            .content-title {
-              font-size: $font-middle;
-              font-weight: bold;
-              color: $font-color-main;
+    }
 
-              @include multiline-text-overflow-hidden(2);
-            }
-            .tag {
-              margin-top: 42rpx;
-              display: flex;
-              justify-content: space-between;
-              .tag-item {
-                width: 146rpx;
-                height: 41rpx;
-                line-height: 41rpx;
-                text-align: center;
-                background: #f7f9fd;
-                border-radius: 6px;
-                font-size: $font-small;
-                font-weight: 300;
-                color: $font-color-main;
-              }
-            }
-            .content-info {
-              margin-top: 33rpx;
-              font-size: 29rpx;
-              font-weight: 400;
-              color: $font-color-sub;
-            }
-          }
+    .sub-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50rpx;
+      .left {
+        .label {
+          font-size: $font-base;
         }
-        .content-footer {
-          margin-top: 61rpx;
-          display: flex;
-          justify-content: space-between;
-          .date {
-            font-size: $font-small;
-            color: $font-color-sub;
-          }
-          .hot {
-            .hot-label {
-              font-size: $font-small;
-              color: $font-color-sub;
-            }
-            .hot-value {
-              font-size: $font-small;
-              color: $font-color-main;
-            }
-          }
+        .value {
+          font-size: 50rpx;
+          font-weight: bold;
+          margin-left: 39rpx;
         }
+      }
+      .right {
+        width: 171rpx;
+        height: 64rpx;
+        text-align: center;
+        line-height: 64rpx;
+        background: #fff;
+        border-radius: $border-radius;
+        font-size: $font-base;
+        color: $font-color-main;
       }
     }
   }
-
-  .footer-bar {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    .notice-bar {
-      margin: 0;
-      :deep(.uni-noticebar) {
-        margin: 0;
+  .card-footer {
+    margin-top: -20rpx;
+    padding: 26rpx $page-spacing;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(45deg, #6f2bec 0%, #a073f4 100%);
+    border-radius: 0 0 $border-radius $border-radius;
+    .right {
+      display: flex;
+      align-items: center;
+      .icons {
+        margin-left: 16rpx;
       }
     }
-    .footer-bar-content {
-      background-color: #fff;
-      height: 113rpx;
+  }
+  .main {
+    margin-top: $item-spacing;
+    padding: 0 $page-spacing;
+
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid $divide-line-color;
+      padding-bottom: 36rpx;
+
+      .value {
+        font-size: 44rpx;
+        font-weight: bold;
+        margin-top: 36rpx;
+      }
+    }
+
+    .sub-title-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 25rpx;
-      .price-wrapper {
-        .price {
-          font-size: 61rpx;
-          font-weight: 500;
-          color: #f3730b;
+      padding: 36rpx 0;
+      border-bottom: 1px solid $divide-line-color;
+      .sub-title-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1;
+        .label {
+          font-size: $font-base;
+          color: $font-color-sub;
+          vertical-align: middle;
         }
-        .unit {
-          font-size: $font-small;
-          color: $font-color-main;
+        .today {
+          font-family: Source Han Sans CN;
+          font-weight: bold;
+          color: $warn-color;
+        }
+        .value {
+          font-size: $font-base;
+          padding-right: 36rpx;
+          vertical-align: middle;
+          font-weight: bold;
         }
       }
-      .button {
-        flex: 0 0 288rpx;
-        width: 288rpx;
-        margin: 0;
+      .sub-title-item + .sub-title-item {
+        padding-left: 36rpx;
+        border-left: 1px solid $divide-line-color;
+      }
+    }
+
+    .main-container {
+      background-color: #fff;
+      padding: $page-spacing $page-spacing 0;
+      border-radius: $border-radius;
+      .item-wrapper {
+        border-radius: $border-radius;
+        .item-body {
+          flex-wrap: wrap;
+          .item-item {
+            padding: 32rpx 0;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            border-bottom: 1px solid $divide-line-color;
+
+            .icon-image {
+              width: 50rpx;
+              height: 50rpx;
+            }
+
+            .title {
+              font-size: $font-middle;
+              margin-left: 32rpx;
+            }
+            .icons-wrapper {
+              display: flex;
+              align-items: center;
+              font-weight: bold;
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+              .value {
+                position: relative;
+                .add {
+                  position: absolute;
+                  bottom: -34rpx;
+                  left: 0;
+                  font-size: $font-small;
+                  color: $warn-color;
+                }
+              }
+            }
+          }
+          .item-item:last-child {
+            border-bottom: 0;
+            &::after {
+              display: none;
+            }
+          }
+        }
       }
     }
   }

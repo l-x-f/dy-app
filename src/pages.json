@@ -73,13 +73,7 @@
       }
     },
     {
-      "path": "pages/my/bank-card/index",
-      "style": {
-        "navigationBarTitleText": "我的银行卡"
-      }
-    },
-    {
-      "path": "pages/my/member/index",
+      "path": "pages/my/team/member",
       "style": {
         "navigationBarTitleText": "我的学员"
       }
@@ -97,9 +91,27 @@
       }
     },
     {
+      "path": "pages/my/wallet/bank-card",
+      "style": {
+        "navigationBarTitleText": "我的银行卡"
+      }
+    },
+    {
       "path": "pages/my/setting/index",
       "style": {
         "navigationBarTitleText": "设置"
+      }
+    },
+    {
+      "path": "pages/my/wallet/recommend-income",
+      "style": {
+        "navigationBarTitleText": "推广收益"
+      }
+    },
+    {
+      "path": "pages/my/wallet/member-income",
+      "style": {
+        "navigationBarTitleText": "会员收益"
       }
     },
     {
@@ -109,15 +121,9 @@
       }
     },
     {
-      "path": "pages/my/income/recommend-income",
+      "path": "pages/my/tutor-in/index",
       "style": {
-        "navigationBarTitleText": "推广收益"
-      }
-    },
-    {
-      "path": "pages/my/income/member-income",
-      "style": {
-        "navigationBarTitleText": "成员收益"
+        "navigationBarTitleText": "导师入住"
       }
     }
   ],

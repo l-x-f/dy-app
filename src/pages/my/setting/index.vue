@@ -15,7 +15,12 @@
         >
           <view class="title">{{ item.text }}</view>
           <div class="icons-wrapper">
-            <uni-icons class="icons" type="forward" size="20" color="#999" />
+            <uni-icons
+              class="icons"
+              type="forward"
+              size="20"
+              color="rgba(0,0,0,0.5)"
+            />
           </div>
         </view>
       </view>

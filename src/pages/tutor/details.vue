@@ -186,9 +186,10 @@ const handleToContentDetails = () => {
   padding-bottom: $page-bottom;
   .nav-bar-image {
     width: 100%;
-    height: 253rpx;
-    background-image: url('https://tse1-mm.cn.bing.net/th/id/R-C.d042a67e2697965d3fc92dcc2dd442cb?rik=gNLpj0wl9CcKRQ&riu=http%3a%2f%2fup.bizhizu.com%2fpic%2fba%2f03%2f2a%2fba032adbaf5967418e74177c7d37fc2d.jpg&ehk=dc9BFzyrx0FoPcMNXt6wnMFilhT1LxT5ACCL4y2taR4%3d&risl=&pid=ImgRaw&r=0');
-    background-size: cover;
+    height: 380rpx;
+    background-image: url('/static/image/sea.png');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   .user-wrapper {
     background-color: #fff;
@@ -421,7 +422,7 @@ const handleToContentDetails = () => {
         .price {
           font-size: 61rpx;
           font-weight: 500;
-          color: #f3730b;
+          color: $warn-color;
         }
         .unit {
           font-size: $font-small;

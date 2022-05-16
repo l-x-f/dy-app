@@ -201,7 +201,7 @@ onReachBottom(e => {
 })
 const handleClickMemberItem = item => {
   uni.navigateTo({
-    url: `/pages/my/member/index?id=${item}`
+    url: `/pages/my/team/member?id=${item}`
   })
 }
 </script>
@@ -246,7 +246,7 @@ const handleClickMemberItem = item => {
           color: $font-color-sub;
           .add-value {
             display: inline-block;
-            color: #f3730b;
+            color: $warn-color;
             padding-left: 12rpx;
           }
         }

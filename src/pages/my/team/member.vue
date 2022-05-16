@@ -157,7 +157,7 @@ onReachBottom(e => {
           color: $font-color-sub;
           .add-value {
             display: inline-block;
-            color: #f3730b;
+            color: $warn-color;
             padding-left: 12rpx;
           }
         }

@@ -136,6 +136,12 @@ const handleLogout = async () => {
 console.log(handleLogout)
 
 const handleNavigateTo = page => {
+  if (page === 'customer-service') {
+    uni.makePhoneCall({
+      phoneNumber: '1235646531' // 仅为示例
+    })
+    return
+  }
   uni.navigateTo({ url: `/pages/my/${page}/index` })
 }
 
@@ -144,7 +150,7 @@ const functionList = [
   {
     icon: 'tutor',
     text: '导师入住',
-    page: 'help'
+    page: 'tutor-in'
   },
   {
     icon: 'help',
@@ -154,7 +160,7 @@ const functionList = [
   {
     icon: 'customer-service',
     text: '联系客服',
-    page: 'help'
+    page: 'customer-service'
   },
   {
     icon: 'setting',
