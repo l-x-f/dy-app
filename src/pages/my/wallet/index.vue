@@ -54,7 +54,6 @@
             <text class="value">+ 200</text>
           </view>
         </view>
-
         <view class="item-wrapper">
           <view class="item-body">
             <view
@@ -89,16 +88,16 @@
       </div>
     </div>
 
+    <!-- 收益排行 -->
     <div class="income-ranking">
       <div class="top">
         <text class="title">收益排行</text>
         <Tab v-model="state.tabIndex" class="tab" :tab-list="tabList" />
       </div>
-
       <SwiperScrollX>
         <div class="income-ranking-wrapper">
           <view
-            v-for="item in 10"
+            v-for="(item, index) in 10"
             :key="item"
             class="income-ranking-item"
             @click="handleToDetails(item)"
@@ -108,6 +107,15 @@
               class="income-ranking-item-image"
               mode="aspectFill"
             />
+            <view v-if="index <= 2" class="income-ranking-item-icon-wrapper">
+              <image
+                :src="'/static/image/wallet/no' + (index + 1) + '.png'"
+                class="income-ranking-item-icon"
+                mode="aspectFill"
+              />
+              <text class="text">no.{{ index + 1 }}</text>
+            </view>
+
             <view class="income-ranking-title">安安超努力</view>
             <view class="income-wrapper">
               <view class="value"> +2000 </view>
@@ -118,7 +126,7 @@
       </SwiperScrollX>
     </div>
 
-    <!-- 客服 -->
+    <!-- 联系客服 -->
     <div class="customer-service">
       <div class="customer-service-content">
         <image
@@ -378,7 +386,7 @@ const list = [
         font-size: $font-large;
       }
       .tab {
-        flex: 0 0 380rpx;
+        flex: 0 0 300rpx;
         border-radius: 0;
         padding: 15rpx $page-spacing;
       }
@@ -389,7 +397,7 @@ const list = [
       margin-top: 32rpx;
       .income-ranking-item {
         position: relative;
-        flex: 0 0 280rpx;
+        flex: 0 0 216rpx;
         width: 216rpx;
         // height: 294rpx;
         margin-right: 10px;
@@ -408,6 +416,25 @@ const list = [
           object-fit: cover;
         }
 
+        .income-ranking-item-icon-wrapper {
+          position: absolute;
+          top: 0;
+          right: 0;
+          .income-ranking-item-icon {
+            width: 94rpx;
+            height: 34rpx;
+            object-fit: cover;
+          }
+          .text {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            font-size: $font-small;
+            color: #fff;
+          }
+        }
+
         .income-ranking-title {
           margin-top: $item-spacing;
         }
@@ -419,6 +446,7 @@ const list = [
           .label {
             font-size: $font-small;
             color: $font-color-sub;
+            margin-top: 16rpx;
           }
         }
       }
