@@ -63,20 +63,7 @@
 
       <!-- tab栏 -->
       <view id="tabInstance" class="tab" :style="tabStyle">
-        <view
-          class="tab-item"
-          :class="{ 'tab-item-active': state.tabIndex === 0 }"
-          @click="handleSwitchTab(0)"
-        >
-          直推20
-        </view>
-        <view
-          class="tab-item"
-          :class="{ 'tab-item-active': state.tabIndex === 1 }"
-          @click="handleSwitchTab(1)"
-        >
-          间推10
-        </view>
+        <Tab v-model="state.tabIndex" :tab-list="tabList" />
       </view>
       <!-- tab 占位栏，使tab定位切换顺滑 -->
       <view class="tab-placeholder" :style="tabPlaceholderStyle" />
@@ -130,6 +117,7 @@
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { reactive, ref, onMounted } from 'vue'
 import NavBar from '@/components/NavBar'
+import Tab from '@/components/Tab'
 import { getBoundingClientRect } from '@/utils/uniUtils'
 import { usePageScroll } from '@/hooks'
 
@@ -164,6 +152,15 @@ usePageScroll(data => {
   }
 })
 
+const tabList = ref([
+  {
+    title: '直推20'
+  },
+  {
+    title: '间推10'
+  }
+])
+
 // 列表
 const memberList = ref(
   [...new Array(15)].map((_, index) => ({
@@ -178,9 +175,7 @@ const memberList = ref(
   }))
 )
 console.log(state)
-const handleSwitchTab = async index => {
-  state.tabIndex = index
-}
+
 // 下拉刷新
 onPullDownRefresh(() => {
   uni.showToast({
@@ -307,22 +302,7 @@ const handleClickMemberItem = item => {
   }
   .tab {
     margin-top: $page-spacing;
-    padding: 28rpx $page-spacing;
     width: 100%;
-    background-color: #fff;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    .tab-item {
-      font-size: 32rpx;
-      color: $font-color-sub;
-    }
-    .tab-item-active {
-      font-weight: 500;
-      color: $font-color-main;
-    }
   }
   .team-member-wrapper {
     margin: $item-spacing;

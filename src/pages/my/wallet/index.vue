@@ -30,12 +30,13 @@
     <!--绑定银行卡  -->
     <div v-if="true" class="card-footer">
       <div class="left">您尚未绑定银行卡</div>
-      <div class="right">
+      <div class="right" @click="bindBankCard">
         <text>立即绑定</text>
         <uni-icons class="icons" type="forward" size="20" color="#fff" />
       </div>
     </div>
 
+    <!-- 主功能区 -->
     <div class="main">
       <div class="main-container">
         <div class="title-wrapper">
@@ -57,7 +58,7 @@
         <view class="item-wrapper">
           <view class="item-body">
             <view
-              v-for="(item, index) in settingList"
+              v-for="(item, index) in list"
               :key="index"
               class="item-item"
               :index="index"
@@ -87,20 +88,64 @@
         </view>
       </div>
     </div>
+
+    <div class="income-ranking">
+      <div class="top">
+        <text class="title">收益排行</text>
+        <Tab v-model="state.tabIndex" class="tab" :tab-list="tabList" />
+      </div>
+
+      <SwiperScrollX>
+        <div class="income-ranking-wrapper">
+          <view
+            v-for="item in 10"
+            :key="item"
+            class="income-ranking-item"
+            @click="handleToDetails(item)"
+          >
+            <image
+              src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+              class="income-ranking-item-image"
+              mode="aspectFill"
+            />
+            <view class="income-ranking-title">安安超努力</view>
+            <view class="income-wrapper">
+              <view class="value"> +2000 </view>
+              <view class="label"> 昨日收益 </view>
+            </view>
+          </view>
+        </div>
+      </SwiperScrollX>
+    </div>
+
+    <!-- 客服 -->
+    <div class="customer-service">
+      <div class="customer-service-content">
+        <image
+          class="image"
+          src="/static/image/customer-service.png"
+          mode="aspectFill"
+        />
+        <text class="text">联系客服</text>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import NavBar from '@/components/NavBar'
+import Tab from '@/components/Tab'
+import SwiperScrollX from '@/components/SwiperScrollX'
 import { usePageScroll } from '@/hooks'
 
 // 触发页面滚动
 usePageScroll()
 
-const state = reactive({ result: '' })
+const state = reactive({ result: '', tabIndex: 0 })
 console.log(state)
+const tabList = ref([{ title: '昨日' }, { title: '本周' }, { title: '本月' }])
 
 onPullDownRefresh(() => {
   uni.showToast({
@@ -112,8 +157,12 @@ onPullDownRefresh(() => {
 const handleToEdit = data => {
   console.log(data)
 }
+const bindBankCard = data => {
+  console.log(data)
+  uni.navigateTo({ url: `/pages/my/wallet/bind-bank-card` })
+}
 
-const settingList = [
+const list = [
   {
     text: '推广收益',
     icon: 'recommend-income',
@@ -156,15 +205,13 @@ const settingList = [
   min-height: 120vh;
   .nav-bar-image {
     width: 100%;
-    // height: 380rpx;
     background-image: url('/static/image/wallet.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding-top: calc($nav-height + var(--status-bar-height));
   }
-
   .card-content {
-    padding: 0 $page-spacing 70rpx;
+    padding: 50rpx $page-spacing 70rpx;
     color: #fff;
     .title-wrapper {
       display: flex;
@@ -225,20 +272,17 @@ const settingList = [
   .main {
     margin-top: $item-spacing;
     padding: 0 $page-spacing;
-
     .title-wrapper {
       display: flex;
       flex-direction: column;
       border-bottom: 1px solid $divide-line-color;
       padding-bottom: 36rpx;
-
       .value {
         font-size: 44rpx;
         font-weight: bold;
         margin-top: 36rpx;
       }
     }
-
     .sub-title-wrapper {
       display: flex;
       justify-content: space-between;
@@ -256,7 +300,6 @@ const settingList = [
           vertical-align: middle;
         }
         .today {
-          font-family: Source Han Sans CN;
           font-weight: bold;
           color: $warn-color;
         }
@@ -272,7 +315,6 @@ const settingList = [
         border-left: 1px solid $divide-line-color;
       }
     }
-
     .main-container {
       background-color: #fff;
       padding: $page-spacing $page-spacing 0;
@@ -288,12 +330,10 @@ const settingList = [
             box-sizing: border-box;
             position: relative;
             border-bottom: 1px solid $divide-line-color;
-
             .icon-image {
               width: 50rpx;
               height: 50rpx;
             }
-
             .title {
               font-size: $font-middle;
               margin-left: 32rpx;
@@ -325,6 +365,87 @@ const settingList = [
             }
           }
         }
+      }
+    }
+  }
+  .income-ranking {
+    margin-top: 50rpx;
+    padding: 0 $page-spacing;
+    .top {
+      display: flex;
+      justify-content: space-between;
+      .title {
+        font-size: $font-large;
+      }
+      .tab {
+        flex: 0 0 380rpx;
+        border-radius: 0;
+        padding: 15rpx $page-spacing;
+      }
+    }
+    .income-ranking-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      margin-top: 32rpx;
+      .income-ranking-item {
+        position: relative;
+        flex: 0 0 280rpx;
+        width: 216rpx;
+        // height: 294rpx;
+        margin-right: 10px;
+        box-sizing: border-box;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50rpx $page-spacing 28rpx;
+        border-radius: $border-radius;
+        .income-ranking-item-image {
+          width: 75rpx;
+          height: 75rpx;
+          box-sizing: border-box;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .income-ranking-title {
+          margin-top: $item-spacing;
+        }
+        .income-wrapper {
+          margin-top: 36rpx;
+          .value {
+            color: $warn-color;
+          }
+          .label {
+            font-size: $font-small;
+            color: $font-color-sub;
+          }
+        }
+      }
+    }
+  }
+  .customer-service {
+    margin-top: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .customer-service-content {
+      width: 218rpx;
+      height: 66rpx;
+      background: #fff;
+      border-radius: 12rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .image {
+        width: 30rpx;
+        height: 30rpx;
+      }
+      .text {
+        font-size: $font-small;
+        color: $font-color-sub;
+        margin-left: 10rpx;
       }
     }
   }

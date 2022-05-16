@@ -97,6 +97,12 @@
       }
     },
     {
+      "path": "pages/my/wallet/bind-bank-card",
+      "style": {
+        "navigationBarTitleText": "绑定银行卡"
+      }
+    },
+    {
       "path": "pages/my/setting/index",
       "style": {
         "navigationBarTitleText": "设置"
