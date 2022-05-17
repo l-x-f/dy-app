@@ -14,6 +14,9 @@ page {
   background-color: $page-bg-color;
   box-sizing: border-box;
   min-height: 100vh;
+
+  @extend .base-style;
+
   button {
     height: 88rpx;
     line-height: 88rpx;
@@ -59,8 +62,6 @@ page {
   :deep(.placeholder-class) {
     color: $font-color-sub;
   }
-
-  @extend .base-style;
 }
 .no-data {
   margin-top: $item-spacing;
@@ -70,4 +71,18 @@ page {
 
 image {
   object-fit: cover;
+}
+
+.uni-input-placeholder.input-placeholder {
+  color: $font-color-sub;
+  font-size: $font-middle;
+}
+
+.selected-area.placeholder {
+  color: $font-color-sub;
+  font-size: $font-middle;
+}
+
+.is-required {
+  margin-right: 8rpx;
 }

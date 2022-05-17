@@ -3,16 +3,12 @@
     <NavBar has-left />
 
     <!-- 描述 -->
-    <view class="desc">
-      <view class="item">
-        <uni-icons type="star-filled" size="12" color="rgba(0,0,0,0.5)" />
-        <text class="content"> 长按删除银行卡 </text>
-      </view>
-    </view>
+    <Describe :describe-list="describeList" />
 
+    <!-- 银行卡列表 -->
     <view class="card-list">
       <view
-        v-for="(item, index) in carList"
+        v-for="(item, index) in cardList"
         :key="index"
         class="card-list-item"
         @longpress="handleDelete(item, index)"
@@ -24,7 +20,14 @@
         />
         <view class="card-info">
           <text class="card-name"> {{ item.name }} </text>
-          <text class="card-number"> 622202******1234 </text>
+          <text class="card-number">
+            <image
+              src="/static/image/bank.png"
+              mode="aspectFill"
+              class="bank-icon"
+            />
+            622202******1234
+          </text>
           <div class="footer">
             <text class="username"> 名字 </text>
             <text class="单日限额">单日限额 10000 </text>
@@ -32,7 +35,8 @@
         </view>
       </view>
 
-      <view class="add">
+      <!-- 添加银行卡 -->
+      <view class="add" @click="handleAddBankCard">
         <image src="/static/image/plus.png" mode="aspectFill" class="image" />
         <text class="add-text"> 添加银行卡 </text>
       </view>
@@ -43,8 +47,9 @@
 <script setup>
 import { ref } from 'vue'
 import NavBar from '@/components/NavBar'
+import Describe from '@/components/Describe'
 
-const carList = ref([
+const cardList = ref([
   {
     name: '建设银行'
   },
@@ -55,6 +60,11 @@ const carList = ref([
     name: '农业银行'
   }
 ])
+const describeList = ref([
+  {
+    content: '长按删除银行卡'
+  }
+])
 
 // 删除口令
 const handleDelete = (item, index) => {
@@ -63,13 +73,18 @@ const handleDelete = (item, index) => {
     content: `确定删除${item.name}银行卡吗？`,
     success: function (res) {
       if (res.confirm) {
-        carList.value.splice(index, 1)
+        cardList.value.splice(index, 1)
         uni.showToast({
           title: '删除成功',
           icon: 'success'
         })
       }
     }
+  })
+}
+const handleAddBankCard = () => {
+  uni.navigateTo({
+    url: '/pages/my/wallet/add-bank-card'
   })
 }
 </script>
@@ -79,21 +94,8 @@ const handleDelete = (item, index) => {
 .bank-card {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
-  .desc {
-    margin-top: $item-spacing;
-    padding: 24rpx;
-    // background-color: $page-bg-color;
-    background-color: #fff;
-    border-radius: $border-radius;
-    .item {
-      font-size: $font-small;
-      color: $font-color-sub;
-      margin-top: 16rpx;
-      .content {
-        margin-left: 6rpx;
-      }
-    }
-  }
+  background-color: #fff;
+  min-height: 100vh;
   .card-list {
     width: 100%;
     .card-list-item {
@@ -106,6 +108,13 @@ const handleDelete = (item, index) => {
         width: 100%;
         height: 300rpx;
         object-fit: cover;
+      }
+
+      .bank-icon {
+        width: 38rpx;
+        height: 38rpx;
+        object-fit: cover;
+        margin-right: 15rpx;
       }
       .card-info {
         height: 300rpx;
@@ -138,6 +147,7 @@ const handleDelete = (item, index) => {
       justify-content: center;
       align-items: center;
       border-radius: $border-radius;
+      box-shadow: 0 6rpx 36rpx 0 rgba(0, 0, 0, 0.08);
       .image {
         width: 24rpx;
         height: 24rpx;

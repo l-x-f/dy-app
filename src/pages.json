@@ -67,6 +67,12 @@
       }
     },
     {
+      "path": "pages/my/customer-service/index",
+      "style": {
+        "navigationBarTitleText": "客服"
+      }
+    },
+    {
       "path": "pages/my/team/index",
       "style": {
         "navigationBarTitleText": "我的团队"
@@ -94,6 +100,12 @@
       "path": "pages/my/wallet/bank-card",
       "style": {
         "navigationBarTitleText": "我的银行卡"
+      }
+    },
+    {
+      "path": "pages/my/wallet/add-bank-card",
+      "style": {
+        "navigationBarTitleText": "添加银行卡"
       }
     },
     {

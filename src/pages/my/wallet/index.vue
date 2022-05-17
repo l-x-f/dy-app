@@ -127,7 +127,7 @@
     </div>
 
     <!-- 联系客服 -->
-    <div class="customer-service">
+    <div class="customer-service" @click="handleToCustomerService">
       <div class="customer-service-content">
         <image
           class="image"
@@ -168,6 +168,9 @@ const handleToEdit = data => {
 const bindBankCard = data => {
   console.log(data)
   uni.navigateTo({ url: `/pages/my/wallet/bank-card` })
+}
+const handleToCustomerService = () => {
+  uni.navigateTo({ url: `/pages/my/customer-service/index` })
 }
 
 const list = [
@@ -210,7 +213,7 @@ const list = [
 .my-wallet-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;
-  min-height: 120vh;
+  min-height: 100vh;
   .nav-bar-image {
     width: 100%;
     background-image: url('/static/image/wallet.png');

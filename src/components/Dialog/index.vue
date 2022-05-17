@@ -26,7 +26,7 @@
       <!-- 底部确认按钮 -->
       <view :class="{ 'popup-footer': true, 'no-close': !hasClose }">
         <view v-if="hasClose" class="popup-footer-item">
-          <button type="default" class="button" @click="close">
+          <button type="default" class="button" @click="handleClose">
             {{ closeText }}
           </button>
         </view>
@@ -40,7 +40,7 @@
   </uni-popup>
 </template>
 <script setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch } from 'vue'
 const props = defineProps({
   // 弹窗显示
   modelValue: {
@@ -80,25 +80,27 @@ const inputValue = ref('')
  * 打开弹窗
  */
 const open = () => {
-  nextTick(() => {
-    dialogPopup.value.open()
-  })
+  dialogPopup.value.open()
 }
-
 /**
  * 关闭弹窗
  */
 const close = () => {
   dialogPopup.value?.close()
-  emit('close', false)
+}
+/**
+ * 点击关闭
+ */
+const handleClose = () => {
   emit('update:modelValue', false)
+  emit('close')
 }
 
 /**
  * 点击确定
  */
 const handleConfirm = () => {
-  emit('confirm', state.inputValue)
+  emit('confirm', inputValue.value)
   emit('update:modelValue', false)
 }
 
@@ -118,10 +120,10 @@ watch(
 @import '@/styles/variables.scss';
 .popup-wrapper {
   width: 615rpx;
-  height: 347rpx;
+  min-height: 347rpx;
   background: #fdfffe;
-  border-radius: 31rpx;
-  padding: 42rpx;
+  border-radius: $page-spacing;
+  padding: $page-spacing;
   display: flex;
   flex-direction: column;
   .uni-popup {
@@ -145,7 +147,7 @@ watch(
       height: 92rpx;
       background: #fdfffe;
       border: 3px solid #3746c7;
-      border-radius: 17rpx;
+      border-radius: $border-radius;
       box-sizing: border-box;
       padding: 0 20rpx;
     }
@@ -153,6 +155,7 @@ watch(
   .popup-footer {
     display: flex;
     justify-content: space-between;
+    margin-top: $page-spacing;
     .popup-footer-item {
       font-size: 14px;
       .button {

@@ -1,51 +1,43 @@
 <template>
-  <uni-popup
-    ref="popup"
-    :is-mask-click="false"
-    :mask-click="false"
-    type="bottom"
+  <Popup
+    v-model:visible="state.subVisible"
+    @click="close"
+    @confirm="handleConfirm"
   >
-    <view class="popup-wrapper">
-      <view class="popup-header">
-        <view class="popup-header-cancel" @click="close">取消</view>
-        <view class="popup-header-title">{{ title }}</view>
-        <view class="popup-header-confirm" @click="handleConfirm">确定</view>
+    <view class="select-month">
+      <view class="popup-body-year-wrapper">
+        <view class="popup-body-icon-left" @click="minus">
+          <uni-icons type="left" size="20" color="#666" />
+        </view>
+        <view class="popup-body-year">
+          {{ state.year }}
+        </view>
+        <view class="popup-body-icon-right" @click="add">
+          <uni-icons type="right" size="20" color="#666" />
+        </view>
       </view>
 
-      <view class="popup-body">
-        <view class="popup-body-year-wrapper">
-          <view class="popup-body-icon-left" @click="minus">
-            <uni-icons type="left" size="20" color="#666" />
-          </view>
-          <view class="popup-body-year">
-            {{ state.year }}
-          </view>
-          <view class="popup-body-icon-right" @click="add">
-            <uni-icons type="right" size="20" color="#666" />
-          </view>
-        </view>
-
-        <view class="popup-body-month-wrapper">
-          <view
-            v-for="item in MonthCount"
-            :key="item"
-            :class="{
-              'popup-body-month-item': true,
-              'popup-body-month-item-active': state.month === item,
-              'popup-body-month-item-disabled': disabledDate(state.year, item)
-            }"
-            @click="handleClickItem(item)"
-          >
-            {{ item }}
-            <text>月</text>
-          </view>
+      <view class="popup-body-month-wrapper">
+        <view
+          v-for="item in MonthCount"
+          :key="item"
+          :class="{
+            'popup-body-month-item': true,
+            'popup-body-month-item-active': state.month === item,
+            'popup-body-month-item-disabled': disabledDate(state.year, item)
+          }"
+          @click="handleClickItem(item)"
+        >
+          {{ item }}
+          <text>月</text>
         </view>
       </view>
     </view>
-  </uni-popup>
+  </Popup>
 </template>
 <script setup>
-import { ref, watch, reactive, onMounted } from 'vue'
+import { watch, reactive, onMounted } from 'vue'
+import Popup from '@/components/Popup'
 const props = defineProps({
   // 弹窗显示
   visible: {
@@ -64,7 +56,6 @@ const props = defineProps({
   }
 })
 const emit = defineEmits(['confirm', 'update:visible', 'update:modelValue'])
-const popup = ref()
 
 const MonthCount = 12
 const DefaultYear = new Date().getFullYear()
@@ -84,17 +75,9 @@ const initData = () => {
 }
 
 /**
- * 打开弹窗
- */
-const open = () => {
-  popup.value?.open()
-}
-
-/**
  * 关闭弹窗
  */
 const close = () => {
-  popup.value?.close()
   emit('update:visible', false)
 }
 
@@ -128,6 +111,7 @@ const handleConfirm = () => {
     return
   }
   const data = {
+    subVisible: false,
     yarn: state.year,
     month: state.month,
     value: state.year + '-' + state.month
@@ -142,7 +126,7 @@ onMounted(() => {
   watch(
     () => props.visible,
     val => {
-      val ? open() : close()
+      state.subVisible = val
     },
     {
       immediate: true
@@ -178,60 +162,28 @@ watch(
 
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
-.uni-popup {
-  :deep(uni-view[name='mask']) {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-  }
-  // #ifdef H5
-  :deep(uni-view[name='content']) {
-    bottom: 50px !important;
-  }
-  // #endif
-}
-.popup-wrapper {
-  background-color: #fff;
-  padding: $item-spacing 0;
-  border-radius: 10px 10px 0 0;
-  position: relative;
-
-  .popup-header {
+.select-month {
+  .popup-body-year-wrapper {
+    padding: 40rpx 45rpx 0;
     display: flex;
-    justify-content: space-between;
-    padding: 0 45rpx;
-    font*size: $font-large;
-    .popup-header-cancel {
-      color: $font-color-sub;
-    }
-    .popup-header-title {
-      font-weight: 500;
-      color: $font-color-main;
-    }
-    .popup-header-confirm {
-      color: $primary-color;
-    }
-  }
-  .popup-body {
-    .popup-body-year-wrapper {
-      padding: 40rpx 45rpx 0;
-      display: flex;
-      justify-content: space-around;
-      position: relative;
+    justify-content: space-around;
+    position: relative;
 
-      .popup-body-icon-left {
-        position: absolute;
-        padding: 0 45rpx;
-        left: 0;
-      }
-      .popup-body-icon-right {
-        padding: 0 45rpx;
-        position: absolute;
-        right: 0;
-      }
-      .popup-body-year {
-        text-align: center;
-      }
+    .popup-body-icon-left {
+      position: absolute;
+      padding: 0 45rpx;
+      left: 0;
+    }
+    .popup-body-icon-right {
+      padding: 0 45rpx;
+      position: absolute;
+      right: 0;
+    }
+    .popup-body-year {
+      text-align: center;
     }
   }
+
   .popup-body-month-wrapper {
     padding-top: 40rpx;
     display: flex;

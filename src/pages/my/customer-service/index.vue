@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar has-left />
-    推广收益
+    客服
   </div>
 </template>
 

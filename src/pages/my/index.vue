@@ -136,12 +136,6 @@ const handleLogout = async () => {
 console.log(handleLogout)
 
 const handleNavigateTo = page => {
-  if (page === 'customer-service') {
-    uni.makePhoneCall({
-      phoneNumber: '1235646531' // 仅为示例
-    })
-    return
-  }
   uni.navigateTo({ url: `/pages/my/${page}/index` })
 }
 

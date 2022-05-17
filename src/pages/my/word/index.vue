@@ -7,14 +7,7 @@
     />
 
     <!-- 描述 -->
-    <view class="desc">
-      <view v-for="item in descList" :key="item.content" class="item">
-        <uni-icons type="star-filled" size="12" color="rgba(0,0,0,0.5)" />
-        <text class="content">
-          {{ item.content }}
-        </text>
-      </view>
-    </view>
+    <Describe :describe-list="describeList" />
 
     <!-- 口令列表 -->
     <view class="word-wrapper">
@@ -50,13 +43,14 @@
 <script setup>
 import { ref } from 'vue'
 import NavBar from '@/components/NavBar'
+import Describe from '@/components/Describe'
 import { usePageScroll } from '@/hooks'
 
 // 触发页面滚动
 usePageScroll()
 
 // 描述
-const descList = [
+const describeList = [
   { content: '口令超过90天未被其他用户使用，系统将自动回收' },
   { content: '每个用户最多生成10个口令' },
   { content: '长按可删除口令' }
@@ -100,20 +94,8 @@ const handleDelete = (item, index) => {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
 
-  .desc {
-    margin-top: $item-spacing;
-    padding: 24rpx;
-    height: 166rpx;
+  :deep(.describe) {
     background-color: #fff;
-    border-radius: $border-radius;
-    .item {
-      font-size: $font-small;
-      color: $font-color-sub;
-      margin-top: 16rpx;
-      .content {
-        margin-left: 6rpx;
-      }
-    }
   }
 
   .word-wrapper {
