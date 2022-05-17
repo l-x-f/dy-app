@@ -391,7 +391,7 @@ const list = [
       .tab {
         flex: 0 0 300rpx;
         border-radius: 0;
-        padding: 15rpx $page-spacing;
+        padding: 15rpx;
       }
     }
     .income-ranking-wrapper {
@@ -440,6 +440,8 @@ const list = [
 
         .income-ranking-title {
           margin-top: $item-spacing;
+
+          @include text-overflow-hidden;
         }
         .income-wrapper {
           margin-top: 36rpx;
