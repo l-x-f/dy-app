@@ -154,7 +154,6 @@ usePageScroll()
 const state = reactive({ result: '', tabIndex: 0 })
 console.log(state)
 const tabList = ref([{ title: '昨日' }, { title: '本周' }, { title: '本月' }])
-
 onPullDownRefresh(() => {
   uni.showToast({
     title: '刷新成功',
@@ -162,9 +161,6 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
-const handleToEdit = data => {
-  console.log(data)
-}
 const bindBankCard = data => {
   console.log(data)
   uni.navigateTo({ url: `/pages/my/wallet/bank-card` })
@@ -172,7 +168,6 @@ const bindBankCard = data => {
 const handleToCustomerService = () => {
   uni.navigateTo({ url: `/pages/my/customer-service/index` })
 }
-
 const list = [
   {
     text: '推广收益',
@@ -195,7 +190,9 @@ const list = [
   {
     text: '提现记录',
     icon: 'withdrawal-record',
-    click: handleToEdit
+    click: () => {
+      uni.navigateTo({ url: `/pages/my/wallet/withdrawal-record` })
+    }
   },
   {
     text: '银行卡/支付宝',

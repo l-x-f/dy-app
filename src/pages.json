@@ -127,6 +127,12 @@
       }
     },
     {
+      "path": "pages/my/wallet/withdrawal-record",
+      "style": {
+        "navigationBarTitleText": "提现记录"
+      }
+    },
+    {
       "path": "pages/my/help/index",
       "style": {
         "navigationBarTitleText": "帮助中心"
