@@ -97,6 +97,12 @@
       }
     },
     {
+      "path": "pages/my/wallet/real-name-authentication",
+      "style": {
+        "navigationBarTitleText": "实名认证"
+      }
+    },
+    {
       "path": "pages/my/wallet/bank-card",
       "style": {
         "navigationBarTitleText": "我的银行卡"

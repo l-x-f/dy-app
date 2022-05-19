@@ -23,7 +23,7 @@
             <text class="label">待结算</text>
             <text class="value">￥600</text>
           </div>
-          <div class="right">提现</div>
+          <div class="right" @click="handleWithdrawal">提现</div>
         </div>
       </div>
     </div>
@@ -202,6 +202,11 @@ const list = [
     }
   }
 ]
+
+const handleWithdrawal = () => {
+  uni.navigateTo({ url: `/pages/my/wallet/real-name-authentication` })
+  console.log('提现')
+}
 </script>
 
 <style lang="scss" scoped>
