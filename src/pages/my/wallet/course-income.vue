@@ -3,7 +3,7 @@
     <NavBar
       has-left
       :nav-wrapper-style="{ backgroundColor: 'transparent' }"
-      :fixed-nav-wrapper-style="{ backgroundColor: '#6B68C5' }"
+      :fixed-nav-wrapper-style="{ backgroundColor: '#CC8251' }"
       :title-style="{ color: '#fff' }"
       :fixed-title-style="{ color: '#fff' }"
       :has-placeholder="false"
@@ -19,19 +19,19 @@
       <!-- 统计 -->
       <view class="grid">
         <view class="grid-item">
-          <view class="grid-item-title"> 总邀请人数 </view>
+          <view class="grid-item-title"> 今日新增收益 </view>
           <view class="grid-item-value"> 150 </view>
         </view>
         <view class="grid-item">
-          <view class="grid-item-title"> 直推收益 </view>
+          <view class="grid-item-title"> 今日新增会员 </view>
           <view class="grid-item-value"> 150 </view>
         </view>
         <view class="grid-item">
-          <view class="grid-item-title"> 总会员人数 </view>
+          <view class="grid-item-title"> 昨日新增收益 </view>
           <view class="grid-item-value"> 150 </view>
         </view>
         <view class="grid-item">
-          <view class="grid-item-title"> 间推收益 </view>
+          <view class="grid-item-title"> 昨日新增会员 </view>
           <view class="grid-item-value"> 150 </view>
         </view>
       </view>
@@ -69,8 +69,22 @@
             </div>
           </view>
           <view class="tutor-wrapper">
-            <view class="tutor">导师:</view>
-            <view class="tutor-value">刚哥自媒体</view>
+            <view class="tutor-item">
+              <view class="tutor">直推:</view>
+              <view class="tutor-value">刚哥自媒体</view>
+            </view>
+            <view class="tutor-item">
+              <view class="tutor">佣金:</view>
+              <view class="tutor-value">50</view>
+            </view>
+            <view class="tutor-item">
+              <view class="tutor">间推:</view>
+              <view class="tutor-value">刚哥自媒体</view>
+            </view>
+            <view class="tutor-item">
+              <view class="tutor">佣金:</view>
+              <view class="tutor-value">50</view>
+            </view>
           </view>
         </view>
       </view>
@@ -78,7 +92,6 @@
 
     <!-- 加载更多 -->
     <uni-load-more :status="state.loadMoreStatus" />
-
     <!-- 选择月份组件 -->
     <SelectMonth v-model="state.month" v-model:visible="state.visible" />
   </div>
@@ -105,6 +118,7 @@ const state = reactive({
 const handleOpenSelectMonth = () => {
   state.visible = true
 }
+
 // 列表
 const memberList = ref(
   [...new Array(15)].map((_, index) => ({
@@ -149,7 +163,7 @@ onReachBottom(e => {
   .nav-bar-background {
     padding-top: calc($nav-height + var(--status-bar-height));
     box-sizing: border-box;
-    background-color: #6b68c5;
+    background-color: #cc8251;
     color: #fff;
     .title-wrapper {
       padding: 0 $page-spacing;
@@ -179,7 +193,7 @@ onReachBottom(e => {
         box-sizing: border-box;
         border-top: 1rpx solid #e7e7e7;
         border-right: 1rpx solid #e7e7e7;
-        background-color: #7370c8;
+        background-color: #cf885a;
       }
       .grid-item:nth-of-type(even) {
         border-right: 0;
@@ -239,7 +253,7 @@ onReachBottom(e => {
             font-size: $font-small;
             color: $font-color-sub;
             position: absolute;
-            top: 40%;
+            top: 30%;
             right: $page-spacing;
             transform: translateY(-50%);
 
@@ -254,11 +268,34 @@ onReachBottom(e => {
           }
         }
         .tutor-wrapper {
-          background: linear-gradient(0deg, #fff 0%, #f5f5f5 100%);
           border-bottom-left-radius: $border-radius;
           border-bottom-right-radius: $border-radius;
           display: flex;
-          padding: 26rpx $page-spacing;
+
+          flex-wrap: wrap;
+
+          .tutor-item {
+            box-sizing: border-box;
+            flex: 0 0 50%;
+            display: flex;
+            align-items: center;
+            padding: 24rpx $page-spacing;
+            background: linear-gradient(0deg, #fff 0%, #f5f5f5 100%);
+            position: relative;
+          }
+          .tutor-item:nth-of-type(even) {
+            &::after {
+              position: absolute;
+              content: '';
+              width: 1px;
+              height: 60rpx;
+              background-color: #e8e8e8;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+            }
+          }
+
           .tutor-value {
             margin-left: 4rpx;
             color: $font-color-sub;

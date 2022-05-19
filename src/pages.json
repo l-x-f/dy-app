@@ -121,9 +121,9 @@
       }
     },
     {
-      "path": "pages/my/wallet/member-income",
+      "path": "pages/my/wallet/course-income",
       "style": {
-        "navigationBarTitleText": "会员收益"
+        "navigationBarTitleText": "课程收益"
       }
     },
     {

@@ -52,14 +52,25 @@ const props = defineProps({
   // 禁用的日期
   disabledDate: {
     type: Function,
-    default: () => false
+    default: (year, month) => {
+      const date = new Date()
+      if (year > date.getFullYear()) {
+        return true
+      }
+      if (year === date.getFullYear() && month > date.getMonth() + 1) {
+        return true
+      }
+      return false
+    }
   }
 })
 const emit = defineEmits(['confirm', 'update:visible', 'update:modelValue'])
 
+const date = new Date()
+
 const MonthCount = 12
-const DefaultYear = new Date().getFullYear()
-const DefaultMonth = ''
+const DefaultYear = date.getFullYear()
+const DefaultMonth = date.getMonth() + 1
 
 const state = reactive({
   year: DefaultYear,
@@ -122,6 +133,7 @@ const handleConfirm = () => {
 }
 
 onMounted(() => {
+  emit('update:modelValue', state.year + '-' + state.month)
   // 监听 visible 显示弹窗
   watch(
     () => props.visible,
@@ -164,11 +176,10 @@ watch(
 @import '@/styles/variables.scss';
 .select-month {
   .popup-body-year-wrapper {
-    padding: 40rpx 45rpx 0;
+    padding: 40rpx 45rpx 10rpx;
     display: flex;
     justify-content: space-around;
     position: relative;
-
     .popup-body-icon-left {
       position: absolute;
       padding: 0 45rpx;
@@ -207,7 +218,9 @@ watch(
       color: $primary-color;
     }
     .popup-body-month-item-disabled {
-      background-color: $font-color-sub;
+      background-color: rgba(0, 0, 0, 0.04);
+      border-radius: 0;
+      color: $font-color-sub;
     }
   }
 }

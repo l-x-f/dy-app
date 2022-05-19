@@ -184,7 +184,7 @@ const list = [
     count: 200,
     add: '10.0',
     click: () => {
-      uni.navigateTo({ url: `/pages/my/wallet/member-income` })
+      uni.navigateTo({ url: `/pages/my/wallet/course-income` })
     }
   },
   {

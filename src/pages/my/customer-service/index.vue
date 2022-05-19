@@ -22,7 +22,6 @@ import NavBar from '@/components/NavBar'
 .customer-service {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
-
   .customer-service-body {
     margin-top: $page-spacing;
     background: #fff;
@@ -30,7 +29,6 @@ import NavBar from '@/components/NavBar'
     align-items: center;
     flex-direction: column;
     padding: 100rpx $page-spacing;
-
     .title {
       font-size: 32rpx;
       color: $font-color-main;
