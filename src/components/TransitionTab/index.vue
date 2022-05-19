@@ -7,6 +7,7 @@
         :key="index"
         class="tab-item"
         :class="{ 'tab-item-active': state.tabIndex === index }"
+        :style="{ flex }"
         @click="handleSwitchTab(item, index)"
       >
         <text class="tab-item-text"> {{ item.title }}</text>
@@ -17,7 +18,7 @@
 </template>
 
 <script setup>
-import { reactive, watchEffect } from 'vue'
+import { reactive, watchEffect, computed } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -35,22 +36,21 @@ const state = reactive({
   tabIndex: 0,
   tabItem: {},
   style: {
-    left: 0
+    left: 0,
+    width: (1 / props.tabList.length) * 100 + '%'
   }
 })
 watchEffect(() => {
   state.tabIndex = props.modelValue || 0
 })
+const flex = computed(() => `0 0 ${(1 / props.tabList.length) * 100}%`)
+
 const handleSwitchTab = (item, index) => {
   state.tabIndex = index
   state.tabItem = item
   emit('update:modelValue', index)
   emit('switchTab', index, item)
-  if (index === 0) {
-    state.style.left = 0
-  } else {
-    state.style.left = '50%'
-  }
+  state.style.left = (1 / props.tabList.length) * 100 * index + '%'
 }
 </script>
 
@@ -85,7 +85,10 @@ const handleSwitchTab = (item, index) => {
     padding: 24rpx 0;
     position: relative;
 
+    @include text-overflow-hidden;
+
     .tab-item-text {
+      width: 100%;
       position: absolute;
       top: 50%;
       left: 50%;

@@ -44,8 +44,8 @@ import { ref, watch } from 'vue'
 const props = defineProps({
   // 弹窗显示
   modelValue: {
-    type: [String, Number, Date],
-    default: ''
+    type: Boolean,
+    default: false
   },
   // 标题
   title: {
