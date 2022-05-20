@@ -22,13 +22,15 @@
           mode="aspectFill"
         />
         <view class="name"> 短发发发发 </view>
-        <button type="danger" class="btn">
+
+        <button v-if="focus" disabled class="btn">
+          <span>已关注</span>
+        </button>
+
+        <button v-else type="danger" class="btn" @click="handleFocus">
           <span class="icon">+</span>
           <span>关注</span>
         </button>
-        <!-- <button disabled class="btn">
-          <span>已关注</span>
-        </button> -->
       </view>
 
       <view class="tag-wrapper">
@@ -117,8 +119,20 @@
     <!-- 底部分享模块 -->
     <div class="footer-bar">
       <div class="footer-bar-content">
-        <div class="like-wrapper">
-          <image class="image" src="/static/image/like.png" mode="aspectFill" />
+        <div class="like-wrapper" @click="handleLike">
+          <image
+            v-show="like"
+            class="image"
+            src="/static/image/liked.png"
+            mode="aspectFill"
+          />
+          <image
+            v-show="!like"
+            class="image"
+            src="/static/image/like.png"
+            mode="aspectFill"
+          />
+
           <text class="value">230</text>
         </div>
         <button type="primary" class="button" @click="handleShare">
@@ -138,7 +152,8 @@ import ImageList from '@/components/ImageList'
 import AppVideo from '@/components/AppVideo'
 
 const state = reactive({
-  result: '',
+  like: false,
+  focus: false,
   contentHidden: true,
   imageList: [...new Array(4)],
   tagList: [
@@ -155,6 +170,13 @@ const state = reactive({
 
 console.log(state)
 
+const handleFocus = () => {
+  state.focus = !state.focus
+}
+const handleLike = () => {
+  state.like = !state.like
+}
+
 onPullDownRefresh(() => {
   uni.showToast({
     title: '刷新成功',
@@ -167,7 +189,7 @@ onPullDownRefresh(() => {
 const handleShare = () => {
   uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
 }
-const { tagList, imageList } = toRefs(state)
+const { tagList, imageList, like, focus } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
@@ -243,7 +265,7 @@ const { tagList, imageList } = toRefs(state)
       .content {
         padding: 25rpx 0;
         font-size: $font-middle;
-        border-bottom: 1px solid $divide-line-color;
+        border-bottom: 1rpx solid $divide-line-color;
         line-height: 56rpx;
       }
       .content-hidden {

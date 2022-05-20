@@ -163,7 +163,7 @@ onReachBottom(e => {
         }
       }
       .team-item + .team-item {
-        border-left: 1px solid $divide-line-color;
+        border-left: 1rpx solid $divide-line-color;
       }
     }
     .team-footer {
@@ -197,7 +197,7 @@ onReachBottom(e => {
           width: 160rpx;
           height: 60rpx;
           background: rgba(250, 250, 250, 0.08);
-          border: 1px solid #e8e8e8;
+          border: 1rpx solid #e8e8e8;
           border-radius: 12rpx;
           display: flex;
           justify-content: center;

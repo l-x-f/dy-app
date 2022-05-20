@@ -68,7 +68,7 @@ onReachBottom(e => {
     font-size: 32rpx;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $divide-line-color;
+    border-bottom: 1rpx solid $divide-line-color;
     padding-bottom: 30rpx;
     .value {
       color: $warn-color;

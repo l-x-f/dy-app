@@ -146,7 +146,7 @@ console.log(toLogin, 'tologin')
   }
   .link {
     .text {
-      border-bottom: 1px solid $font-color-sub;
+      border-bottom: 1rpx solid $font-color-sub;
     }
   }
 }

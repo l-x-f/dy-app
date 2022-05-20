@@ -247,7 +247,7 @@ const handleClickMemberItem = item => {
         }
       }
       .team-item + .team-item {
-        border-left: 1px solid $divide-line-color;
+        border-left: 1rpx solid $divide-line-color;
       }
     }
     .team-footer {
@@ -281,7 +281,7 @@ const handleClickMemberItem = item => {
           width: 160rpx;
           height: 60rpx;
           background: rgba(250, 250, 250, 0.08);
-          border: 1px solid #e8e8e8;
+          border: 1rpx solid #e8e8e8;
           border-radius: 12rpx;
           display: flex;
           justify-content: center;
@@ -338,7 +338,7 @@ const handleClickMemberItem = item => {
               width: 72rpx;
               height: 34rpx;
               background: rgba(167, 117, 51, 0.08);
-              border: 1px solid #a77533;
+              border: 1rpx solid #a77533;
               border-radius: 12px;
               color: #a77533;
             }
@@ -387,7 +387,7 @@ const handleClickMemberItem = item => {
             }
           }
           .footer-item + .footer-item {
-            border-left: 1px solid $divide-line-color;
+            border-left: 1rpx solid $divide-line-color;
             padding-left: 20rpx;
           }
         }

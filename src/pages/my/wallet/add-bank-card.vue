@@ -374,7 +374,7 @@ const { formData, rules, checked, visible, dialogVisible, currentIndex } =
     }
     .uni-forms-item {
       padding: 23rpx 0;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
     }
     :deep(.uni-forms-item__inner) {
       padding: 0;
@@ -442,7 +442,7 @@ const { formData, rules, checked, visible, dialogVisible, currentIndex } =
       padding: $page-spacing 0;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
       .image {
         width: 60rpx;
         height: 60rpx;

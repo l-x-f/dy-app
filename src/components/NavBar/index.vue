@@ -229,6 +229,7 @@ const handleClickRight = () => {
       .text {
         font-size: $nav-font-size;
         color: $font-color-main;
+        font-weight: 500;
       }
     }
   }

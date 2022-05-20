@@ -44,7 +44,7 @@ const handlePlay = () => {
     width: 100%;
     object-fit: cover;
     border-radius: $border-radius;
-    border: 1px solid $divide-line-color;
+    border: 1rpx solid $divide-line-color;
 
     :deep(.uni-video-cover-play-button) {
       width: 91px;

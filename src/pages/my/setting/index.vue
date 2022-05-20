@@ -3,33 +3,15 @@
     <NavBar has-left />
 
     <!-- 常用功能 -->
-    <view class="setting-wrapper">
-      <view class="setting-body">
-        <view
-          v-for="(item, index) in settingList"
-          :key="index"
-          class="setting-item"
-          :index="index"
-          :title="item.text"
-          @click="item.click"
-        >
-          <view class="title">{{ item.text }}</view>
-          <div class="icons-wrapper">
-            <uni-icons
-              class="icons"
-              type="forward"
-              size="20"
-              color="rgba(0,0,0,0.5)"
-            />
-          </div>
-        </view>
-      </view>
-    </view>
+    <AppCell :cell-list="settingList" @clickItem="handleClickItem" />
   </div>
 </template>
 
 <script setup>
 import NavBar from '@/components/NavBar'
+import AppCell from '@/components/AppCell'
+
+import { useUserStore } from '@/store'
 
 const handleToEdit = () => {
   uni.showToast({
@@ -38,10 +20,28 @@ const handleToEdit = () => {
   })
 }
 
+const store = useUserStore()
+
+// 退出登录
+const handleLogout = async () => {
+  await store.logout()
+  uni.showToast({
+    title: '退出成功',
+    icon: 'success'
+  })
+}
+console.log(handleLogout)
+
+const handleClickItem = item => {
+  item.click && item.click()
+}
+
 const settingList = [
   {
     text: '编辑资料',
-    click: handleToEdit
+    click: () => {
+      uni.navigateTo({ url: '/pages/my/setting/edit-user-info/index' })
+    }
   },
   {
     text: '意见反馈',
@@ -57,11 +57,13 @@ const settingList = [
   },
   {
     text: '清除缓存',
-    click: handleToEdit
+    click: handleLogout
   },
   {
     text: '关于我们',
-    click: handleToEdit
+    click: () => {
+      uni.navigateTo({ url: '/pages/web-view/index' })
+    }
   }
 ]
 </script>
@@ -74,37 +76,5 @@ const settingList = [
   background-color: #fff;
   height: 100vh;
   overflow: hidden;
-
-  .setting-wrapper {
-    border-radius: $border-radius;
-    margin-top: $item-spacing;
-    padding: 0 $item-spacing;
-    .setting-body {
-      flex-wrap: wrap;
-      border-top: 1px solid $divide-line-color;
-      .setting-item {
-        padding: 23rpx 0;
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        position: relative;
-        border-bottom: 1px solid $divide-line-color;
-        .title {
-          font-size: $font-middle;
-        }
-        .icons-wrapper {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translateY(-50%);
-        }
-      }
-      .setting-item:last-child {
-        &::after {
-          display: none;
-        }
-      }
-    }
-  }
 }
 </style>

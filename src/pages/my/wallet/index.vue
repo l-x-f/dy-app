@@ -204,7 +204,6 @@ const list = [
 ]
 
 const handleWithdrawal = () => {
-  uni.navigateTo({ url: `/pages/my/wallet/real-name-authentication` })
   console.log('提现')
 }
 </script>
@@ -288,7 +287,7 @@ const handleWithdrawal = () => {
     .title-wrapper {
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
       padding-bottom: 36rpx;
       .value {
         font-size: 44rpx;
@@ -301,7 +300,7 @@ const handleWithdrawal = () => {
       justify-content: space-between;
       align-items: center;
       padding: 36rpx 0;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
       .sub-title-item {
         display: flex;
         justify-content: space-between;
@@ -325,7 +324,7 @@ const handleWithdrawal = () => {
       }
       .sub-title-item + .sub-title-item {
         padding-left: 36rpx;
-        border-left: 1px solid $divide-line-color;
+        border-left: 1rpx solid $divide-line-color;
       }
     }
     .main-container {
@@ -342,7 +341,7 @@ const handleWithdrawal = () => {
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            border-bottom: 1px solid $divide-line-color;
+            border-bottom: 1rpx solid $divide-line-color;
             .icon-image {
               width: 50rpx;
               height: 50rpx;

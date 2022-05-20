@@ -188,7 +188,7 @@ const { form, tagList, imageList, src } = toRefs(state)
       }
     }
     .border {
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
     }
   }
 }

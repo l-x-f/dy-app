@@ -1,10 +1,15 @@
 <template>
   <div class="find-wrapper">
-    <view v-for="item in list" :key="item" class="find-item">
+    <view
+      v-for="item in list"
+      :key="item"
+      class="find-item"
+      @click="handleClickItem(item, index)"
+    >
       <view v-if="hasClassification" class="classification">
         <view class="angle" />
         <view class="content">
-          <text class="content-text"> 优质</text>
+          <text class="content-text">优质</text>
         </view>
       </view>
 
@@ -64,6 +69,12 @@ const props = defineProps({
     default: false
   }
 })
+
+const emit = defineEmits(['clickItem'])
+
+const handleClickItem = (item, index) => {
+  emit('clickItem', item, index)
+}
 console.log(props)
 </script>
 
@@ -110,7 +121,7 @@ console.log(props)
     }
     .find-item-body {
       display: flex;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
       padding-bottom: $item-spacing;
 
       .find-item-image-wrapper {

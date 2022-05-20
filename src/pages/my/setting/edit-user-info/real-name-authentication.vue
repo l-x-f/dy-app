@@ -169,7 +169,7 @@ const { formData, rules } = toRefs(state)
     }
     .uni-forms-item {
       padding: 23rpx 0;
-      border-bottom: 1px solid $divide-line-color;
+      border-bottom: 1rpx solid $divide-line-color;
     }
     :deep(.uni-forms-item__inner) {
       padding: 0;

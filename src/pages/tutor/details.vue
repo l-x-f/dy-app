@@ -26,7 +26,6 @@
             mode="aspectFill"
           />
         </div>
-
         <div class="content">
           <div class="content-item">
             <div class="label">获赞</div>
@@ -42,21 +41,19 @@
           </div>
         </div>
       </div>
-
       <div class="user-desc">
         <div class="title">短发发发发</div>
         <div class="sub-title">ID：12345678</div>
       </div>
-
       <div class="user-info">
         <text class="content">
           擅长热门话题，爆款视频，星图变现等一些列抖音赚钱渠道，资深抖音达人，全网粉丝300多万，其中抖音超过230多万，擅长热门话题款视频，星图变现等一些列抖音赚钱渠道
         </text>
         <text class="more"> 更多</text>
       </div>
-
+      <!-- 编辑栏 -->
       <div class="user-footer">
-        <div class="btn">编辑资料</div>
+        <div class="btn" @click="handleEdit">编辑资料</div>
         <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
       </div>
     </cover-view>
@@ -70,7 +67,6 @@
         @click="handleToContentDetails(item)"
       >
         <div class="section-item-title">202{{ item }}</div>
-
         <div class="content-item">
           <div class="content-item-body">
             <div class="date-wrapper">
@@ -103,6 +99,9 @@
       </div>
     </div>
 
+    <!--悬浮按钮 -->
+    <FabButton />
+
     <!-- 底部购买通知模块 -->
     <div class="footer-bar">
       <uni-notice-bar
@@ -128,6 +127,7 @@
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
+import FabButton from '@/components/FabButton'
 import NavBar from '@/components/NavBar'
 import { usePageScroll } from '@/hooks'
 
@@ -144,6 +144,10 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
+
+const handleEdit = () => {
+  uni.navigateTo({ url: '/pages/my/setting/edit-user-info/index' })
+}
 
 // 复制到剪切板
 const handleCopy = data => {
@@ -184,6 +188,10 @@ const handleToContentDetails = () => {
 .tutor-details-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;
+
+  :deep(.fab-button) {
+    bottom: calc(90px + $page-spacing);
+  }
   .nav-bar-image {
     width: 100%;
     height: 380rpx;
@@ -274,7 +282,7 @@ const handleToContentDetails = () => {
     .user-info {
       margin-top: 35rpx;
       padding-top: 35rpx;
-      border-top: 1px solid $border-color;
+      border-top: 1rpx solid $border-color;
       white-space: normal;
       height: 256rpx;
       overflow: hidden;

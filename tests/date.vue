@@ -227,7 +227,7 @@ const { formData, text, sendCodeDisabled, visible, monthData } = toRefs(state)
       align-items: center;
 
       .uni-easyinput {
-        border-bottom: 1px solid rgba(187, 187, 187, 100);
+        border-bottom:  1rpx solid rgba(187, 187, 187, 100);
       }
 
       :deep(.uni-easyinput__content-input) {

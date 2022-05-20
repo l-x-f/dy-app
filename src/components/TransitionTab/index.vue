@@ -81,7 +81,7 @@ const handleSwitchTab = (item, index) => {
     height: 100rpx;
     color: $font-color-sub;
     box-sizing: border-box;
-    border: 1px solid transparent;
+    border: 1rpx solid transparent;
     padding: 24rpx 0;
     position: relative;
 
@@ -110,7 +110,7 @@ const handleSwitchTab = (item, index) => {
     top: 0;
     left: 0;
     z-index: 1;
-    border: 1px solid $divide-line-color;
+    border: 1rpx solid $divide-line-color;
     border-radius: 8rpx;
     transition: left 0.3s linear;
   }

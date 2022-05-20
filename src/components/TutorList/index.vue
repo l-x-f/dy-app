@@ -74,14 +74,14 @@ const handleClickRight = item => {
 .tutor-list-component {
   .background {
     background: #f0f0f2;
-    border: 1px solid #c0bebe;
+    border: 1rpx solid #c0bebe;
     border-radius: 6px;
     padding: 6rpx 11rpx;
     font-size: 23rpx !important;
   }
   .tutor-list-item {
     background-color: #fff;
-    border-bottom: 1px solid $divide-line-color;
+    border-bottom: 1rpx solid $divide-line-color;
     padding: 23rpx 0;
 
     .tutor-list-content {
@@ -139,7 +139,7 @@ const handleClickRight = item => {
           height: 63rpx;
           line-height: 63rpx;
           background: #fff;
-          border: 1px solid $border-color;
+          border: 1rpx solid $border-color;
           border-radius: 6px;
         }
       }

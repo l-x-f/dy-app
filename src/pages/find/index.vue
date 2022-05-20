@@ -4,15 +4,16 @@
     <view class="swiper-wrapper">
       <AppSwiper :list="bannerList" />
     </view>
-    <FindList />
+    <FindList @clickItem="handleToContentDetails" />
 
-    <view class="fab-button" @click="handleToSendNote">+</view>
+    <FabButton />
   </div>
 </template>
 
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
+import FabButton from '@/components/FabButton'
 import AppSwiper from '@/components/AppSwiper'
 import NavBar from '@/components/NavBar'
 import FindList from '@/components/FindList'
@@ -21,6 +22,11 @@ const state = reactive({
   result: ''
 })
 console.log(state)
+
+// 去内容详情页面
+const handleToContentDetails = () => {
+  uni.navigateTo({ url: `/pages/tutor/content-details?id=${1}` })
+}
 
 const data = [
   'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
@@ -37,10 +43,7 @@ onPullDownRefresh(() => {
   })
   uni.stopPullDownRefresh()
 })
-// 去发布笔记
-const handleToSendNote = () => {
-  uni.navigateTo({ url: '/pages/find/send-note/index' })
-}
+
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
@@ -52,21 +55,6 @@ const bannerList = data.map(item => ({ img: item }))
   padding: 0 $page-spacing $page-bottom;
   .swiper-wrapper {
     margin-top: $item-spacing;
-  }
-  .fab-button {
-    position: fixed;
-    z-index: 99;
-    right: $page-spacing;
-    bottom: calc(50px + $page-spacing);
-    width: 90rpx;
-    height: 90rpx;
-    border-radius: 50%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 60rpx;
-    color: #fff;
   }
 }
 </style>

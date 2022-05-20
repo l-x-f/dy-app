@@ -43,7 +43,7 @@ page {
   button[type='default'] {
     background-color: #fff;
     color: $font-color-main;
-    border: 1px solid $border-color;
+    border: 1rpx solid $border-color;
     &::after {
       display: none;
     }

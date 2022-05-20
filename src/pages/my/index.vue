@@ -44,7 +44,7 @@
     </view>
 
     <!-- 邀请海报 -->
-    <view class="banner">
+    <view class="banner" @click="handleShare">
       <image
         class="member-bg"
         src="@/static/image/my/member-bg.png"
@@ -135,6 +135,11 @@ const handleLogout = async () => {
 }
 console.log(handleLogout)
 
+// 去邀请分享页面
+const handleShare = () => {
+  uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
+}
+
 const handleNavigateTo = page => {
   uni.navigateTo({ url: `/pages/my/${page}/index` })
 }
@@ -198,7 +203,7 @@ const myWalletList = [
     justify-content: space-between;
     align-items: center;
     padding: 40rpx 0;
-    border-bottom: 1px solid $divide-line-color;
+    border-bottom: 1rpx solid $divide-line-color;
     .user-info-wrapper {
       display: flex;
       .avatar-wrapper {

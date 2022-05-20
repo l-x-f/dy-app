@@ -50,7 +50,7 @@
 
     <!-- 最新发现 -->
     <AppSection title="最新发现" sub-title="发现最新热门话题" has-right-refresh>
-      <FindList />
+      <FindList @clickItem="handleToContentDetails" />
     </AppSection>
   </view>
 </template>
@@ -84,6 +84,12 @@ onPullDownRefresh(() => {
 const handleToDetails = item => {
   uni.navigateTo({ url: '/pages/tutor/details?id=' + item })
 }
+
+// 去内容详情页面
+const handleToContentDetails = () => {
+  uni.navigateTo({ url: `/pages/tutor/content-details?id=${1}` })
+}
+
 const bannerList = data.map(item => ({ img: item }))
 </script>
 
