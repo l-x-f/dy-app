@@ -146,7 +146,7 @@ onPullDownRefresh(() => {
 })
 
 const handleEdit = () => {
-  uni.navigateTo({ url: '/pages/my/setting/edit-user-info/index' })
+  uni.navigateTo({ url: '/pages/my/setting/edit-user-info/edit-tutor' })
 }
 
 // 复制到剪切板

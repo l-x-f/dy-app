@@ -128,6 +128,12 @@
       }
     },
     {
+      "path": "pages/my/setting/edit-user-info/edit-tutor",
+      "style": {
+        "navigationBarTitleText": "编辑资料"
+      }
+    },
+    {
       "path": "pages/my/setting/edit-user-info/edit-desc",
       "style": {
         "navigationBarTitleText": "修改简介"

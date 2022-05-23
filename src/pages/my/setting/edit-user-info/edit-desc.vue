@@ -1,6 +1,10 @@
 <template>
   <div class="edit-desc">
-    <NavBar has-left />
+    <NavBar has-left has-right>
+      <template #right>
+        <view class="nav-button" @click="handleSubmit">修改</view>
+      </template>
+    </NavBar>
 
     <view class="content">
       <view class="title">个人简介</view>
@@ -19,6 +23,9 @@
 import { ref } from 'vue'
 import NavBar from '@/components/NavBar'
 const name = ref()
+const handleSubmit = () => {
+  console.log('handleSubmit')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +36,11 @@ const name = ref()
   padding: 0 $page-spacing $page-bottom;
   background-color: #fff;
   min-height: 100vh;
-
+  .nav-button {
+    font-size: $nav-font-size;
+    color: $font-color-main;
+    font-weight: 500;
+  }
   .content {
     margin-top: 60rpx;
     .title {

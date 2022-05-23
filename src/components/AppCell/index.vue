@@ -12,7 +12,7 @@
         <view class="title">{{ item.text }}</view>
         <view class="right">
           <view v-if="item.value" class="value">{{ item.value }}</view>
-          <div class="icons-wrapper">
+          <div v-if="item.hasRightIcon !== false" class="icons-wrapper">
             <uni-icons
               class="icons"
               type="forward"
