@@ -1,6 +1,12 @@
 <template>
   <view class="nav-bar-wrapper" :style="subNavWrapperStyle">
-    <div class="nav-bar-body" :style="navStyle">
+    <div
+      class="nav-bar-body"
+      :style="navStyle"
+      :class="{
+        'has-border': hasBorder
+      }"
+    >
       <!-- 左侧 -->
       <view v-if="hasLeftWrapper" class="nav-bar-left">
         <view v-if="hasLeft" @click="handleClickLeft">
@@ -56,7 +62,8 @@
   </view>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { storeToRefs } from 'pinia'
 import { onPageScrollEvent } from '@/utils/emitEvent'
 import { getNavigationBarTitle } from '@/utils/uniUtils'
@@ -73,6 +80,11 @@ const props = defineProps({
   hasTitle: {
     type: Boolean,
     default: true
+  },
+  // 是否显示标题
+  hasBorder: {
+    type: Boolean,
+    default: false
   },
   // 中间标题图片
   titleImage: {
@@ -160,7 +172,7 @@ onPageScrollEvent(data => {
   }
 })
 // 挂载时拿标题
-onMounted(() => {
+onLoad(() => {
   if (!props.title) {
     const title = getNavigationBarTitle()
     defaultTitle.value = title
@@ -190,7 +202,7 @@ const handleClickRight = () => {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: $page-bg-color;
   .nav-bar-body {
     position: fixed;
     top: 0;
@@ -205,8 +217,12 @@ const handleClickRight = () => {
     align-items: center;
     z-index: 999;
   }
+
+  .has-border {
+    border-bottom: 1rpx solid $divide-line-color;
+  }
   .nav-placeholder {
-    height: $nav-height;
+    height: calc($nav-height + var(--status-bar-height));
     width: 100%;
   }
   .nav-bar-left {

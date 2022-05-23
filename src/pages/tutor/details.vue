@@ -3,7 +3,7 @@
     <NavBar
       has-left
       :nav-wrapper-style="{ backgroundColor: 'transparent' }"
-      :fixed-nav-wrapper-style="{ backgroundColor: '#fff' }"
+      :fixed-nav-wrapper-style="{ backgroundColor: '#f5f5f5' }"
       :title-style="{ color: '#fff' }"
       :fixed-title-style="{ color: 'rgba(0,0,0,0.9)' }"
       has-right
@@ -14,49 +14,49 @@
     />
 
     <!-- 导航背景 -->
-    <div class="nav-bar-image" />
-
-    <!-- 用户信息模块 -->
-    <cover-view class="user-wrapper">
-      <div class="user-header">
-        <div class="avatar">
-          <image
-            class="image"
-            src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
-            mode="aspectFill"
-          />
+    <div class="nav-bar-image">
+      <!-- 用户信息模块 -->
+      <view class="user-wrapper">
+        <div class="user-header">
+          <div class="avatar">
+            <image
+              class="image"
+              src="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+              mode="aspectFill"
+            />
+          </div>
+          <div class="content">
+            <div class="content-item">
+              <div class="label">获赞</div>
+              <div class="value">100</div>
+            </div>
+            <div class="content-item">
+              <div class="label">笔记</div>
+              <div class="value">100</div>
+            </div>
+            <div class="content-item">
+              <div class="label">学员</div>
+              <div class="value">100</div>
+            </div>
+          </div>
         </div>
-        <div class="content">
-          <div class="content-item">
-            <div class="label">获赞</div>
-            <div class="value">100</div>
-          </div>
-          <div class="content-item">
-            <div class="label">笔记</div>
-            <div class="value">100</div>
-          </div>
-          <div class="content-item">
-            <div class="label">学员</div>
-            <div class="value">100</div>
-          </div>
+        <div class="user-desc">
+          <div class="title">短发发发发</div>
+          <div class="sub-title">ID：12345678</div>
         </div>
-      </div>
-      <div class="user-desc">
-        <div class="title">短发发发发</div>
-        <div class="sub-title">ID：12345678</div>
-      </div>
-      <div class="user-info">
-        <text class="content">
-          擅长热门话题，爆款视频，星图变现等一些列抖音赚钱渠道，资深抖音达人，全网粉丝300多万，其中抖音超过230多万，擅长热门话题款视频，星图变现等一些列抖音赚钱渠道
-        </text>
-        <text class="more"> 更多</text>
-      </div>
-      <!-- 编辑栏 -->
-      <div class="user-footer">
-        <div class="btn" @click="handleEdit">编辑资料</div>
-        <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
-      </div>
-    </cover-view>
+        <div class="user-info">
+          <text class="content">
+            擅长热门话题，爆款视频，星图变现等一些列抖音赚钱渠道，资深抖音达人，全网粉丝300多万，其中抖音超过230多万，擅长热门话题款视频，星图变现等一些列抖音赚钱渠道
+          </text>
+          <text class="more"> 更多</text>
+        </div>
+        <!-- 编辑栏 -->
+        <div class="user-footer">
+          <div class="btn" @click="handleEdit">编辑资料</div>
+          <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
+        </div>
+      </view>
+    </div>
 
     <!-- 列表 -->
     <div class="section">
@@ -194,10 +194,11 @@ const handleToContentDetails = () => {
   }
   .nav-bar-image {
     width: 100%;
-    height: 380rpx;
     background-image: url('/static/image/sea.png');
     background-size: contain;
     background-repeat: no-repeat;
+    padding-top: 380rpx;
+    box-sizing: border-box;
   }
   .user-wrapper {
     background-color: #fff;

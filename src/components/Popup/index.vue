@@ -91,7 +91,6 @@ onMounted(() => {
       bottom: 50px !important;
     }
   }
-
   // #endif
 }
 .popup-wrapper {

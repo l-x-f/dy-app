@@ -144,7 +144,7 @@ usePageScroll(data => {
   const height =
     state.tabIndex === 0 ? tabTop.value : tabTop.value - teamFooterHeight.value
   if (data.scrollTop > height) {
-    tabStyle.value = { position: 'fixed', top: '44px', zIndex: 1, margin: 0 }
+    tabStyle.value = { position: 'fixed', top: '64px', zIndex: 1, margin: 0 }
     tabPlaceholderStyle.value = { height: tabHeight.value + 'px' }
   } else {
     tabStyle.value = { position: 'static' }

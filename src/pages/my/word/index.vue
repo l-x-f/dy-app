@@ -1,10 +1,6 @@
 <template>
   <div class="word-page">
-    <NavBar
-      has-left
-      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
-      :fixed-nav-wrapper-style="{ backgroundColor: '#fff' }"
-    />
+    <NavBar has-left />
 
     <!-- 描述 -->
     <Describe :describe-list="describeList" />

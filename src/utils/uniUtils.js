@@ -1,4 +1,5 @@
 /* eslint-disable no-async-promise-executor */
+import { pages, globalStyle } from '../pages.json'
 import { scope } from './state'
 import permision from './permission'
 import download from './download'
@@ -336,29 +337,13 @@ function getCurrPage() {
  * @returns
  */
 export function getNavigationBarTitle() {
-  const page = getCurrPage()
-  // #ifdef H5
-  if (page?.$page?.meta?.navigationBar) {
-    return page.$page.meta.navigationBar.titleText
+  var page = getCurrPage()
+  if (page) {
+    const data = pages.find(item => item.path === page.route)
+    return (
+      data.style?.navigationBarTitleText || globalStyle.navigationBarTitleText
+    )
   }
-  // #endif
-
-  // app-plus
-  try {
-    view = page.$getAppWebview()
-    if (view) {
-      const style = view.getStyle()
-      if (style && style.titleNView) {
-        return style.titleNView.titleText
-      }
-    }
-  } catch (e) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('getCurrentPages is not ready')
-    }
-  }
-
-  return ''
 }
 
 /**
