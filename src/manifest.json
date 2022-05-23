@@ -69,6 +69,12 @@
     },
     "usingComponents": true
   },
+  "h5": {
+    "router": {
+      "mode": "hash",
+      "base": "./"
+    }
+  },
   "mp-alipay": {
     "usingComponents": true
   },
