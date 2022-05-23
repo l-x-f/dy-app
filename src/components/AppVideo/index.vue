@@ -49,7 +49,7 @@ const handlePlay = () => {
     :deep(.uni-video-cover-play-button) {
       width: 91px;
       height: 91px;
-      background-image: url('/static/image/play.png');
+      background-image: url('@/static/image/play.png');
     }
     :deep(.uni-video-cover-duration) {
       display: none;

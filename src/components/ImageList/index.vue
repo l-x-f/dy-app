@@ -34,7 +34,7 @@ const props = defineProps({
   width: 100%;
   box-sizing: border-box;
   .image-item {
-    width: 30%;
+    width: calc((100% - 20rpx - 20rpx) / 3);
     height: 216rpx;
     background: #dcdcdc;
     margin-right: 20rpx;

@@ -194,7 +194,7 @@ const handleToContentDetails = () => {
   }
   .nav-bar-image {
     width: 100%;
-    background-image: url('/static/image/sea.png');
+    background-image: url('@/static/image/sea.png');
     background-size: contain;
     background-repeat: no-repeat;
     padding-top: 380rpx;

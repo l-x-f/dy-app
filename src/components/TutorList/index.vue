@@ -120,7 +120,7 @@ const handleClickRight = item => {
           }
           .sub-title {
             margin-top: 16rpx;
-            font-size: $font-middle;
+            font-size: $font-small;
             color: $font-color-sub;
           }
         }

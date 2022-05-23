@@ -128,8 +128,8 @@ console.log(props)
         display: flex;
         flex-direction: column;
         .find-item-image {
-          width: 152rpx;
-          height: 152rpx;
+          width: 90rpx;
+          height: 90rpx;
           box-sizing: border-box;
           background: #f7f7f7;
           border-radius: $border-radius;

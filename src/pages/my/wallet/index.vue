@@ -217,7 +217,7 @@ const handleWithdrawal = () => {
   min-height: 100vh;
   .nav-bar-image {
     width: 100%;
-    background-image: url('/static/image/wallet.png');
+    background-image: url('@/static/image/wallet.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding-top: calc($nav-height + var(--status-bar-height));

@@ -1,6 +1,6 @@
 <template>
   <div class="my-center">
-    <NavBar />
+    <NavBar :has-title="false" />
     <!--个人信息-->
     <div class="my-wrapper">
       <div class="user-info-wrapper">
@@ -33,11 +33,11 @@
 
     <!-- 微信号和邀请码栏 -->
     <view class="wechat-invite-code">
-      <view class="wechat-invite-code-item">
+      <view class="wechat-invite-code-item" @click="state.visible = true">
         <text class="text"> 微信号：123456</text>
         <image class="image" src="@/static/image/edit.png" mode="aspectFill" />
       </view>
-      <view class="wechat-invite-code-item">
+      <view class="wechat-invite-code-item" @click="handleCopy">
         <text class="text">邀请码：123456</text>
         <image class="image" src="@/static/image/copy.png" mode="aspectFill" />
       </view>
@@ -114,16 +114,37 @@
         </view>
       </view>
     </view>
+
+    <!-- 修改微信号弹窗 -->
+    <Dialog v-model="state.visible" />
   </div>
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/store'
 import NavBar from '@/components/NavBar'
+import Dialog from '@/components/Dialog'
 
 const store = useUserStore()
 const { userInfo } = storeToRefs(store)
+const state = reactive({
+  visible: false
+})
+
+// 复制到剪切板
+const handleCopy = () => {
+  uni.setClipboardData({
+    data: '123456',
+    success: () => {
+      uni.showToast({
+        title: '复制成功',
+        icon: 'none'
+      })
+    }
+  })
+}
 
 // 退出登录
 const handleLogout = async () => {
@@ -218,7 +239,7 @@ const myWalletList = [
         padding-left: 20rpx;
         .name {
           font-size: $font-large-title;
-          font-weight: 500;
+          font-weight: bold;
           color: $font-color-main;
         }
         .phone {
@@ -250,6 +271,8 @@ const myWalletList = [
     align-items: center;
     margin: $item-spacing 0;
     .wechat-invite-code-item {
+      display: flex;
+      align-items: center;
       .text {
         margin-right: 10rpx;
         vertical-align: top;
@@ -309,7 +332,7 @@ const myWalletList = [
     box-sizing: border-box;
     .section-body {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       text-align: center;
       .section-item {
         padding-bottom: 6rpx;
@@ -335,7 +358,7 @@ const myWalletList = [
     box-sizing: border-box;
     .my-wallet-section-body {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       text-align: center;
       .my-wallet-section-item {
         display: flex;
@@ -344,8 +367,8 @@ const myWalletList = [
         align-items: center;
 
         .image {
-          width: 68rpx;
-          height: 68rpx;
+          width: 34rpx;
+          height: 34rpx;
         }
         .title {
           font-size: $font-small;
@@ -374,6 +397,7 @@ const myWalletList = [
         }
         .title {
           padding-left: 30rpx;
+          font-weight: 500;
         }
         .icons-wrapper {
           position: absolute;

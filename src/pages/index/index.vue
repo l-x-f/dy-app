@@ -140,7 +140,7 @@ const bannerList = data.map(item => ({ img: item }))
       }
       .title-wrapper {
         position: absolute;
-        top: 200rpx;
+        top: 234rpx;
         left: 0;
         padding: 0 17rpx;
         .tutor-item-title {
@@ -160,7 +160,7 @@ const bannerList = data.map(item => ({ img: item }))
           line-height: 1.5em;
           margin-top: 18rpx;
 
-          @include multiline-text-overflow-hidden;
+          @include multiline-text-overflow-hidden(2);
         }
       }
     }
