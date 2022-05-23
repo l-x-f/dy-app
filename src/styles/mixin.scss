@@ -69,7 +69,7 @@
   white-space: nowrap;
 }
 
-@mixin multiline-text-overflow-hidden($number: 3) {
+@mixin multiline-text-overflow-hidden($number: 2) {
   display: -webkit-box;
   content-overflow: ellipsis;
   overflow: hidden;
