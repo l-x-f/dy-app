@@ -69,8 +69,8 @@ const handleClickRight = item => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .tutor-list-component {
   .background {
     background: #f0f0f2;

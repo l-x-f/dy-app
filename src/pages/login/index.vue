@@ -140,7 +140,7 @@ const { phone, checked } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .login-page-container {
   height: 100vh;

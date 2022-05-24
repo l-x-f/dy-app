@@ -175,7 +175,7 @@ const { formData, text, sendCodeDisabled, visible, monthData } = toRefs(state)
 </script>
 
 <style lang="scss">
-@import '@/styles/variables.scss';
+ @import 'variables';
 
 .uni-nav-bar-text {
   font-size: $font-large;
@@ -185,7 +185,7 @@ const { formData, text, sendCodeDisabled, visible, monthData } = toRefs(state)
 }
 </style>
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+ @import 'variables';
 
 .nav-bar {
   width: 100%;

@@ -20,7 +20,7 @@ const handleUpload = async () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .edit-background {
   background-color: #000;
   height: 100vh;

@@ -18,8 +18,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .tag-list {
   padding: 28rpx calc(#{$page-spacing}/ 2);
   background-color: #f8f8fa;

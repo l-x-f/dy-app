@@ -23,8 +23,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .image-list {
   margin-top: $item-spacing;
   background-color: #fff;

@@ -105,7 +105,7 @@ console.log(toLogin, 'tologin')
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .code-page {
   height: 100vh;

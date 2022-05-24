@@ -80,7 +80,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .uni-popup {
   :deep(uni-view[name='mask']) {
     background-color: rgba(0, 0, 0, 0.5) !important;

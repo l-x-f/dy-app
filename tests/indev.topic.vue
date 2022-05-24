@@ -148,8 +148,8 @@ const bannerList = data.map(item => ({ img: item }))
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+ @import 'variables';
+@import 'mixin';
 .index-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

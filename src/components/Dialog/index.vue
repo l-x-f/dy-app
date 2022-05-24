@@ -117,7 +117,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .popup-wrapper {
   width: 615rpx;
   min-height: 347rpx;

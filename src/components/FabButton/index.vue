@@ -12,12 +12,20 @@ const handleToSendNote = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .fab-button {
   position: fixed;
   z-index: 99;
   right: $page-spacing;
+
+  // #ifdef APP-PLUS
+  bottom: calc($page-spacing);
+  // #endif
+
+  // #ifdef H5
   bottom: calc(50px + $page-spacing);
+  // #endif
+
   .icon-image {
     width: 90rpx;
     height: 90rpx;

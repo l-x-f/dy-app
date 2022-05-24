@@ -43,8 +43,8 @@ const handleSwitchTab = index => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 
 .tab-component {
   padding: 28rpx $page-spacing;

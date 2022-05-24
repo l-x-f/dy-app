@@ -193,8 +193,8 @@ const { tagList, imageList, like, focus } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 
 .nav-image {
   width: 36rpx;

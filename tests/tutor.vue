@@ -40,7 +40,7 @@ onPullDownRefresh(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+ @import 'variables';
 .follow-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;

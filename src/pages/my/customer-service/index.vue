@@ -18,7 +18,7 @@ import NavBar from '@/components/NavBar'
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .customer-service {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

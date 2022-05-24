@@ -1,6 +1,9 @@
 <template>
   <div class="my-center">
-    <NavBar :has-title="false" />
+    <NavBar
+      :has-title="false"
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
+    />
     <!--个人信息-->
     <div class="my-wrapper">
       <div class="user-info-wrapper">
@@ -123,9 +126,12 @@
 <script setup>
 import { reactive } from 'vue'
 import { storeToRefs } from 'pinia'
+import variables from 'variables'
 import { useUserStore } from '@/store'
 import NavBar from '@/components/NavBar'
 import Dialog from '@/components/Dialog'
+
+const { navTransparentBackgroundColor } = variables
 
 const store = useUserStore()
 const { userInfo } = storeToRefs(store)
@@ -215,7 +221,7 @@ const myWalletList = [
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .my-center {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

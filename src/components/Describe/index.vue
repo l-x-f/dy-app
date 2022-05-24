@@ -31,7 +31,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .describe {
   margin-top: $item-spacing;

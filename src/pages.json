@@ -36,8 +36,7 @@
     {
       "path": "pages/tutor/details",
       "style": {
-        "navigationBarTitleText": "导师详情",
-        "enablePullDownRefresh": true
+        "navigationBarTitleText": "导师详情"
       }
     },
     {

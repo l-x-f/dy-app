@@ -34,8 +34,8 @@ const handlePlay = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .video-component {
   width: 100%;
   background-color: #fff;

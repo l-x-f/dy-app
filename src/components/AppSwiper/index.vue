@@ -91,7 +91,7 @@ const { config, hasErrorList } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .component-swiper {
   width: 100%;
   height: 292rpx;

@@ -173,7 +173,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .select-month {
   .popup-body-year-wrapper {
     padding: 40rpx 45rpx 10rpx;

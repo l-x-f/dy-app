@@ -12,6 +12,14 @@ export default defineConfig({
       {
         find: '@/',
         replacement: pathResolve('src') + '/'
+      },
+      {
+        find: 'variables',
+        replacement: pathResolve('src') + '/styles/variables.module.scss'
+      },
+      {
+        find: 'mixin',
+        replacement: pathResolve('src') + '/styles/mixin.scss'
       }
     ]
   },

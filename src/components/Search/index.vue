@@ -60,7 +60,7 @@ const handleConfirm = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .search-components {
   width: 100%;
   box-sizing: border-box;

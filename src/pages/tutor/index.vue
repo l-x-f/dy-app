@@ -1,6 +1,6 @@
 <template>
   <div class="tutor-page">
-    <NavBar :title-style="{ fontWeight: 400 }" />
+    <NavBar />
 
     <view class="search-wrapper">
       <Search />
@@ -56,8 +56,8 @@ const handleToDetails = item => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .tutor-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

@@ -65,16 +65,19 @@
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { storeToRefs } from 'pinia'
+import variables from 'variables'
 import { onPageScrollEvent } from '@/utils/emitEvent'
 import { getNavigationBarTitle } from '@/utils/uniUtils'
 import { useAppStore } from '@/store'
 // import { isWep } from '@/utils'
 
+const { navHeight: navH } = variables
+
 const props = defineProps({
   // 中间标题 默认是 pages.json中 pages->style->navigationBarTitleText 字段
   title: {
     type: String,
-    default: ''
+    default: undefined
   },
   // 是否显示标题
   hasTitle: {
@@ -152,13 +155,13 @@ const props = defineProps({
     default: ''
   }
 })
-const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight'])
+const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight', 'fixed'])
 // 默认标题
 const defaultTitle = ref('')
 // 导航变色处理
 const store = useAppStore()
 const { systemInfo } = storeToRefs(store)
-const navHeight = systemInfo.value.statusBarHeight
+const navHeight = systemInfo.value.statusBarHeight + parseInt(navH)
 const subNavWrapperStyle = ref({ ...props.navWrapperStyle })
 const subTitleStyle = ref({ ...props.titleStyle })
 // 监听页面滚动
@@ -166,14 +169,16 @@ onPageScrollEvent(data => {
   if (data.scrollTop > navHeight) {
     subNavWrapperStyle.value = props.fixedNavWrapperStyle
     subTitleStyle.value = props.fixedTitleStyle
+    emit('fixed', true)
   } else {
     subNavWrapperStyle.value = props.navWrapperStyle
     subTitleStyle.value = props.titleStyle
+    emit('fixed', false)
   }
 })
 // 挂载时拿标题
 onLoad(() => {
-  if (!props.title) {
+  if (props.title === void 0) {
     const title = getNavigationBarTitle()
     defaultTitle.value = title
   }
@@ -194,7 +199,7 @@ const handleClickRight = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .nav-bar-wrapper {
   width: 100%;
@@ -202,7 +207,7 @@ const handleClickRight = () => {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: $page-bg-color;
+  background-color: #ffff;
   .nav-bar-body {
     position: fixed;
     top: 0;
@@ -217,7 +222,6 @@ const handleClickRight = () => {
     align-items: center;
     z-index: 999;
   }
-
   .has-border {
     border-bottom: 1rpx solid $divide-line-color;
   }
@@ -245,7 +249,7 @@ const handleClickRight = () => {
       .text {
         font-size: $nav-font-size;
         color: $font-color-main;
-        font-weight: 500;
+        font-weight: bold;
       }
     }
   }

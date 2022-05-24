@@ -2,15 +2,17 @@
   <div class="tutor-details-page">
     <NavBar
       has-left
-      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
-      :fixed-nav-wrapper-style="{ backgroundColor: '#f5f5f5' }"
-      :title-style="{ color: '#fff' }"
-      :fixed-title-style="{ color: 'rgba(0,0,0,0.9)' }"
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
+      :fixed-nav-wrapper-style="{ backgroundColor: '#018ac7' }"
+      :title-style="{ color: navFixedColor }"
+      :fixed-title-style="{ color: navFixedColor }"
       has-right
       :has-placeholder="false"
       right-icon="more-filled"
-      title-image="https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000"
+      :title="state.title"
+      :title-image="state.titleImage"
       @clickRight="handleShare"
+      @fixed="handleFixed"
     />
 
     <!-- 导航背景 -->
@@ -127,15 +129,29 @@
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive } from 'vue'
+import variables from 'variables'
 import FabButton from '@/components/FabButton'
 import NavBar from '@/components/NavBar'
 import { usePageScroll } from '@/hooks'
 
+const { navFixedColor, navTransparentBackgroundColor } = variables
+
+console.log(variables, 'variables')
+
 // 触发页面滚动
 usePageScroll()
 
-const state = reactive({ result: '' })
-console.log(state)
+const state = reactive({
+  title: '',
+  titleImage: ''
+})
+
+const handleFixed = fixed => {
+  state.title = fixed ? '导师详情' : ''
+  state.titleImage = fixed
+    ? 'https://img.36krcdn.com/20200410/v2_747fc8a18fde4da4b1ba1080d8e6aa04_img_000'
+    : ''
+}
 
 onPullDownRefresh(() => {
   uni.showToast({
@@ -183,15 +199,16 @@ const handleToContentDetails = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .tutor-details-page {
   box-sizing: border-box;
-  padding-bottom: $page-bottom;
+  padding-bottom: 100px;
 
   :deep(.fab-button) {
     bottom: calc(90px + $page-spacing);
   }
+
   .nav-bar-image {
     width: 100%;
     background-image: url('@/static/image/sea.png');
@@ -199,7 +216,9 @@ const handleToContentDetails = () => {
     background-repeat: no-repeat;
     padding-top: 380rpx;
     box-sizing: border-box;
+    background-color: #018ac7;
   }
+
   .user-wrapper {
     background-color: #fff;
     padding: $page-spacing;

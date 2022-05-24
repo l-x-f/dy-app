@@ -29,7 +29,7 @@ const handleSubmit = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .edit-desc {
   box-sizing: border-box;

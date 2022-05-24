@@ -90,7 +90,7 @@ const handleAddBankCard = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .bank-card {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

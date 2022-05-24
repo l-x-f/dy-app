@@ -46,7 +46,7 @@ const clickItem = (item, index) => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .cell-wrapper {
   border-radius: $border-radius;
   margin-top: $item-spacing;

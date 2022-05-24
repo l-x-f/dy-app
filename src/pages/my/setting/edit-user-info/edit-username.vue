@@ -25,7 +25,7 @@ const name = ref()
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .edit-username {
   box-sizing: border-box;

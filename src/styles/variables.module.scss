@@ -28,8 +28,19 @@ $border-radius: 16rpx; // 边框圆角
 $divide-line-color: #e8e8e8; // 分割线颜色
 
 // 导航栏
+// #ifdef APP-PLUS
+$status-height: 20px; // APP状态栏高度
+// #endif
+
+// #ifdef H5
+$status-height: 0; // H5状态栏高度
+// #endif
+
 $nav-height: 44px; // 导航栏高度
-$nav-font-size: 38rpx; // 导航栏字号
+$nav-font-size: 36rpx; // 导航栏字号
+$nav-background-color: #fff; // 导航栏背景色
+$nav-transparent-background-color: transparent; // 导航栏背景色
+$nav-fixed-color: #fff; // 导航栏颜色
 
 /* 文字尺寸 */
 $font-small: 24rpx; // 小字号
@@ -42,3 +53,14 @@ $font-max: 54rpx; // 最大字号
 
 // 页面最小高度
 $page-height: calc(100vh- #{$nav-height});
+
+// 导出css变量供js模块使用
+:export {
+  primaryColor: $primary-color;
+  fontColorMain: $font-color-main;
+  navHeight: $nav-height;
+  statusHeight: $status-height;
+  navFixedColor: $nav-fixed-color;
+  navTransparentBackgroundColor: $nav-transparent-background-color;
+  navBackgroundColor: $nav-background-color;
+}

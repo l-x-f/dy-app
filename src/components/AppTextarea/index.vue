@@ -50,7 +50,7 @@ const handleChange = () => {
 </script>
 
 <style lang="scss">
-@import '@/styles/variables.scss';
+@import 'variables';
 
 .app-textarea {
   background: #fff;

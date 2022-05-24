@@ -2,10 +2,10 @@
   <div class="team-page">
     <NavBar
       has-left
-      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
       :fixed-nav-wrapper-style="{ backgroundColor: '#3d6cac' }"
-      :title-style="{ color: '#fff' }"
-      :fixed-title-style="{ color: '#fff' }"
+      :title-style="{ color: navFixedColor }"
+      :fixed-title-style="{ color: navFixedColor }"
       :has-placeholder="false"
     />
 
@@ -116,10 +116,18 @@
 <script setup>
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { reactive, ref, onMounted } from 'vue'
+import variables from 'variables'
+import { storeToRefs } from 'pinia'
 import NavBar from '@/components/NavBar'
 import Tab from '@/components/Tab'
 import { getBoundingClientRect } from '@/utils/uniUtils'
 import { usePageScroll } from '@/hooks'
+import { useAppStore } from '@/store'
+
+const { navFixedColor, navTransparentBackgroundColor, navHeight } = variables
+const store = useAppStore()
+const { systemInfo } = storeToRefs(store)
+const navHeightTop = systemInfo.value.statusBarHeight + parseInt(navHeight)
 
 const state = reactive({ result: '', tabIndex: 0, loadMoreStatus: 'more' })
 
@@ -135,17 +143,33 @@ onMounted(async () => {
     '#teamFooterInstance'
   )
   tabHeight.value = height
+  console.log(height, top)
+
   tabTop.value = top
   teamFooterHeight.value = teamHeight
 })
+
+let tempHeight = 0
+// #ifdef APP-PLUS
+tempHeight = 70
+// #endif
+
+// #ifdef H5
+tempHeight = 0
+// #endif
 
 // 添加页面滚动监听
 usePageScroll(data => {
   const height =
     state.tabIndex === 0 ? tabTop.value : tabTop.value - teamFooterHeight.value
-  if (data.scrollTop > height) {
-    tabStyle.value = { position: 'fixed', top: '64px', zIndex: 1, margin: 0 }
-    tabPlaceholderStyle.value = { height: tabHeight.value + 'px' }
+  if (data.scrollTop > height - tempHeight) {
+    tabStyle.value = {
+      position: 'fixed',
+      top: navHeightTop + 'px',
+      zIndex: 1,
+      margin: 0
+    }
+    tabPlaceholderStyle.value = { height: tabHeight.value + 16 + 'px' }
   } else {
     tabStyle.value = { position: 'static' }
     tabPlaceholderStyle.value = { height: '0' }
@@ -169,7 +193,7 @@ const memberList = ref(
       'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
     text: '发芽的树',
     word: '120562' + index,
-    date: new Date().toLocaleString(),
+    date: '2022-12-14 14:20',
     searchTotalCount: 100 + index * 4,
     searchTodayCount: 215 - index * 2
   }))
@@ -202,8 +226,8 @@ const handleClickMemberItem = item => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .team-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;

@@ -2,10 +2,10 @@
   <div class="team-page">
     <NavBar
       has-left
-      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
       :fixed-nav-wrapper-style="{ backgroundColor: '#745FB8' }"
-      :title-style="{ color: '#fff' }"
-      :fixed-title-style="{ color: '#fff' }"
+      :title-style="{ color: navFixedColor }"
+      :fixed-title-style="{ color: navFixedColor }"
       :has-placeholder="false"
     />
 
@@ -69,9 +69,12 @@
 <script setup>
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { reactive, ref } from 'vue'
+import variables from 'variables'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import { usePageScroll } from '@/hooks'
+
+const { navFixedColor, navTransparentBackgroundColor } = variables
 
 // 添加页面滚动监听
 usePageScroll()
@@ -86,7 +89,7 @@ const memberList = ref(
       'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
     text: '发芽的树',
     member: '120562' + index,
-    date: new Date().toLocaleString(),
+    date: '2022-12-14 14:20',
     searchTotalCount: 100 + index * 4,
     searchTodayCount: 215 - index * 2
   }))
@@ -113,8 +116,9 @@ onReachBottom(e => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
+
 .team-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;

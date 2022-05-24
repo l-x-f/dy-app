@@ -13,7 +13,7 @@ const rich = 'https://static-1252186245.cos.ap-nanjing.myqcloud.com/index.html'
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .help-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;

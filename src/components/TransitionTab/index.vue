@@ -55,8 +55,8 @@ const handleSwitchTab = (item, index) => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 
 .transition-tab-component {
   margin: 28rpx 0;

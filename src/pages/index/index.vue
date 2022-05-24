@@ -4,7 +4,6 @@
       title="欢迎使用创作者!"
       :has-left-wrapper="false"
       :title-style="{
-        fontWeight: 600,
         textAlign: 'left'
       }"
       :title-wrapper-style="{ 'justify-content': 'flex-start' }"
@@ -22,7 +21,7 @@
 
     <!-- 导师专栏 -->
     <AppSection title="导师专栏" sub-title="为您推荐近期高人气导师">
-      <SwiperScrollX>
+      <SwiperScroll>
         <div class="tutor-wrapper">
           <view
             v-for="item in 10"
@@ -45,7 +44,7 @@
             </view>
           </view>
         </div>
-      </SwiperScrollX>
+      </SwiperScroll>
     </AppSection>
 
     <!-- 最新发现 -->
@@ -62,7 +61,7 @@ import AppSection from '@/components/AppSection'
 import NavBar from '@/components/NavBar'
 import Search from '@/components/Search'
 import FindList from '@/components/FindList'
-import SwiperScrollX from '@/components/SwiperScrollX'
+import SwiperScroll from '@/components/SwiperScroll'
 
 const data = [
   'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
@@ -94,8 +93,8 @@ const bannerList = data.map(item => ({ img: item }))
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 
 .index-page {
   box-sizing: border-box;

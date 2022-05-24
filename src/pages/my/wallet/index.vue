@@ -2,12 +2,12 @@
   <div class="my-wallet-page">
     <NavBar
       has-left
-      :nav-wrapper-style="{ backgroundColor: 'transparent' }"
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
       :fixed-nav-wrapper-style="{
         backgroundColor: '#580CE5'
       }"
-      :title-style="{ color: '#fff' }"
-      :fixed-title-style="{ color: '#fff' }"
+      :title-style="{ color: navFixedColor }"
+      :fixed-title-style="{ color: navFixedColor }"
       :has-placeholder="false"
     />
 
@@ -94,7 +94,7 @@
         <text class="title">收益排行</text>
         <Tab v-model="state.tabIndex" class="tab" :tab-list="tabList" />
       </div>
-      <SwiperScrollX>
+      <SwiperScroll>
         <div class="income-ranking-wrapper">
           <view
             v-for="(item, index) in 10"
@@ -123,7 +123,7 @@
             </view>
           </view>
         </div>
-      </SwiperScrollX>
+      </SwiperScroll>
     </div>
 
     <!-- 联系客服 -->
@@ -143,10 +143,13 @@
 <script setup>
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive, ref } from 'vue'
+import variables from 'variables'
 import NavBar from '@/components/NavBar'
 import Tab from '@/components/Tab'
-import SwiperScrollX from '@/components/SwiperScrollX'
+import SwiperScroll from '@/components/SwiperScroll'
 import { usePageScroll } from '@/hooks'
+
+const { navFixedColor, navTransparentBackgroundColor } = variables
 
 // 触发页面滚动
 usePageScroll()
@@ -209,8 +212,8 @@ const handleWithdrawal = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .my-wallet-page {
   box-sizing: border-box;
   padding-bottom: $page-bottom;

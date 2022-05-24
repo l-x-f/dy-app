@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 /* stylelint-disable  */
 .flex-row {
   display: flex;

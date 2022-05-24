@@ -1,6 +1,9 @@
 <template>
   <div class="invite-page">
-    <NavBar has-left :nav-wrapper-style="{ backgroundColor: 'transparent' }" />
+    <NavBar
+      has-left
+      :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
+    />
 
     <!-- tab 切换 -->
     <uni-segmented-control
@@ -45,9 +48,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import variables from 'variables'
 import NavBar from '@/components/NavBar'
 import { saveImage } from '@/utils/uniUtils'
 import LimePainter from '@/components/LimePainter/l-painter/l-painter'
+
+const { navTransparentBackgroundColor } = variables
 
 const painter = ref(null)
 const items = ['海报', '发圈素材']
@@ -212,7 +218,6 @@ onMounted(() => {
                 }
               }
             ],
-
             type: 'view'
           },
           {
@@ -288,26 +293,23 @@ const handleCopy = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-@import '@/styles/mixin.scss';
+@import 'variables';
+@import 'mixin';
 .invite-page {
   box-sizing: border-box;
   min-height: 100vh;
   .segmented-control {
     background-color: #fff;
-
     :deep(.segmented-control__item--text) {
       border-bottom-width: 3px;
     }
   }
-
   .post-wrapper {
     margin-top: $item-spacing;
     padding: 0 $page-spacing;
     box-sizing: border-box;
     position: relative;
     background-color: #fff;
-
     .post-image-box {
       width: 100%;
       height: calc(90vh - #{$item-spacing} - #{$nav-height} - 36px - 10px);
@@ -317,7 +319,6 @@ const handleCopy = () => {
         height: 100%;
       }
     }
-
     .save-image-button-box {
       padding: 0 $item-spacing;
       position: fixed;
@@ -330,7 +331,6 @@ const handleCopy = () => {
       width: 100%;
     }
   }
-
   .text-wrapper {
     padding: 0 $page-spacing;
     .tex-body {
@@ -346,7 +346,6 @@ const handleCopy = () => {
       .title {
         margin-bottom: $item-spacing;
       }
-
       .content {
         margin-bottom: $item-spacing;
       }

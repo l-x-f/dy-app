@@ -60,7 +60,7 @@ const refresh = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .components-section {
   margin-top: 54rpx;
   .section-body {

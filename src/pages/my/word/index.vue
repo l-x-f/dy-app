@@ -85,7 +85,7 @@ const handleDelete = (item, index) => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'variables';
 .word-page {
   box-sizing: border-box;
   padding: 0 $page-spacing $page-bottom;
