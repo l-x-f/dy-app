@@ -4,7 +4,7 @@
       has-left
       :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
       :fixed-nav-wrapper-style="{
-        backgroundColor: '#580CE5'
+        backgroundColor: '#9864f8'
       }"
       :title-style="{ color: navFixedColor }"
       :fixed-title-style="{ color: navFixedColor }"
@@ -28,9 +28,9 @@
       </div>
     </div>
     <!--绑定银行卡  -->
-    <div v-if="true" class="card-footer">
+    <div v-if="true" class="card-footer" @click="bindBankCard">
       <div class="left">您尚未绑定银行卡</div>
-      <div class="right" @click="bindBankCard">
+      <div class="right">
         <text>立即绑定</text>
         <uni-icons class="icons" type="forward" size="20" color="#fff" />
       </div>
@@ -47,11 +47,11 @@
         <view class="sub-title-wrapper">
           <view class="sub-title-item">
             <text class="label">今日收益</text>
-            <text class="value today">+ 200</text>
+            <text class="value today">+123</text>
           </view>
           <view class="sub-title-item">
             <text class="label">昨日收益</text>
-            <text class="value">+ 200</text>
+            <text class="value">+112</text>
           </view>
         </view>
         <view class="item-wrapper">
@@ -62,6 +62,9 @@
               class="item-item"
               :index="index"
               :title="item.text"
+              :class="{
+                'has-border': index === 1
+              }"
               @click="item.click"
             >
               <image
@@ -287,64 +290,67 @@ const handleWithdrawal = () => {
   .main {
     margin-top: $item-spacing;
     padding: 0 $page-spacing;
-    .title-wrapper {
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1rpx solid $divide-line-color;
-      padding-bottom: 36rpx;
-      .value {
-        font-size: 44rpx;
-        font-weight: bold;
-        margin-top: 36rpx;
+
+    .main-container {
+      background-color: #fff;
+
+      border-radius: $border-radius;
+      .title-wrapper {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1rpx solid $divide-line-color;
+        padding: $page-spacing $page-spacing 36rpx;
+        .value {
+          font-size: 44rpx;
+          font-weight: bold;
+          margin-top: 36rpx;
+        }
       }
-    }
-    .sub-title-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 36rpx 0;
-      border-bottom: 1rpx solid $divide-line-color;
-      .sub-title-item {
+      .sub-title-wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex: 1;
-        .label {
-          font-size: $font-base;
-          color: $font-color-sub;
-          vertical-align: middle;
+        border-bottom: 1rpx solid $divide-line-color;
+        box-sizing: border-box;
+        .sub-title-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex: 1;
+          padding: 29rpx $page-spacing;
+          .label {
+            font-size: $font-base;
+            color: $font-color-sub;
+            vertical-align: middle;
+          }
+          .today {
+            font-weight: bold;
+            color: $warn-color;
+          }
+          .value {
+            font-size: $font-base;
+            padding-right: 36rpx;
+            vertical-align: middle;
+            font-weight: bold;
+          }
         }
-        .today {
-          font-weight: bold;
-          color: $warn-color;
-        }
-        .value {
-          font-size: $font-base;
-          padding-right: 36rpx;
-          vertical-align: middle;
-          font-weight: bold;
+        .sub-title-item + .sub-title-item {
+          padding-left: 36rpx;
+          border-left: 1rpx solid $divide-line-color;
         }
       }
-      .sub-title-item + .sub-title-item {
-        padding-left: 36rpx;
-        border-left: 1rpx solid $divide-line-color;
-      }
-    }
-    .main-container {
-      background-color: #fff;
-      padding: $page-spacing $page-spacing 0;
-      border-radius: $border-radius;
+
       .item-wrapper {
         border-radius: $border-radius;
         .item-body {
           flex-wrap: wrap;
           .item-item {
-            padding: 32rpx 0;
+            padding: 32rpx $page-spacing;
             display: flex;
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            border-bottom: 1rpx solid $divide-line-color;
+            background-color: #fcfcfd;
             .icon-image {
               width: 50rpx;
               height: 50rpx;
@@ -359,19 +365,25 @@ const handleWithdrawal = () => {
               font-weight: bold;
               position: absolute;
               top: 50%;
-              right: 0;
+              right: $page-spacing;
               transform: translateY(-50%);
               .value {
                 position: relative;
+                margin-right: 16rpx;
+                margin-top: -16rpx;
                 .add {
                   position: absolute;
                   bottom: -34rpx;
                   left: 0;
                   font-size: $font-small;
                   color: $warn-color;
+                  font-weight: 300;
                 }
               }
             }
+          }
+          .has-border {
+            border-bottom: 1rpx solid $divide-line-color;
           }
           .item-item:last-child {
             border-bottom: 0;
@@ -434,7 +446,7 @@ const handleWithdrawal = () => {
           }
           .text {
             position: absolute;
-            top: 50%;
+            top: 45%;
             right: 50%;
             transform: translate(50%, -50%);
             font-size: $font-small;

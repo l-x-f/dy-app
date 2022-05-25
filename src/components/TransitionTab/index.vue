@@ -32,25 +32,29 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'switchTab'])
 
+const width = computed(() =>
+  Number(((1 / props.tabList.length) * 100).toFixed(2))
+)
+
 const state = reactive({
   tabIndex: 0,
   tabItem: {},
   style: {
     left: 0,
-    width: (1 / props.tabList.length) * 100 + '%'
+    width: width.value + '%'
   }
 })
 watchEffect(() => {
   state.tabIndex = props.modelValue || 0
 })
-const flex = computed(() => `0 0 ${(1 / props.tabList.length) * 100}%`)
+const flex = computed(() => `0 0 ${width.value}%`)
 
 const handleSwitchTab = (item, index) => {
   state.tabIndex = index
   state.tabItem = item
   emit('update:modelValue', index)
   emit('switchTab', index, item)
-  state.style.left = (1 / props.tabList.length) * 100 * index + '%'
+  state.style.left = width.value * index + '%'
 }
 </script>
 

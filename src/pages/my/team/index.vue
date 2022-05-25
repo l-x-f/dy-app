@@ -284,6 +284,7 @@ const handleClickMemberItem = item => {
       .team-footer-item {
         display: flex;
         align-items: center;
+
         .avatar-image {
           width: 60rpx;
           height: 60rpx;
@@ -390,8 +391,8 @@ const handleClickMemberItem = item => {
           display: flex;
           justify-content: space-around;
           align-items: center;
-          background-color: #fefefe;
           border-radius: $border-radius;
+          background-color: #fbfbfb;
           .footer-item {
             display: flex;
             align-items: center;
