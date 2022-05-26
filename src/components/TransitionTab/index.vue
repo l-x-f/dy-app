@@ -13,12 +13,12 @@
         <text class="tab-item-text"> {{ item.title }}</text>
       </view>
     </view>
-    <view class="tab-item-active-border" :style="state.style" />
+    <view class="tab-item-active-border" :style="{ left, width }" />
   </view>
 </template>
 
 <script setup>
-import { reactive, watchEffect, computed } from 'vue'
+import { reactive, watchEffect, computed, ref } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -35,14 +35,11 @@ const emit = defineEmits(['update:modelValue', 'switchTab'])
 const width = computed(() =>
   Number(((1 / props.tabList.length) * 100).toFixed(2))
 )
+const left = ref(0)
 
 const state = reactive({
   tabIndex: 0,
-  tabItem: {},
-  style: {
-    left: 0,
-    width: width.value + '%'
-  }
+  tabItem: {}
 })
 watchEffect(() => {
   state.tabIndex = props.modelValue || 0
@@ -54,7 +51,7 @@ const handleSwitchTab = (item, index) => {
   state.tabItem = item
   emit('update:modelValue', index)
   emit('switchTab', index, item)
-  state.style.left = width.value * index + '%'
+  left.value = width.value * index + '%'
 }
 </script>
 
@@ -112,7 +109,7 @@ const handleSwitchTab = (item, index) => {
     height: 100rpx;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 200px;
     z-index: 1;
     border: 1rpx solid $divide-line-color;
     border-radius: 8rpx;

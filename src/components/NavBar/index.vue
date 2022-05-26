@@ -64,14 +64,14 @@
 <script setup>
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
-import { storeToRefs } from 'pinia'
-import variables from 'variables'
+// import { storeToRefs } from 'pinia'
+// import variables from 'variables'
 import { onPageScrollEvent } from '@/utils/emitEvent'
 import { getNavigationBarTitle } from '@/utils/uniUtils'
-import { useAppStore } from '@/store'
+// import { useAppStore } from '@/store'
 // import { isWep } from '@/utils'
 
-const { navHeight: navH } = variables
+// const { navHeight: navH } = variables
 
 const props = defineProps({
   // 中间标题 默认是 pages.json中 pages->style->navigationBarTitleText 字段
@@ -159,14 +159,15 @@ const emit = defineEmits(['clickLeft', 'clickCenter', 'clickRight', 'fixed'])
 // 默认标题
 const defaultTitle = ref('')
 // 导航变色处理
-const store = useAppStore()
-const { systemInfo } = storeToRefs(store)
-const navHeight = systemInfo.value.statusBarHeight + parseInt(navH)
+// const store = useAppStore()
+// const { systemInfo } = storeToRefs(store)
+// const navHeight = systemInfo.value.statusBarHeight +parseInt(navH)
+// const navHeight = systemInfo.value.statusBarHeight
 const subNavWrapperStyle = ref({ ...props.navWrapperStyle })
 const subTitleStyle = ref({ ...props.titleStyle })
 // 监听页面滚动
 onPageScrollEvent(data => {
-  if (data.scrollTop > navHeight) {
+  if (data.scrollTop > 0) {
     subNavWrapperStyle.value = props.fixedNavWrapperStyle
     subTitleStyle.value = props.fixedTitleStyle
     emit('fixed', true)
@@ -213,7 +214,7 @@ const handleClickRight = () => {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: inherit;
+    background-image: inherit;
     height: calc($nav-height + var(--status-bar-height));
     padding: var(--status-bar-height) $page-spacing 0;
     box-sizing: border-box;

@@ -33,9 +33,9 @@
         </button>
       </view>
 
-      <view class="tag-wrapper">
+      <!-- <view class="tag-wrapper">
         <TagList :tag-list="tagList" />
-      </view>
+      </view> -->
 
       <view class="content-header-details">
         <view class="content-details-title">内容详情</view>
@@ -147,7 +147,7 @@
 import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive, toRefs } from 'vue'
 import NavBar from '@/components/NavBar'
-import TagList from '@/components/TagList'
+// import TagList from '@/components/TagList'
 import ImageList from '@/components/ImageList'
 import AppVideo from '@/components/AppVideo'
 
@@ -189,7 +189,7 @@ onPullDownRefresh(() => {
 const handleShare = () => {
   uni.navigateTo({ url: `/pages/tutor/invite?id=${1}` })
 }
-const { tagList, imageList, like, focus } = toRefs(state)
+const { imageList, like, focus } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>

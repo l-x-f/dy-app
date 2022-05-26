@@ -27,12 +27,14 @@
 
         <view class="find-item-right">
           <view class="find-item-title"> 豌豆的妈妈 </view>
-          <view class="find-item-tag">
+          <!-- <view class="find-item-tag">
             <text class="find-item-tag-item"># 热门话题</text>
             <text class="find-item-tag-item"># 热门话题</text>
             <text class="find-item-tag-item"># 热门</text>
-          </view>
+          </view> -->
           <view class="find-item-sub-title">
+            一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职
+            一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职
             一个精通短视频创作的 全职带娃宝妈，一个精 通短视频创作的全职...
           </view>
         </view>
@@ -178,7 +180,7 @@ console.log(props)
           color: $font-color-sub;
           line-height: 44rpx;
 
-          @include multiline-text-overflow-hidden(2);
+          @include multiline-text-overflow-hidden(3);
         }
       }
     }

@@ -30,7 +30,7 @@
       </view>
 
       <!-- 话题列表 -->
-      <TagList :tag-list="tagList" />
+      <!-- <TagList :tag-list="tagList" /> -->
 
       <!-- 添加话题 -->
       <view class="form-item">
@@ -76,7 +76,7 @@ import { onPullDownRefresh } from '@dcloudio/uni-app'
 import { reactive, toRefs } from 'vue'
 import NavBar from '@/components/NavBar'
 import AppTextarea from '@/components/AppTextarea'
-import TagList from '@/components/TagList'
+// import TagList from '@/components/TagList'
 import ImageList from '@/components/ImageList'
 import AppVideo from '@/components/AppVideo'
 import { chooseImage, chooseVideo } from '@/utils/uniUtils'
@@ -124,7 +124,7 @@ const handleTagInputConfirm = ({ detail }) => {
   state.form.tag = ''
   console.log(e)
 }
-const { form, tagList, imageList, src } = toRefs(state)
+const { form, imageList, src } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>

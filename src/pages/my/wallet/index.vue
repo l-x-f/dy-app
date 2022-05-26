@@ -4,7 +4,7 @@
       has-left
       :nav-wrapper-style="{ backgroundColor: navTransparentBackgroundColor }"
       :fixed-nav-wrapper-style="{
-        backgroundColor: '#9864f8'
+        backgroundImage: 'linear-gradient(45deg, #5910e5 0%, #9864f8 100%)'
       }"
       :title-style="{ color: navFixedColor }"
       :fixed-title-style="{ color: navFixedColor }"
