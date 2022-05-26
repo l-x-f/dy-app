@@ -309,12 +309,12 @@ const handleToContentDetails = () => {
       .content {
         font-size: $font-middle;
         font-weight: 400;
-        color: $font-color-sub;
+        color: $font-color-main;
         line-height: 58rpx;
         white-space: normal;
       }
       .more {
-        color: #485bf7;
+        color: $font-color-sub;
       }
     }
     .user-footer {
