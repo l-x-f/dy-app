@@ -59,7 +59,7 @@
             }
         },
         "uniStatistics" : {
-            "enable" : false
+            "enable" : true
         },
         "compatible" : {
             "ignoreVersion" : true
