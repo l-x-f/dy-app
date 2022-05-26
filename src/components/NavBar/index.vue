@@ -215,6 +215,7 @@ const handleClickRight = () => {
     left: 0;
     width: 100%;
     background-image: inherit;
+    background-color: inherit;
     height: calc($nav-height + var(--status-bar-height));
     padding: var(--status-bar-height) $page-spacing 0;
     box-sizing: border-box;
