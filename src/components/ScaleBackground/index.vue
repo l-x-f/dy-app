@@ -50,8 +50,6 @@ const touchend = () => {
   }, 16)
 }
 const touchmove = e => {
-  console.log(e, 'etouchmove')
-
   if (state.pageY !== 0) {
     return
   }
