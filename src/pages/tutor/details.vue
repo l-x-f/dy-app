@@ -16,7 +16,7 @@
     />
 
     <!-- 导航背景 -->
-    <div class="nav-bar-image">
+    <ScaleBackground class="nav-bar-image">
       <!-- 用户信息模块 -->
       <view class="user-wrapper">
         <div class="user-header">
@@ -58,7 +58,7 @@
           <div class="btn" @click="handleCopy(123456)">推广口令：123456</div>
         </div>
       </view>
-    </div>
+    </ScaleBackground>
 
     <!-- 列表 -->
     <div class="section">
@@ -132,6 +132,8 @@ import { reactive } from 'vue'
 import variables from 'variables'
 import FabButton from '@/components/FabButton'
 import NavBar from '@/components/NavBar'
+import ScaleBackground from '@/components/ScaleBackground'
+
 import { usePageScroll } from '@/hooks'
 
 const { navFixedColor, navTransparentBackgroundColor } = variables

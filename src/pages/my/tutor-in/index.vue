@@ -1,120 +1,18 @@
 <template>
-  <div
-    class="page-body"
-    :style="{ backgroundSize }"
-    @touchend="touchend"
-    @touchmove="touchmove"
-  >
-    <!-- <NavBar has-left /> -->
-
-    <div
-      class="scroll"
-      :scroll-x="false"
-      vertical
-      height="200px"
-      @change="handleChange"
-    >
-      <div class="movable-area" />
-    </div>
+  <div class="tutor-in">
+    <NavBar has-left />
   </div>
 </template>
 
 <script setup>
-import { reactive, toRefs } from 'vue'
-import { onPageScroll } from '@dcloudio/uni-app'
-// import SwiperScroll from '@/components/SwiperScroll'
-// import NavBar from '@/components/NavBar'
-const step = 2
-
-const state = reactive({
-  x: 50,
-  y: 0,
-  transform: '',
-  backgroundSize: '100% auto',
-  base: 100,
-  baseY: 200,
-  pageY: 0,
-  clientMoveY: 0,
-  timer: null
-})
-
-onPageScroll(e => {
-  state.pageY = e.scrollTop
-})
-
-const touchend = () => {
-  state.timer && clearInterval(state.timer)
-
-  state.timer = setInterval(() => {
-    state.base = state.base - step
-    if (state.base <= 100) {
-      state.base = 100
-      clearInterval(state.timer)
-    }
-    state.backgroundSize = `${state.base}%  auto`
-  }, 16)
-}
-const touchmove = e => {
-  const touchData = e.changedTouches[0]
-
-  const { clientY } = touchData
-  console.log(clientY, 'clientY')
-  console.log(state.clientMoveY - clientY, '(state.clientMoveY - clientY')
-
-  // 本次手指移动的位置和上次移动的位置对比 <1 证明用户在下拉
-  if (state.clientMoveY - clientY < 0) {
-    state.base = state.base + step
-    state.backgroundSize = `${state.base}%  auto`
-  }
-  // 上边的代码执行结束之后再把本次手指的位置赋值给data中,用来下一次对比
-  state.clientMoveY = clientY
-}
-
-const handleChange = e => {
-  const dy = Math.abs(e.detail.dy)
-  console.log(dy)
-
-  if (dy === 200) {
-    state.base = 100
-    state.backgroundSize = `${state.base}%  auto`
-    return
-  }
-
-  if (state.baseY < dy) {
-    state.base = state.base + step
-    state.backgroundSize = `${state.base}%  auto`
-  } else {
-    state.base = state.base - step
-    if (state.base <= 100) {
-      state.base = 100
-    }
-    state.backgroundSize = `${state.base}%  auto`
-  }
-
-  state.baseY = dy
-}
-
-const { backgroundSize } = toRefs(state)
+import NavBar from '@/components/NavBar'
 </script>
 
 <style lang="scss" scoped>
-.page-body {
-  background-image: url('/static/image/sea.png');
-  transition: all 0.5 linear;
-  background-repeat: no-repeat;
-  background-origin: center center;
-  background-position: top center;
-  background-size: 100% auto;
-
-  .scroll {
-    padding-top: 181px;
-  }
-  .movable-area {
-    padding-left: 100px;
-    box-sizing: border-box;
-    width: 100%;
-    height: 200px;
-    background-color: #f00;
-  }
+@import 'variables';
+.tutor-in {
+  box-sizing: border-box;
+  padding: 0 $page-spacing $page-bottom;
+  background-color: #fff;
 }
 </style>
