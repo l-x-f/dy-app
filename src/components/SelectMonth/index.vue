@@ -1,7 +1,7 @@
 <template>
   <Popup
     v-model:visible="state.subVisible"
-    @click="close"
+    @close="close"
     @confirm="handleConfirm"
   >
     <view class="select-month">
@@ -111,6 +111,7 @@ const add = () => {
  * @param {*} current
  */
 const handleClickItem = current => {
+  if (props.disabledDate(state.year, current)) return
   state.month = current
 }
 
