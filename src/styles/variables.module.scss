@@ -36,6 +36,10 @@ $status-height: 20px; // APP状态栏高度
 $status-height: 0; // H5状态栏高度
 // #endif
 
+// #ifdef MP-WEIXIN
+$status-height: 0; // 微信状态栏高度
+// #endif
+
 $nav-height: 44px; // 导航栏高度
 $nav-font-size: 36rpx; // 导航栏字号
 $nav-background-color: #fff; // 导航栏背景色
