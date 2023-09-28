@@ -1,6 +1,6 @@
 # dy-app
 
-uni-app vue3 写的大型单页程序，30 多个页 main，可打包成 app，h5。
+uni-app vue3 写的大型单页程序，30 多个页面，可打包成 app，h5。
 
 ## 预览
 
