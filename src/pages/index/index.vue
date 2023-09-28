@@ -112,6 +112,7 @@ const bannerList = data.map(item => ({ img: item }))
   .tutor-wrapper {
     display: flex;
     flex-wrap: nowrap;
+    height: 378rpx;
     .tutor-item {
       position: relative;
       flex: 0 0 280rpx;

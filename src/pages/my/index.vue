@@ -173,11 +173,11 @@ const handleNavigateTo = page => {
 
 // 常用功能
 const functionList = [
-  {
-    icon: 'tutor',
-    text: '导师入住',
-    page: 'tutor-in'
-  },
+  // {
+  //   icon: 'tutor',
+  //   text: '导师入住',
+  //   page: 'tutor-in'
+  // },
   {
     icon: 'help',
     text: '帮助中心',
